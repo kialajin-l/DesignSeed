@@ -1,0 +1,20 @@
+{
+  "awesomeDesignMd": {
+    "name": "awesome-design-md",
+    "repo": "https://github.com/bradtraversy/design-resources-for-developers",
+    "pattern": "**/DESIGN.md",
+    "priority": 1,
+    "description": "知名公司的设计系统文档集合"
+  },
+  "companyDesignSystems": [
+    { "name": "Atlassian Design", "url": "https://atlassian.design", "type": "website" },
+    { "name": "Carbon Design", "url": "https://carbondesignsystem.com", "type": "website" },
+    { "name": "Polaris (Shopify)", "url": "https://polaris.shopify.com", "type": "website" },
+    { "name": "Material Design", "url": "https://m3.material.io", "type": "website" },
+    { "name": "Ant Design", "url": "https://ant.design", "type": "website" }
+  ],
+  "communityBlogs": [
+    { "name": "Design Bootcamp", "url": "https://medium.com/design-bootcamp", "type": "blog" },
+    { "name": "Smashing Magazine", "url": "https://www.smashingmagazine.com", "type": "blog" }
+  ]
+}

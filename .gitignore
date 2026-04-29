@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Database files (user-specific data)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Generated output
+output/
+*.html
+
+# Internal docs (PRD, ROADMAP, etc.)
+docs/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp files
+*.tmp
+*.bak
+
+# Build artifacts
+dist/
+build/
+
+# Demo screenshots
+demo/

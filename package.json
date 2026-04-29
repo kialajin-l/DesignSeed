@@ -1,0 +1,39 @@
+{
+  "name": "huashu-design-seed",
+  "version": "0.1.0",
+  "description": "DesignSeed — 会生长的 AI 设计系统。通过用户反馈和外界学习持续进化的设计 Skill。",
+  "main": "engine/renderer.js",
+  "scripts": {
+    "generate": "node engine/cli.js generate",
+    "crawl": "node crawler/cli.js crawl",
+    "learn": "node crawler/cli.js learn",
+    "rules:check": "node rules/cli.js check",
+    "rules:validate": "node rules/cli.js validate",
+    "sync:export": "node sync/exporter.js",
+    "sync:import": "node sync/importer.js",
+    "test": "node --test engine/__tests__/",
+    "demo": "node engine/cli.js demo"
+  },
+  "keywords": [
+    "design",
+    "ai",
+    "html",
+    "style",
+    "agent",
+    "skill",
+    "nexus",
+    "ruleforge"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "playwright-core": "^1.59.1"
+  },
+  "optionalDependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

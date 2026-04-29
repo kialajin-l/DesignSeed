@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignSeed Sync Schema",
+  "version": "1.0",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "exportedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "styleVector": {
+          "type": "object"
+        },
+        "feedbackCount": {
+          "type": "integer"
+        },
+        "lastSync": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "style": {
+            "type": "string"
+          },
+          "params": {
+            "type": "object"
+          },
+          "userModifications": {
+            "type": "integer"
+          },
+          "finalVersionHash": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "ruleType": {
+            "type": "string"
+          },
+          "dimension": {
+            "type": "string"
+          },
+          "condition": {
+            "type": "string"
+          },
+          "threshold": {
+            "type": "number"
+          },
+          "action": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "learnedDesigns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "string"
+          },
+          "tone": {
+            "type": "object"
+          },
+          "qualityScore": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

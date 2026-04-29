@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "id": "accessibility_contrast",
+      "name": "无障碍对比度",
+      "type": "hard_limit",
+      "dimension": "contrast_ratio",
+      "condition": "less_than",
+      "threshold": 4.5,
+      "action": "reject",
+      "message": "文字与背景对比度低于 WCAG 2.1 AA 标准（4.5:1）",
+      "source": "system"
+    },
+    {
+      "id": "min_font_size",
+      "name": "最小字号",
+      "type": "hard_limit",
+      "dimension": "font_size_px",
+      "condition": "less_than",
+      "threshold": 12,
+      "action": "adjust",
+      "adjustTo": 12,
+      "message": "字号小于 12px 影响可读性",
+      "source": "system"
+    },
+    {
+      "id": "max_line_length",
+      "name": "最大行宽",
+      "type": "soft_preference",
+      "dimension": "line_length_ch",
+      "condition": "greater_than",
+      "threshold": 80,
+      "action": "warn",
+      "message": "行宽超过 80 字符，影响阅读体验",
+      "source": "system"
+    },
+    {
+      "id": "color_harmony",
+      "name": "色彩搭配",
+      "type": "hard_limit",
+      "dimension": "color_count",
+      "condition": "greater_than",
+      "threshold": 7,
+      "action": "warn",
+      "message": "主色调超过 7 种，视觉过于杂乱",
+      "source": "system"
+    },
+    {
+      "id": "ugly_combo_clash",
+      "name": "丑陋配色组合",
+      "type": "hard_limit",
+      "dimension": "color_combo",
+      "condition": "in_blacklist",
+      "action": "reject",
+      "message": "该色彩组合在美学规则中被标记为不推荐",
+      "blacklist": [
+        {"primary": "#FF0000", "secondary": "#00FF00"},
+        {"primary": "#FF6600", "secondary": "#0066FF"},
+        {"primary": "#FFFF00", "secondary": "#FF00FF"}
+      ],
+      "source": "system"
+    },
+    {
+      "id": "spacing_consistency",
+      "name": "间距一致性",
+      "type": "soft_preference",
+      "dimension": "spacing_scale",
+      "condition": "not_in_scale",
+      "action": "warn",
+      "message": "间距值不在设计系统的比例尺中",
+      "scale": [4, 8, 12, 16, 24, 32, 48, 64],
+      "source": "system"
+    },
+    {
+      "id": "border_radius_consistency",
+      "name": "圆角一致性",
+      "type": "soft_preference",
+      "dimension": "border_radius",
+      "condition": "not_in_scale",
+      "action": "warn",
+      "message": "圆角值不在设计系统的比例尺中",
+      "scale": [0, 2, 4, 8, 12, 16, 24],
+      "source": "system"
+    }
+  ],
+  "blacklistedColorCombos": [
+    {"primary": "#FF0000", "secondary": "#00FF00", "reason": "红绿冲突，视觉不适"},
+    {"primary": "#FF6600", "secondary": "#0066FF", "reason": "橙蓝高饱和冲突"},
+    {"primary": "#FFFF00", "secondary": "#FF00FF", "reason": "黄紫高饱和冲突"}
+  ]
+}
