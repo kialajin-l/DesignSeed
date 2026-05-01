@@ -55,3 +55,17 @@ CREATE TABLE IF NOT EXISTS custom_rules (
   enabled INTEGER DEFAULT 1,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 用户自定义风格预设（保存偏好的混合比例）
+CREATE TABLE IF NOT EXISTS style_presets (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE,
+  description TEXT,
+  style_a TEXT NOT NULL,
+  style_b TEXT NOT NULL,
+  ratio REAL NOT NULL DEFAULT 0.5,
+  params TEXT,
+  use_count INTEGER DEFAULT 0,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

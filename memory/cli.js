@@ -211,6 +211,26 @@ Options:
         break;
       }
 
+
+      case 'presets': {
+        const presets = mem.listPresets();
+        console.log('\n🎨 Style Presets\n');
+        if (presets.length === 0) {
+          console.log('  (no presets saved yet)');
+          console.log('  Use engine CLI: node engine/cli.js preset save --name "my-style" --styleA minimalism --styleB cyberpunk --ratio 0.3');
+        } else {
+          printTable(presets.map(p => ({
+            name: p.name,
+            styles: p.style_a + ' × ' + p.style_b,
+            ratio: p.ratio,
+            uses: p.use_count,
+            desc: (p.description || '-').substring(0, 30),
+            created: p.created_at,
+          })), ['name', 'styles', 'ratio', 'uses', 'desc', 'created']);
+        }
+        break;
+      }
+
       default:
         console.error(`❌ Unknown command: ${command}`);
         console.error('   Run without arguments to see usage.');

@@ -215,6 +215,44 @@ class DesignMemory {
     return { design_systems: insertAll('design_systems', data.design_systems), design_anchors: insertAll('design_anchors', data.design_anchors), user_preferences: insertAll('user_preferences', data.user_preferences), custom_rules: insertAll('custom_rules', data.custom_rules) };
   }
 
+
+  // ─── 风格预设 ──────────────────────────────────────────────
+
+  savePreset(data) {
+    this._ensure();
+    const stmt = this.db.prepare('INSERT INTO style_presets (name, description, style_a, style_b, ratio, params) VALUES (@name, @description, @style_a, @style_b, @ratio, @params)');
+    const result = stmt.run({ name: data.name, description: data.description || null, style_a: data.styleA, style_b: data.styleB, ratio: data.ratio || 0.5, params: data.params ? JSON.stringify(data.params) : null });
+    return result.lastInsertRowid;
+  }
+
+  getPreset(name) {
+    this._ensure();
+    const row = this.db.prepare('SELECT * FROM style_presets WHERE name = ?').get(name);
+    return row ? this._parsePreset(row) : null;
+  }
+
+  listPresets() {
+    this._ensure();
+    return this.db.prepare('SELECT * FROM style_presets ORDER BY use_count DESC, created_at DESC').all().map(r => this._parsePreset(r));
+  }
+
+  deletePreset(name) {
+    this._ensure();
+    return this.db.prepare('DELETE FROM style_presets WHERE name = ?').run(name).changes > 0;
+  }
+
+  usePreset(name) {
+    this._ensure();
+    this.db.prepare('UPDATE style_presets SET use_count = use_count + 1, updated_at = CURRENT_TIMESTAMP WHERE name = ?').run(name);
+    return this.getPreset(name);
+  }
+
+  _parsePreset(row) {
+    const parsed = { ...row };
+    if (parsed.params) { try { parsed.params = JSON.parse(parsed.params); } catch {} }
+    return parsed;
+  }
+
   close() {
     if (this.db) { this.db.close(); this.db = null; }
   }

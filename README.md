@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.1-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.2-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 **DesignSeed** 是一个会生长的 AI 设计系统——Agent-first 的 HTML 设计引擎，让 AI 助手拥有"审美"能力。
@@ -16,7 +16,8 @@
 
 | 功能 | 说明 |
 |------|------|
-| 🎨 **12 种内置风格** | 极简、新拟态、玻璃拟态、孟菲斯、赛博朋克、水墨、像素复古、未来主义、有机、工业、手绘、数据可视化 |
+| 🎨 **12 种内置风格 + 混合引擎** | 极简、新拟态、玻璃拟态等 12 种风格，支持任意两种风格按比例混合生成全新风格 |
+| 🏢 **15 个种子设计系统** | Stripe、Vercel、Apple、Linear、Notion、Figma、Spotify、Airbnb、GitHub、Slack、Netflix、Tesla、Claude、Supabase、Raycast |
 | 🕷️ **设计爬虫** | 从 GitHub、公司设计系统、设计博客中学习优秀设计，提取色彩/排版/布局/调性特征 |
 | 🧠 **嵌入式记忆** | 记录每次生成的 prompt、风格、用户修改，形成设计偏好档案（Nexus 最小版） |
 | 🛡️ **美学规则引擎** | 7 条内置规则（对比度/字号/行宽/色彩/配色黑名单/间距/圆角），自动检查和修复 |
@@ -32,6 +33,8 @@ DesignSeed/
 ├── engine/              # 🎨 HTML 设计引擎
 │   ├── cli.js           #   命令行入口
 │   ├── renderer.js      #   Prompt → HTML 渲染器
+│   ├── mixer.js         #   风格混合引擎（向量插值）
+│   ├── seed-design-systems.js  # 15 个种子设计系统数据
 │   ├── templates/       #   12 种风格定义（色彩/字体/间距/组件）
 │   └── components/      #   UI 组件库（导航/卡片/表单/统计等）
 ├── crawler/             # 🕷️ 设计爬虫
@@ -125,6 +128,43 @@ node rules/cli.js list
 
 ---
 
+## 🏢 种子设计系统
+
+v0.2 预置了 15 个头部设计系统的特征数据，用于风格混合参考、质量评分基准和智能推荐训练：
+
+| 设计系统 | 公司 | 主色调 | 调性标签 | 适用场景 |
+|----------|------|--------|----------|----------|
+| **Stripe** | Stripe | `#635BFF` | 专业 · 金融 · 开发者 | 支付、金融科技 |
+| **Vercel** | Vercel | `#000000` | 极简 · 开发者 · 暗色 | 开发工具、云服务 |
+| **Apple** | Apple | `#0071E3` | 高端 · 简约 · 精致 | 消费电子、高端产品 |
+| **Linear** | Linear | `#5E6AD2` | 现代 · 高效 · 专业 | 项目管理、SaaS |
+| **Notion** | Notion | `#000000` | 极简 · 灵活 · 知识 | 笔记、知识管理 |
+| **Figma** | Figma | `#A259FF` | 创意 · 协作 · 设计 | 设计工具、创意平台 |
+| **Spotify** | Spotify | `#1DB954` | 活泼 · 娱乐 · 社交 | 音乐、娱乐平台 |
+| **Airbnb** | Airbnb | `#FF5A5F` | 温暖 · 旅行 · 社区 | 旅游、住宿平台 |
+| **GitHub** | GitHub | `#24292E` | 专业 · 开发者 · 开源 | 代码托管、开发者社区 |
+| **Slack** | Slack | `#4A154B` | 友好 · 协作 · 企业 | 企业通讯、团队协作 |
+| **Netflix** | Netflix | `#E50914` | 娱乐 · 影视 · 暗色 | 视频平台、娱乐内容 |
+| **Tesla** | Tesla | `#CC0000` | 科技 · 未来 · 高端 | 汽车、能源科技 |
+| **Claude** | Anthropic | `#D97757` | 专业 · AI · 可靠 | AI 产品、企业服务 |
+| **Supabase** | Supabase | `#3ECF8E` | 开发者 · 现代 · 开源 | 数据库、后端服务 |
+| **Raycast** | Raycast | `#FF6363` | 效率 · 工具 · 极客 | 效率工具、开发者 |
+
+### 使用种子设计系统
+
+```bash
+# 查看所有种子设计系统
+node engine/cli.js seeds
+
+# 基于种子系统生成页面
+node engine/cli.js generate --prompt "一个 SaaS 落地页" --seed stripe --output page.html
+
+# 混合两个种子系统
+node engine/cli.js mix --style1 minimalism --style2 glassmorphism --ratio 0.7 --output mixed.html
+```
+
+---
+
 ## 🛡️ 美学规则引擎
 
 内置 7 条美学规则，自动检查生成的设计：
@@ -200,13 +240,17 @@ node sync/cli.js stats
 
 > 导出知识包 → 发给团队成员 → 导入 → 团队 AI Agent 共享同一套设计偏好
 
+**场景 5：风格混合**
+
+> "我想要一个介于极简和玻璃拟态之间的风格" → 用 `mixer.js` 按 0.7:0.3 比例混合 → 生成全新风格
+
 ---
 
 ## 🗺️ Roadmap
 
 详见 [ROADMAP.md](./docs/ROADMAP.md)
 
-### v0.1（当前）✅
+### v0.1 ✅
 
 - [x] HTML 设计引擎：12 种风格，Prompt → HTML
 - [x] 设计爬虫：多源采集，特征提取
@@ -215,17 +259,20 @@ node sync/cli.js stats
 - [x] 同步层：知识包导出/导入
 - [x] CLI 工具：完整的命令行接口
 
-### v0.2 — 风格混合 + 知识积累（2026-05）
+### v0.2 — 风格混合 + 知识积累 ✅（2026-05-01）
 
-- [ ] 向量空间风格插值（两种风格按比例混合）
-- [ ] 批量采集 awesome-design-md 头部设计系统
-- [ ] 自动修复（hard_limit 违反时自动调整）
+- [x] 向量空间风格插值（两种风格按比例混合）
+- [x] 15 个头部设计系统种子数据（Stripe/Vercel/Apple/Linear/Notion/Figma/Spotify/Airbnb/GitHub/Slack/Netflix/Tesla/Claude/Supabase/Raycast）
+- [x] 自动修复（hard_limit 违反时自动调整）
+- [x] 用户自定义风格预设（保存/加载/删除）
+- [x] 风格相似度计算（基于调性向量余弦相似度）
 
 ### v0.3 — 智能增强（2026-06）
 
 - [ ] LLM 辅助调性分析（替代关键词匹配）
 - [ ] 基于内容的自动风格推荐
 - [ ] 设计质量评分模型
+- [ ] 批量采集外部设计系统（awesome-design-md 等）
 
 ### v1.0 — 服务器对接 + 跨端同步（2026-07）
 

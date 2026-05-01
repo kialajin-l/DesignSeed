@@ -221,6 +221,29 @@ async function cmdLearn(url) {
 /**
  * 列出已学习的设计系统
  */
+function inferName(source) {
+  try {
+    const u = source.startsWith('file://')
+      ? new URL(source.replace(/\\\\/g, '/'))
+      : new URL(source);
+    const host = u.hostname || '';
+    const map = {
+      'atlassian.design': 'Atlassian Design',
+      'carbondesignsystem.com': 'IBM Carbon',
+      'polaris.shopify.com': 'Shopify Polaris',
+      'm3.material.io': 'Material Design',
+      'ant.design': 'Ant Design',
+      'js.design': 'JS Design Community',
+    };
+    for (const [domain, name] of Object.entries(map)) {
+      if (host.includes(domain)) return name;
+    }
+    return host.replace(/^www\./, '').split('.')[0] || '(unknown)';
+  } catch {
+    return '(unknown)';
+  }
+}
+
 function cmdList() {
   const outputFile = path.join(__dirname, '..', 'memory', 'design-systems.json');
 
@@ -248,7 +271,7 @@ function cmdList() {
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
     const f = item.features;
-    const company = f.meta?.company || '(unknown)';
+    const company = f.meta?.company || inferName(item.source || '');
     const colors = f.colors?.palette?.length || 0;
     const font = f.typography?.fontFamily || '-';
     const learned = item.learnedAt

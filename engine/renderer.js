@@ -5,10 +5,22 @@
 
 const styles = require('./templates/styles');
 const ui = require('./components/ui-components');
+const mixer = require('./mixer');
+const { RuleEngine } = require('../rules');
 
 const DEFAULT_STYLE = 'minimalism';
 
 function getStyle(styleId) {
+  // 尝试解析混合风格语法 "styleA:styleB:ratio"
+  const mix = mixer.parseMixString(styleId);
+  if (mix) {
+    const a = styles[mix.styleA];
+    const b = styles[mix.styleB];
+    if (a && b) {
+      return mixer.blend(a, b, { ratio: mix.ratio });
+    }
+    console.warn("Warning: Mixed style \"" + styleId + "\" has unknown component, falling back.");
+  }
   return styles[styleId] || styles[DEFAULT_STYLE];
 }
 
@@ -200,4 +212,26 @@ function listStyles() {
   return idx;
 }
 
-module.exports = { render, generateDemo, listStyles, getStyle };
+/** 列出所有可混合的风格对（按相似度排序） */
+function listMixPairs() {
+  const allIds = Object.keys(styles).filter(k => !k.startsWith('_') && k !== 'STYLE_INDEX');
+  const pairs = [];
+  for (let i = 0; i < allIds.length; i++) {
+    for (let j = i + 1; j < allIds.length; j++) {
+      const a = styles[allIds[i]];
+      const b = styles[allIds[j]];
+      if (a.tone && b.tone) {
+        const sim = mixer.cosineSimilarity(a.tone, b.tone);
+        pairs.push({
+          styleA: allIds[i], styleB: allIds[j],
+          nameA: a.name, nameB: b.name,
+          similarity: parseFloat(sim.toFixed(4)),
+          syntax: allIds[i] + ':' + allIds[j] + ':0.5',
+        });
+      }
+    }
+  }
+  return pairs.sort((a, b) => b.similarity - a.similarity);
+}
+
+module.exports = { render, generateDemo, listStyles, listMixPairs, getStyle };
