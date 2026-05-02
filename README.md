@@ -8,25 +8,25 @@
 
 **DesignSeed** 是一个会生长的 AI 设计系统——Agent-first 的 HTML 设计引擎，让 AI 助手拥有"审美"能力。
 
-本项目灵感来源于 **Claude Design** 的极简美学和 **Huashu Design** 的结构化设计思路，将其扩展为完整的风格引擎、设计爬虫、嵌入式记忆和美学规则系统。它的核心价值是：**让 AI 生成的页面不再是千篇一律的白底黑字，而是有风格、有调性、有记忆的设计作品。**
+它的核心价值是：**让 AI 生成的页面不再是千篇一律的白底黑字，而是有风格、有调性、有记忆的设计作品。**
 
 ---
 
 ## ✨ 核心功能
 
-### v0.1-v0.2 基础能力
+### 基础能力
 
 | 功能 | 说明 |
 |------|------|
 | 🎨 **12 种内置风格 + 混合引擎** | 极简、新拟态、玻璃拟态等 12 种风格，支持任意两种风格按比例混合生成全新风格 |
 | 🏢 **15 个种子设计系统** | Stripe、Vercel、Apple、Linear、Notion、Figma、Spotify、Airbnb、GitHub、Slack、Netflix、Tesla、Claude、Supabase、Raycast |
 | 🕷️ **设计爬虫** | 从 GitHub、公司设计系统、设计博客中学习优秀设计，提取色彩/排版/布局/调性特征 |
-| 🧠 **嵌入式记忆** | 记录每次生成的 prompt、风格、用户修改，形成设计偏好档案（Nexus 最小版） |
+| 🧠 **嵌入式记忆** | 记录每次生成的 prompt、风格、用户修改，形成设计偏好档案 |
 | 🛡️ **美学规则引擎** | 7 条内置规则（对比度/字号/行宽/色彩/配色黑名单/间距/圆角），自动检查和修复 |
-| 📦 **自包含 Skill** | 解压即用，无需外部服务，数据格式与 Nexus/RuleForge 完整版一致 |
+| 📦 **自包含 Skill** | 解压即用，无需外部服务 |
 | 🔄 **双向同步** | 导出为知识包，可导入到其他 Agent 或设备 |
 
-### v0.3 新增能力（追平 Huashu Design）
+### v0.3 新增能力
 
 | 功能 | 说明 |
 |------|------|
@@ -61,8 +61,8 @@ DesignSeed/
 │   ├── templates/       #   12 种风格定义
 │   └── components/      #   基础 UI 组件库
 ├── crawler/             # 🕷️ 设计爬虫
-├── memory/              # 🧠 嵌入式记忆（Nexus 最小版）
-├── rules/               # 🛡️ 美学规则引擎（RuleForge 最小版）
+├── memory/              # 🧠 嵌入式记忆
+├── rules/               # 🛡️ 美学规则引擎
 ├── sync/                # 🔄 同步层
 └── SKILL.md             # Agent 技能说明
 ```
@@ -71,54 +71,43 @@ DesignSeed/
 
 ## 🚀 快速开始
 
-### 生成 App 原型（v0.3 新增）
+DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。你不需要输入任何命令，**用自然语言告诉 AI 你想要什么就行**。
 
-```bash
-# 生成带 iPhone 设备框架的页面
-node engine/cli.js generate --prompt "一个任务管理 App" --device iphone-16-pro --output app.html
+### 生成 App 原型
 
-# 生成 Dashboard 布局
-node engine/cli.js generate --prompt "数据分析仪表盘" --layout dashboard --output dashboard.html
+> "帮我做一个任务管理 App 的界面，用 iPhone 16 Pro 的设备框架展示"
 
-# 生成可交互的 Tab 页面
-node engine/cli.js generate --prompt "设置页面" --layout settings --interactions --output settings.html
-```
+> "生成一个数据分析仪表盘，要有侧边栏和统计卡片"
 
-### 设计方向推荐
+> "做一个设置页面，左边是分类导航，右边是表单"
 
-```bash
-# 根据需求描述推荐设计方向
-node engine/cli.js recommend --description "一个面向开发者的 SaaS 产品"
+### 设计方向探索
 
-# 查看所有设计哲学
-node engine/cli.js philosophies
-```
+> "我想做一个面向开发者的 SaaS 产品，帮我推荐一个设计方向"
 
-### 专家评审
+> "我想要一个既有科技感又温暖的设计风格，有什么建议？"
 
-```bash
-# 评审生成的设计
-node engine/cli.js review --file page.html
+### 风格混合
 
-# 反 AI Slop 检查
-node engine/cli.js check-slop --file page.html
-```
+> "帮我做一个落地页，风格介于极简和玻璃拟态之间"
 
-### 基础功能
+> "用 Stripe 的风格做一个定价页面，但颜色换成绿色系"
 
-```bash
-# 生成页面（12 种风格）
-node engine/cli.js generate --prompt "一个产品落地页" --style glassmorphism --output page.html
+### 真实图片
 
-# 风格混合
-node engine/cli.js mix --style1 minimalism --style2 glassmorphism --ratio 0.7 --output mixed.html
+> "帮我做一个团队介绍页面，要真实的办公场景图片"
 
-# 设计爬虫
-node crawler/cli.js learn --url "https://ant.design"
+> "生成一个产品展示页，用真实的手机照片而不是 placeholder"
 
-# 美学规则检查
-node rules/cli.js check --file page.html
-```
+### 设计评审
+
+> "帮我检查一下这个页面的设计质量"
+
+> "这个页面有没有 AI 味太重的问题？"
+
+### 品牌展示
+
+> "帮我做一个 Apple 风格的产品对比页，要用真实的 Logo 和产品图"
 
 ---
 
@@ -260,7 +249,7 @@ v0.2 预置了 15 个头部设计系统的特征数据：
 
 **场景 4：风格混合**
 
-> "我想要一个介于极简和玻璃拟态之间的风格" → mixer.js 按 0.7:0.3 比例混合 → 生成全新风格
+> "我想要一个介于极简和玻璃拟态之间的风格" → 按比例混合 → 生成全新风格
 
 **场景 5：团队共享**
 
@@ -269,8 +258,6 @@ v0.2 预置了 15 个头部设计系统的特征数据：
 ---
 
 ## 🗺️ Roadmap
-
-详见 [ROADMAP.md](./docs/ROADMAP.md)
 
 ### v0.1 ✅ — MVP 核心
 - [x] HTML 设计引擎：12 种风格，Prompt → HTML
@@ -284,7 +271,7 @@ v0.2 预置了 15 个头部设计系统的特征数据：
 - [x] 15 个头部设计系统种子数据
 - [x] 自动修复 + 用户预设
 
-### v0.3 ✅ — 追平 Huashu（设计生产工具）
+### v0.3 ✅ — 设计功能提升
 - [x] 设备框架（iOS/Android/Tablet）
 - [x] 复杂 UI 布局（6种模式）
 - [x] 交互状态管理（Tab/Modal/Accordion/Toast/Dropdown）
@@ -299,10 +286,10 @@ v0.2 预置了 15 个头部设计系统的特征数据：
 - [ ] design.md 生成器 / 验证器 / 导入器
 - [ ] 设计爬虫增强
 
-### v0.5 — 自适应界面 + NightShift 集成（规划中）
+### v0.5 — 自适应界面（规划中）
 - [ ] 时间/疲劳/专注感知
-- [ ] Nexus 记忆联动
-- [ ] RuleForge 规则联动
+- [ ] 设计偏好联动
+- [ ] 规则引擎联动
 
 ---
 
@@ -323,7 +310,6 @@ MIT License
 ## 🙏 致谢
 
 - [Claude Design](https://claude.ai) — 极简美学的灵感来源
-- [Huashu Design](https://huashu.design) — 结构化设计思路的启发
 - [Xiaomi miclaw](https://github.com/XiaomiMiClaw) — AI 助手平台
 - [Model Context Protocol](https://modelcontextprotocol.io/) — AI Agent 标准化工具协议
 - [Ant Design](https://ant.design) — 企业级设计系统参考
