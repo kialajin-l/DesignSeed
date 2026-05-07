@@ -6,6 +6,8 @@
 ![Version](https://img.shields.io/badge/Version-v0.4-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
+<p align="center"><a href="README.en.md"><b>English</b></a> | <b>中文</b></p>
+
 <p align=center>
   <img src="docs/assets/banner.png" alt="DesignSeed Banner" width="100%">
 </p>
