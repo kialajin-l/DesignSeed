@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px;
+    background: #0A0A0F;
+    font-family: 'Inter', sans-serif;
+    color: #E0E0E0;
+    padding: 60px 80px 80px;
+  }
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #00FFFF, #7C3AED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+    letter-spacing: 0.02em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+  }
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* Style Mixing Demo */
+  .mixing-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 48px;
+  }
+  .mixing-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  .mixing-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .mix-style-box {
+    width: 260px;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 2px solid;
+  }
+  .mix-style-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .mix-style-sub {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  .mix-plus {
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+  }
+  .mix-equals {
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+  }
+  .mix-result {
+    width: 280px;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 2px solid;
+    position: relative;
+  }
+  .mix-result-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #00FFFF, #7C3AED);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Code block */
+  .code-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .code-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #E0E0E0;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+  }
+  .kw { color: #C792EA; }
+  .fn { color: #82AAFF; }
+  .str { color: #C3E88D; }
+  .cm { color: #546E7A; }
+  .num { color: #F78C6C; }
+  .op { color: #89DDFF; }
+</style>
+</head>
+<body>
+  <div class="section-title">Features</div>
+  <div class="section-sub">Everything you need for AI-native design generation</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(0,255,255,0.1);color:#00FFFF">&#127912;</div>
+      <div class="card-title">12 Built-in Styles</div>
+      <div class="card-desc">From Minimalism to Cyberpunk, Ink Wash to Memphis. Each style is a complete design system with colors, typography, layout, and component tokens.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(124,58,237,0.15);color:#A78BFA">&#128300;</div>
+      <div class="card-title">Style Mixing</div>
+      <div class="card-desc">Blend any two styles to create hybrid aesthetics. The engine intelligently merges color palettes, typography scales, and layout parameters.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(0,255,148,0.1);color:#00FF94">&#128196;</div>
+      <div class="card-title">design.md Format</div>
+      <div class="card-desc">A structured markdown format that captures design intent. Readable by both humans and AI agents, enabling seamless design-to-code workflows.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(255,51,102,0.1);color:#FF3366">&#127793;</div>
+      <div class="card-title">17 Seed Design Systems</div>
+      <div class="card-desc">Pre-built seed systems that serve as starting points. Each seed is a complete, production-ready design system that can be customized and evolved.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(245,158,11,0.1);color:#F59E0B">&#129504;</div>
+      <div class="card-title">Embedded Memory</div>
+      <div class="card-desc">Design decisions are embedded as context, not just parameters. The system remembers why choices were made, enabling intelligent evolution.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(231,111,81,0.1);color:#E76F51">&#9878;</div>
+      <div class="card-title">Aesthetic Rules</div>
+      <div class="card-desc">Formality, warmth, complexity, innovation &mdash; each style carries tonal dimensions that guide AI agents in making consistent design decisions.</div>
+    </div>
+  </div>
+
+  <div class="mixing-section">
+    <div class="mixing-title">Style Mixing Demo</div>
+    <div class="mixing-row">
+      <div class="mix-style-box" style="background:rgba(0,255,255,0.05);border-color:rgba(0,255,255,0.3)">
+        <div class="mix-style-name" style="color:#00FFFF">Cyberpunk</div>
+        <div class="mix-style-sub" style="color:#8888AA">Neon &middot; Monospace &middot; Glow</div>
+      </div>
+      <div class="mix-plus">+</div>
+      <div class="mix-style-box" style="background:rgba(124,58,237,0.05);border-color:rgba(124,58,237,0.3)">
+        <div class="mix-style-name" style="color:#A78BFA">Glassmorphism</div>
+        <div class="mix-style-sub" style="color:rgba(255,255,255,0.5)">Blur &middot; Transparency &middot; Gradient</div>
+      </div>
+      <div class="mix-equals">=</div>
+      <div class="mix-result" style="background:linear-gradient(135deg, rgba(0,255,255,0.05), rgba(124,58,237,0.08));border-color:rgba(0,255,255,0.4)">
+        <div class="mix-result-badge">MIXED</div>
+        <div class="mix-style-name" style="color:#00FFFF">Cyber &times; Glass</div>
+        <div class="mix-style-sub" style="color:rgba(255,255,255,0.5)">Neon glow + Frosted glass</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-section">
+    <div class="code-label">Quick Start</div>
+    <pre><span class="kw">import</span> { DesignSeed } <span class="kw">from</span> <span class="str">'designseed'</span>;
+
+<span class="cm">// Generate a complete design system from a seed</span>
+<span class="kw">const</span> seed <span class="op">=</span> <span class="kw">new</span> <span class="fn">DesignSeed</span>({ <span class="str">style</span>: <span class="str">'cyberpunk'</span> });
+
+<span class="cm">// Mix two styles</span>
+<span class="kw">const</span> mixed <span class="op">=</span> seed.<span class="fn">mix</span>(<span class="str">'glassmorphism'</span>, { <span class="str">ratio</span>: <span class="num">0.6</span> });
+
+<span class="cm">// Export as design.md</span>
+<span class="kw">await</span> mixed.<span class="fn">exportDesignMd</span>(<span class="str">'./design.md'</span>);
+
+<span class="cm">// Generate HTML preview</span>
+<span class="kw">await</span> mixed.<span class="fn">generatePreview</span>(<span class="str">'./preview.html'</span>);</pre>
+  </div>
+</body>
+</html>

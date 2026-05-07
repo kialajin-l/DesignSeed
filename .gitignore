@@ -10,9 +10,13 @@ node_modules/
 # Generated output
 output/
 *.html
+!docs/assets/*.html
 
 # Internal docs (PRD, ROADMAP, etc.)
-docs/
+docs/*.md
+docs/*.txt
+docs/*.json
+docs/_*
 
 # Logs
 *.log

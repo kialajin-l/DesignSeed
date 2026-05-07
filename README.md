@@ -3,14 +3,22 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.3-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.4-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
+
+<p align=center>
+  <img src="docs/assets/banner.png" alt="DesignSeed Banner" width="100%">
+</p>
 
 **DesignSeed** 是一个会生长的 AI 设计系统——Agent-first 的 HTML 设计引擎，让 AI 助手拥有"审美"能力。
 
 它的核心价值是：**让 AI 生成的页面不再是千篇一律的白底黑字，而是有风格、有调性、有记忆的设计作品。**
 
 ---
+
+<p align="center">
+  <img src="docs/assets/features.png" alt="Core Capabilities" width="100%">
+</p>
 
 ## ✨ 核心功能
 
@@ -38,6 +46,17 @@
 | 💡 **设计方向顾问** | 20+ 种设计哲学（Pentagram/Field.io/Kenya Hara/Sagmeister 等），需求模糊时引导方向 |
 | 🔍 **专家评审引擎** | 5 维度评分（哲学一致性/视觉层级/细节执行/功能性/创新性）+ 修复清单 |
 | 🚫 **反 AI Slop** | 10 项检查规则，防止生成"AI 味"过重的设计（渐变/emoji/彩虹边框/毛玻璃滥用等） |
+
+### v0.4 新增能力
+
+| 功能 | 说明 |
+|------|------|
+| 📄 **design.md 格式** | YAML frontmatter + Markdown sections 的标准化设计系统描述格式，支持解析/生成/验证/导入导出 |
+| 🔗 **设计系统桥接器** | design.md → renderer 自动转换，17 个种子设计系统（Stripe/Vercel/Linear/Apple/Notion/Figma/Spotify/Airbnb/GitHub/Slack/Netflix/Tesla/Claude/Supabase/Raycast/Discord/Tailwind） |
+| 🕷️ **CSS 变量提取器** | 从 CSS/HTML/JSX 中提取自定义属性，解析 var() 引用链，映射到设计 token 语义 |
+| 🧩 **组件库识别器** | 自动检测 Tailwind/Bootstrap/MUI/Ant Design/Chakra/Shadcn/Radix 等 12 种 UI 框架 |
+| 🎯 **端到端 Demo** | node demo.js "需求" --style stripe 一句话生成完整 HTML 页面（1-6ms） |
+
 
 ---
 
@@ -193,6 +212,10 @@ v0.3 内置 20+ 种设计哲学，覆盖 7 大流派：
 
 ---
 
+<p align="center">
+  <img src="docs/assets/styles.png" alt="12 Built-in Styles" width="100%">
+</p>
+
 ## 🏢 种子设计系统
 
 v0.2 预置了 15 个头部设计系统的特征数据：
@@ -346,15 +369,25 @@ DesignSeed 内置了一个设计爬虫，可以从外部学习优秀的设计风
 - [x] 专家评审引擎（5维度评分）
 - [x] 反 AI Slop（10项检查）
 
-### v0.4 — design.md 格式 + 创作者基础（规划中）
-- [ ] design.md 格式规范
-- [ ] design.md 生成器 / 验证器 / 导入器
-- [ ] 设计爬虫增强
+### v0.4 — design.md 格式 + 创作者基础 ✅
+- [x] design.md 格式规范
+- [x] design.md 生成器 / 验证器 / 导入器
+- [x] 设计爬虫增强（CSS 变量提取 + 组件库识别）
+- [x] design.md → renderer 桥接器
+- [x] 端到端 Demo 脚本
 
-### v0.5 — 自适应界面（规划中）
-- [ ] 时间/疲劳/专注感知
-- [ ] 设计偏好联动
-- [ ] 规则引擎联动
+### v0.5 — 设计进化（规划中）
+- [ ] 反馈闭环（用户修改 → Nexus 锚点 → 自动优化）
+- [ ] 设计爬虫实战（awesome-design-md 批量学习）
+- [ ] 风格混合增强（跨系统风格向量混合）
+- [ ] RuleForge 规则联动（美学检查 + 权重自适应）
+- [ ] 偏好档案（累积设计选择 → 设计偏好画像）
+
+### v0.6 — 开放接口（规划中）
+- [ ] DesignSeed API 协议定义
+- [ ] CLI / HTTP / stdio 三种调用方式
+- [ ] 第三方 SDK 发布
+- [ ] 任何软件/Agent 都能接入设计能力
 
 ---
 

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px;
+    background: #0A0A0F;
+    font-family: 'Inter', sans-serif;
+    color: #E0E0E0;
+    padding: 60px 80px 80px;
+  }
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #00FFFF, #7C3AED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+    letter-spacing: 0.02em;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="section-title">12 Built-in Styles</div>
+  <div class="section-sub">Each style is a complete design system with colors, typography, layout, and component tokens</div>
+  <div class="gallery">
+    <div style="background:#FFFFFF;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#000000;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#1A1A1A;font-family:sans-serif">Minimalism</div>
+      <div style="font-size:11px;color:#888;font-family:sans-serif">极简主义</div>
+    </div>
+    <div style="background:#F5F5F5;border:1px solid #E0E0E0;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#1A1A1A;margin-bottom:6px;font-family:sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#000000;color:#fff;font-size:12px;font-weight:600;font-family:sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#0066CC"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#666666"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#000000"></div>
+  </div>
+</div>
+<div style="background:#E8EDF2;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#6C63FF;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#2D3436;font-family:Inter, sans-serif">Neumorphism</div>
+      <div style="font-size:11px;color:#888;font-family:Inter, sans-serif">新拟态</div>
+    </div>
+    <div style="background:#E8EDF2;border:1px solid #D1D9E6;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#2D3436;margin-bottom:6px;font-family:Inter, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:Inter, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#6C63FF;color:#fff;font-size:12px;font-weight:600;font-family:Inter, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FF6584"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#8B85E9"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#6C63FF"></div>
+  </div>
+</div>
+<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#7C3AED;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#FFFFFF;font-family:Poppins, sans-serif">Glassmorphism</div>
+      <div style="font-size:11px;color:#888;font-family:Poppins, sans-serif">玻璃拟态</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.12);border:rgba(255,255,255,0.25);border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#FFFFFF;margin-bottom:6px;font-family:Poppins, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:Poppins, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#7C3AED;color:#fff;font-size:12px;font-weight:600;font-family:Poppins, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#F472B6"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#A78BFA"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#7C3AED"></div>
+  </div>
+</div>
+<div style="background:#FFFFFF;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#FF3366;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#222222;font-family:cursive, sans-serif">Memphis</div>
+      <div style="font-size:11px;color:#888;font-family:cursive, sans-serif">孟菲斯</div>
+    </div>
+    <div style="background:#FFF5E6;border:3px solid #222;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#222222;margin-bottom:6px;font-family:cursive, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:cursive, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#FF3366;color:#fff;font-size:12px;font-weight:600;font-family:cursive, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#33CCFF"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FFCC00"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FF3366"></div>
+  </div>
+</div>
+<div style="background:#0A0A0F;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#00FFFF;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#E0E0E0;font-family:monospace">Cyberpunk</div>
+      <div style="font-size:11px;color:#888;font-family:monospace">赛博朋克</div>
+    </div>
+    <div style="background:#12121A;border:1px solid #00FFFF;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#E0E0E0;margin-bottom:6px;font-family:monospace">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:monospace">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#00FFFF;color:#fff;font-size:12px;font-weight:600;font-family:monospace">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FFE500"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FF00FF"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#00FFFF"></div>
+  </div>
+</div>
+<div style="background:#F7F3EE;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#2C2C2C;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#1A1A1A;font-family:serif">Ink Wash</div>
+      <div style="font-size:11px;color:#888;font-family:serif">水墨风</div>
+    </div>
+    <div style="background:#EDE8E0;border:1px solid #C8C0B4;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#1A1A1A;margin-bottom:6px;font-family:serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#2C2C2C;color:#fff;font-size:12px;font-weight:600;font-family:serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#8B0000"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#5C5C5C"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#2C2C2C"></div>
+  </div>
+</div>
+<div style="background:#1A1C2C;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#00AA00;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#F4F4F4;font-family:monospace">Retro Pixel</div>
+      <div style="font-size:11px;color:#888;font-family:monospace">复古像素</div>
+    </div>
+    <div style="background:#2A2D3E;border:2px solid #00AA00;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#F4F4F4;margin-bottom:6px;font-family:monospace">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:monospace">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:transparent;color:#00AA00;font-size:12px;font-weight:600;font-family:monospace">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FF0044"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#FF8800"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#00AA00"></div>
+  </div>
+</div>
+<div style="background:#0B0E17;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#00D4FF;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#E8ECF4;font-family:Space Grotesk, sans-serif">Futurism</div>
+      <div style="font-size:11px;color:#888;font-family:Space Grotesk, sans-serif">未来科技</div>
+    </div>
+    <div style="background:#131726;border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#E8ECF4;margin-bottom:6px;font-family:Space Grotesk, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:Space Grotesk, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#00D4FF;color:#fff;font-size:12px;font-weight:600;font-family:Space Grotesk, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#00FF94"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#7B61FF"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#00D4FF"></div>
+  </div>
+</div>
+<div style="background:#FEFAE0;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#283618;font-family:Lora, Georgia, serif">Organic</div>
+      <div style="font-size:11px;color:#888;font-family:Lora, Georgia, serif">自然有机</div>
+    </div>
+    <div style="background:#F0EFEB;border:1px solid #D4CFC4;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#283618;margin-bottom:6px;font-family:Lora, Georgia, serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:Lora, Georgia, serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#2D6A4F;color:#fff;font-size:12px;font-weight:600;font-family:Lora, Georgia, serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#BC6C25"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#52B788"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#2D6A4F"></div>
+  </div>
+</div>
+<div style="background:#1C1917;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#F59E0B;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#FAFAF9;font-family:IBM Plex Sans, sans-serif">Industrial</div>
+      <div style="font-size:11px;color:#888;font-family:IBM Plex Sans, sans-serif">工业机械</div>
+    </div>
+    <div style="background:#292524;border:2px solid #44403C;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#FAFAF9;margin-bottom:6px;font-family:IBM Plex Sans, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:IBM Plex Sans, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#F59E0B;color:#1C1917;font-size:12px;font-weight:600;font-family:IBM Plex Sans, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#EF4444"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#78716C"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#F59E0B"></div>
+  </div>
+</div>
+<div style="background:#FFF8F0;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#E76F51;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#264653;font-family:Caveat, cursive, sans-serif">Hand Drawn</div>
+      <div style="font-size:11px;color:#888;font-family:Caveat, cursive, sans-serif">手绘插画</div>
+    </div>
+    <div style="background:#FFF1E6;border:2px dashed #264653;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#264653;margin-bottom:6px;font-family:Caveat, cursive, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:Caveat, cursive, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#E76F51;color:#fff;font-size:12px;font-weight:600;font-family:Caveat, cursive, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#E9C46A"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#2A9D8F"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#E76F51"></div>
+  </div>
+</div>
+<div style="background:#F8FAFC;border-radius:16px;padding:20px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:12px;height:12px;border-radius:50%;background:#3B82F6;flex-shrink:0"></div>
+      <div style="font-size:16px;font-weight:700;color:#0F172A;font-family:DM Sans, sans-serif">Data Viz</div>
+      <div style="font-size:11px;color:#888;font-family:DM Sans, sans-serif">数据可视化</div>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:20px;margin-bottom:12px">
+      <div style="font-size:14px;font-weight:600;color:#0F172A;margin-bottom:6px;font-family:DM Sans, sans-serif">Card Title</div>
+      <div style="font-size:12px;color:#888;line-height:1.5;font-family:DM Sans, sans-serif">Sample paragraph text demonstrating the typography and color system of this design style.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div style="padding:8px 16px;border-radius:8px;background:#3B82F6;color:#fff;font-size:12px;font-weight:600;font-family:DM Sans, sans-serif">Button</div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#F59E0B"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#10B981"></div>
+    <div style="width:24px;height:24px;border-radius:6px;background:#3B82F6"></div>
+  </div>
+</div>
+  </div>
+</body>
+</html>
