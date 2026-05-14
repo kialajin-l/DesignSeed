@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.4-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.5-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 <p align="center"><b>English</b> | <a href="README.md"><b>中文</b></a></p>
@@ -59,6 +59,16 @@ Its core value: **making AI-generated pages no longer generic black-on-white, bu
 | 🧩 **Component Library Detector** | Auto-detect 12 UI frameworks including Tailwind/Bootstrap/MUI/Ant Design/Chakra/Shadcn/Radix |
 | 🎯 **End-to-end Demo** | `node demo.js "requirement" --style stripe` — one command generates a complete HTML page (1-6ms) |
 
+### v0.5 New Capabilities
+
+| Feature | Description |
+|---------|-------------|
+| Three-Channel Feedback | User rating (👍/👎) + behavioral inference (copy/edit = implicit feedback) + A/B comparison |
+| User Preference Profile | 6-dimension profile (color temperature/formality/readability/complexity/innovation/layout density) with confidence |
+| Adaptive Rules | High acceptance → weight up, overridden → weight down, unused → decay — auto-evolving |
+| Cross-System Style Mixing | Built-in × learned styles, auto-recommended ratio |
+| Batch Learning Pipeline | Incremental learning + quality filtering + deduplication |
+
 
 ---
 
@@ -82,8 +92,17 @@ DesignSeed/
 │   ├── templates/       #   12 Style Definitions
 │   └── components/      #   Base UI Component Library
 ├── crawler/             # 🕷️ Design Crawler
+│   ├── cli.js           #   CLI Entry
+│   ├── pipeline.js      #   Batch Learning Pipeline (incremental+filter+dedup)
+│   ├── parser.js        #   Design Feature Parser
+│   └── fetcher.js       #   Multi-source Fetcher
 ├── memory/              # 🧠 Embedded Memory
+│   ├── store.js         #   SQLite Storage Layer
+│   ├── feedback.js      #   Three-Channel Feedback (rating/behavior/comparison)
+│   └── profiler.js      #   User Preference Profile (6-dimension)
 ├── rules/               # 🛡️ Aesthetics Rule Engine
+│   ├── engine.js        #   Rule Check Engine
+│   └── adaptive.js      #   Adaptive Rule Weight Adjustment
 ├── sync/                # 🔄 Sync Layer
 └── SKILL.md             # Agent Skill Description
 ```
@@ -345,6 +364,14 @@ After crawling, the crawler automatically extracts the following characteristics
 
 > Export knowledge pack → Send to team members → Import → Team AI Agents share the same design preferences
 
+**Scenario 6: Feedback Loop Evolution**
+
+> Generate page → User edits → System records preference → Next generation auto-optimizes → Gets better the more you use it
+
+**Scenario 7: Cross-System Style Mixing**
+
+> Learn design features from Atlassian → Mix with Stripe style → Auto-generate 7:3 ratio new style → Create unique pages
+
 ---
 
 ## 🗺️ Roadmap
@@ -378,18 +405,24 @@ After crawling, the crawler automatically extracts the following characteristics
 - [x] design.md → renderer bridge
 - [x] End-to-end Demo script
 
-### v0.5 — Design Evolution (Planned)
-- [ ] Feedback loop (user modifications → Nexus anchor → auto-optimization)
-- [ ] Design Crawler in practice (awesome-design-md batch learning)
-- [ ] Style Mixing enhancement (cross-system style vector mixing)
-- [ ] RuleForge rule integration (aesthetics checks + adaptive weighting)
-- [ ] Preference profile (cumulative design choices → design preference portrait)
+### v0.5 ✅ — Feedback Loop + Adaptive Rules
+- [x] Three-channel feedback collection (rating/behavior inference/comparison)
+- [x] User preference profile (6-dimension + confidence)
+- [x] Adaptive rule adjustment (weights auto-evolve based on feedback)
+- [x] Cross-system style mixing (built-in × learned styles)
+- [x] Batch learning pipeline (incremental + filtering + deduplication)
 
 ### v0.6 — Open Interface (Planned)
 - [ ] DesignSeed API protocol definition
 - [ ] CLI / HTTP / stdio three invocation methods
 - [ ] Third-party SDK release
 - [ ] Any software/Agent can integrate design capabilities
+
+### v0.7 — Evolution Engine (Future)
+- [ ] Design Crawler in practice (awesome-design-md batch learning)
+- [ ] Nexus anchor integration (cross-device design memory sharing)
+- [ ] RuleForge deep integration (aesthetics checks + adaptive weighting)
+- [ ] Server-side feedback aggregation (multi-user design preference evolution)
 
 ---
 
