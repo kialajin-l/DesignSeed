@@ -266,4 +266,95 @@ function findSimilar(targetStyleId, topN) {
   return results.sort((a, b) => b.similarity - a.similarity).slice(0, n);
 }
 
-module.exports = { blend, parseMixString, blendColors, cosineSimilarity, findSimilar, _tools: { parseColor, rgbToHsl, hslToRgb, rgbToHex } };
+
+
+// ─── 跨系统风格混合（v0.5）──────────────────────────────────
+
+/**
+ * 从记忆库中的设计系统特征构建可混合的风格对象
+ * @param {object} designSystem - memory 中的 design_system 记录
+ * @returns {object} 兼容 blend() 的风格对象
+ */
+function fromDesignSystem(designSystem) {
+  const ds = designSystem;
+  return {
+    name: ds.company,
+    nameEn: ds.company,
+    colors: ds.colors || {},
+    typography: ds.typography || { fontFamily: 'sans-serif', scale: [14, 16, 20, 24, 32], lineHeight: 1.6, fontWeight: { normal: 400, medium: 500, bold: 700 } },
+    layout: ds.layout || { maxWidth: '1200px', spacing: '20px', sectionSpacing: '80px', borderRadius: '8px', grid: 12 },
+    shadows: ds.shadows || {},
+    components: ds.components || {},
+    tone: ds.tone || { formality: 0.5, warmth: 0.5, complexity: 0.5, innovation: 0.5 },
+    _source: 'design_system',
+    _sourceId: ds.id,
+  };
+}
+
+/**
+ * 将内置风格与学习到的设计系统混合
+ * @param {string} builtinStyle - 内置风格 ID（如 'minimal', 'glassmorphism'）
+ * @param {object} designSystem - memory 中的设计系统记录
+ * @param {object} options - { ratio: 0.5 }
+ * @returns {object} 混合后的风格对象
+ */
+function blendWithDesignSystem(builtinStyle, designSystem, options) {
+  const learned = fromDesignSystem(designSystem);
+  return blend(builtinStyle, learned, options);
+}
+
+/**
+ * 在两个学习到的设计系统之间混合
+ * @param {object} dsA - 设计系统 A
+ * @param {object} dsB - 设计系统 B
+ * @param {object} options - { ratio: 0.5, name?: string }
+ * @returns {object} 混合后的风格对象
+ */
+function blendDesignSystems(dsA, dsB, options) {
+  const a = fromDesignSystem(dsA);
+  const b = fromDesignSystem(dsB);
+  return blend(a, b, options);
+}
+
+/**
+ * 基于用户偏好自动选择最佳混合比例
+ * @param {object} dsA - 设计系统 A
+ * @param {object} dsB - 设计系统 B
+ * @param {object} preferences - user_preferences 数据 { dimension: { value, confidence } }
+ * @returns {object} { styleA, styleB, ratio, reason }
+ */
+function autoMixRatio(dsA, dsB, preferences) {
+  const toneA = dsA.tone || { formality: 0.5, warmth: 0.5, complexity: 0.5, innovation: 0.5 };
+  const toneB = dsB.tone || { formality: 0.5, warmth: 0.5, complexity: 0.5, innovation: 0.5 };
+
+  // 计算每个设计系统与用户偏好的匹配度
+  let scoreA = 0, scoreB = 0, dims = 0;
+
+  for (const [dim, pref] of Object.entries(preferences || {})) {
+    if (!pref || pref.value === undefined) continue;
+    const valA = toneA[dim] || 0.5;
+    const valB = toneB[dim] || 0.5;
+    const userVal = pref.value;
+    const conf = pref.confidence || 0.5;
+
+    // 距离越小越好
+    scoreA += (1 - Math.abs(valA - userVal)) * conf;
+    scoreB += (1 - Math.abs(valB - userVal)) * conf;
+    dims++;
+  }
+
+  if (dims === 0) return { styleA: dsA.company, styleB: dsB.company, ratio: 0.5, reason: '无偏好数据，使用默认比例' };
+
+  const total = scoreA + scoreB;
+  const ratio = total > 0 ? Math.round((scoreA / total) * 100) / 100 : 0.5;
+  const reason = ratio > 0.6 ? dsA.company + ' 更匹配偏好' : ratio < 0.4 ? dsB.company + ' 更匹配偏好' : '两者匹配度接近';
+
+  return { styleA: dsA.company, styleB: dsB.company, ratio, reason };
+}
+
+module.exports.blendWithDesignSystem = blendWithDesignSystem;
+module.exports.blendDesignSystems = blendDesignSystems;
+module.exports.fromDesignSystem = fromDesignSystem;
+module.exports.autoMixRatio = autoMixRatio;
+
+module.exports = { blend, parseMixString, blendColors, cosineSimilarity, findSimilar, blendWithDesignSystem, blendDesignSystems, fromDesignSystem, autoMixRatio, _tools: { parseColor, rgbToHsl, hslToRgb, rgbToHex } };

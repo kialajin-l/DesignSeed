@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.4-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.5-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 <p align="center"><a href="README.en.md"><b>English</b></a> | <b>中文</b></p>

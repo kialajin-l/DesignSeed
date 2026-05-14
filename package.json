@@ -1,7 +1,7 @@
 {
   "name": "huashu-design-seed",
-  "version": "0.4.0",
-  "description": "DesignSeed — 会生长的 AI 设计系统。通过用户反馈和外界学习持续进化的设计 Skill。",
+  "version": "0.5.0",
+  "description": "DesignSeed v0.5 — 会生长的 AI 设计系统。通过反馈闭环、外界学习和规则自适应持续进化的设计 Skill。",
   "main": "engine/renderer.js",
   "scripts": {
     "generate": "node engine/cli.js generate",
