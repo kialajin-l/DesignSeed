@@ -13,9 +13,9 @@ output/
 !docs/assets/*.html
 
 # Internal docs (PRD, ROADMAP, etc.)
-docs/*.md
-docs/*.txt
-docs/*.json
+docs/PRD.md
+docs/PRD.txt
+docs/PRD.json
 docs/_*
 
 # Logs
