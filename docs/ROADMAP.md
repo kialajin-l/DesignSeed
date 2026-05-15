@@ -61,213 +61,169 @@ v2.0       平台（创作者经济 + 社区风格生态）
 
 ---
 
-## 版本规划
+## 版本规划（对齐 NightShift 2.0）
 
-### v0.6 — AI 原型生成引擎（核心能力）
+> DesignSeed 是独立项目，NightShift 通过 adapter 接入。版本节奏各自独立，接口交付对齐。
 
-**目标**：强化 Skill 版的原型设计能力，从"静态 HTML 模板"升级到"AI 理解需求 → 生成可交互原型"。这是引擎层的升级，Skill 版和 NightShift 版共享。
+### 版本对照总览
 
-**预计时间**：2026-05 下旬 ~ 2026-06 中旬（3 周）
+```
+时间线
+──────────────────────────────────────────────────────────────→
 
-**借鉴来源**：OpenPencil Agent Team 架构 + Google Stitch 生成逻辑
+DesignSeed v0.6        v0.7              v0.7.1           v0.8
+  引擎层              独立GUI+adapter     引擎增强          风格深化
+  ┌──────────┐    ┌──────────────┐    ┌──────────┐    ┌──────────┐
+  │DesignTree│    │Tauri GUI     │    │多页面     │    │风格混合GUI│
+  │组件库    │    │Chat Panel    │    │流式输出   │    │Nexus联动  │
+  │布局引擎  │    │Cove Canvas   │    │Design.md  │    │RuleForge  │
+  │AI管道    │    │点击选择      │    │API冻结    │    │拖拽编辑   │
+  │协议v1.2  │    │NightShift    │    │           │    │代码导出   │
+  │          │    │adapter       │    │           │    │           │
+  └──────────┘    └──────────────┘    └──────────┘    └──────────┘
+       │               │                   │               │
+       ▼               ▼                   ▼               ▼
+  NightShift:      NightShift:         NightShift:      NightShift:
+  Phase A-B        Phase C-D           MVP后迭代        v0.5+
+  (无依赖)         (adapter接入)       (深度集成)       (完整体验)
+```
 
-#### 功能矩阵
+### v0.6 — 引擎层（现在 → NightShift Phase C 开始前）
 
-| 功能 | 说明 | 优先级 | 预估工时 |
-|------|------|--------|---------|
-| **需求解析器** | 自然语言 → 结构化设计意图（页面类型/组件/布局/风格） | P0 | 3d |
-| **组件库** | 20+ 基础组件（导航/卡片/表单/列表/表格/图表/Hero/CTA...） | P0 | 4d |
-| **布局引擎** | 栅格系统 + 响应式断点 + Flexbox 布局模板 | P0 | 3d |
-| **AI 生成管道** | 需求 → 组件选择 → 布局组装 → 风格应用 → HTML 输出 | P0 | 4d |
-| **Design.md 驱动** | 读取 design.md 文件，约束生成结果的风格一致性 | P0 | 2d |
-| **流式输出** | JSONL 流式节点输出，支持实时预览（借鉴 OpenPencil） | P1 | 3d |
-| **交互状态** | 页面内 Tab 切换 / 导航跳转 / 展开收起 / 表单交互 | P1 | 3d |
-| **多页面项目** | 支持多页面原型（首页 → 详情 → 设置），页面间导航 | P1 | 2d |
+**目标**：AI 原型生成引擎稳定可用，输出格式符合 COVE-CANVAS-PROTOCOL
 
-**预估总工时**：~24d（约 3.5 周）
+NightShift 在 Phase C 开始做外部系统接入，DesignSeed 必须在此之前提供稳定的引擎接口。
 
-**里程碑**：
-- M6a（第 1 周）：需求解析器 + 组件库完成，能从文本生成组件级页面
-- M6b（第 2 周）：布局引擎 + AI 生成管道完成，端到端生成跑通
-- M6c（第 3 周）：交互状态 + 多页面 + 流式输出完成
+| 交付物 | 说明 | NightShift 用途 |
+|--------|------|----------------|
+| DesignTree 数据结构 | 结构化设计树，UUID 节点 ID | Cove 画布渲染目标 |
+| 需求解析器 | 自然语言 → 结构化设计意图 | 调度 Agent 调用 |
+| 组件库（20+） | 基础 UI 组件定义 | 画布渲染 |
+| 布局引擎 | 栅格 + 响应式 | 画布渲染 |
+| AI 生成管道 | 需求 → DesignTree → HTML | 前端 Agent 调用 |
+| COVE-CANVAS-PROTOCOL v1.2 | 接口契约（已完成） | 双方联调基线 |
+| `renderWithNodes()` | HTML + DesignNode 双输出 | NightShift adapter 对接 |
 
-**验收标准**：
-- 输入"生成一个 SaaS 定价页，暗色主题，科技感" → 输出完整可交互 HTML
-- 生成结果自动应用 DesignSeed 风格引擎（可选 12 种风格或自定义 design.md）
-- 页面内 Tab/导航可点击切换
+**关键约束**：
+- 引擎层不依赖 GUI，Skill 版独立可用
+- 输出格式必须同时支持 DesignTree（结构化）和 HTML（渲染）
+- 接口遵循 COVE-CANVAS-PROTOCOL v1.2
 - 生成时间 < 5 秒
 
----
-
-### v0.7 — Cove 画布前端（GUI 接入）
-
-**目标**：为 NightShift 版构建前端 GUI 框架，预留 Cove 画布接入接口，实现"AI 生成 + 实时预览 + 点击编辑"的完整体验。Skill 版不包含 GUI，仍通过 Agent 对话交互。
-
-**预计时间**：2026-06 中旬 ~ 2026-07 上旬（3 周）
-
-**核心原则**：前端页面做好布局和接口，Cove 画布的具体实现由 Cove 团队决定接入方式。Skill 版用户通过对话即可使用全部生成能力。
-
-#### 前端架构
-
-```
-+-----------------------------------------------------------+
-|                    DesignSeed GUI                          |
-+----------+-------------------------------+----------------+
-|  Sidebar |        Main Canvas            |   Properties   |
-|          |                               |                |
-| 风格选择  |     +------------------+      |  组件属性       |
-| 组件面板  |     |   Cove Canvas    |      |  风格参数       |
-| 页面列表  |     |   (预留接口)      |      |  design.md     |
-| 历史记录  |     |                  |      |  反馈评分       |
-|          |     +------------------+      |                |
-+----------+-------------------------------+----------------+
-|                    AI Chat Bar                            |
-|  "帮我生成一个暗色主题的 Dashboard..."                      |
-+-----------------------------------------------------------+
-```
-
-#### Cove 画布接入接口（预留）
-
-```typescript
-// Cove 画布标准接口 — 由 Cove 团队实现
-interface CoveCanvas {
-  render(nodes: DesignNode[]): void;
-  updateNode(id: string, patch: Partial<DesignNode>): void;
-  clear(): void;
-  onNodeSelect(callback: (id: string) => void): void;
-  onNodeMove(callback: (id: string, pos: Position) => void): void;
-  onNodeResize(callback: (id: string, size: Size) => void): void;
-  setTheme(theme: ThemeConfig): void;
-  setZoom(level: number): void;
-  exportPNG(): Promise<Blob>;
-  exportSVG(): string;
-}
-
-interface DesignNode {
-  id: string;
-  type: 'frame' | 'text' | 'button' | 'card' | 'image' | 'input' | 'nav';
-  name: string;
-  x: number;
-  y: number;
-  width: number | 'fill';
-  height: number | 'fit';
-  style: NodeStyle;
-  children?: DesignNode[];
-  interactions?: Interaction[];
-}
-
-interface NodeStyle {
-  backgroundColor?: string;
-  color?: string;
-  fontSize?: number;
-  borderRadius?: number;
-  padding?: Spacing;
-}
-
-interface Interaction {
-  type: 'click' | 'hover' | 'scroll';
-  action: 'navigate' | 'toggle' | 'expand' | 'submit';
-  target?: string;
-}
-```
-
-#### 功能矩阵
-
-| 功能 | 说明 | 优先级 | 预估工时 |
-|------|------|--------|---------|
-| **GUI 框架** | Electron/Tauri 桌面应用壳（或 Web 应用） | P0 | 3d |
-| **Cove 画布接口层** | 定义标准接口，预留 Cove 接入点 | P0 | 2d |
-| **Sidebar — 风格选择** | 12 种内置风格 + 自定义 design.md 选择器 | P0 | 2d |
-| **Sidebar — 组件面板** | 可拖拽组件列表（简化为点击添加） | P0 | 3d |
-| **Sidebar — 页面列表** | 多页面管理（添加/删除/排序/嵌套） | P1 | 1d |
-| **AI Chat Bar** | 底部对话框，输入需求 → AI 生成/修改设计 | P0 | 3d |
-| **Properties Panel** | 右侧属性面板，选中组件后可修改样式/文本/交互 | P1 | 3d |
-| **实时预览** | AI 生成结果实时渲染到 Cove 画布 | P0 | 3d |
-| **点击编辑** | 鼠标直接点击组件 → 选中 → 拖拽移动/调整大小/修改属性 | P0 | 4d |
-| **Undo/Redo** | 操作历史栈，支持撤销/重做 | P1 | 1d |
-| **导出** | 导出 HTML / PNG / design.md | P1 | 2d |
-
-**预估总工时**：~27d（约 4 周）
-
-**里程碑**：
-- M7a（第 1 周）：GUI 框架 + Cove 接口层 + AI Chat Bar 完成
-- M7b（第 2 周）：Sidebar（风格 + 组件）+ 实时预览完成
-- M7c（第 3 周）：点击编辑 + Properties Panel 完成
-- M7d（第 4 周）：页面管理 + Undo/Redo + 导出 + 集成测试
-
-**验收标准**：
-- 启动 GUI → 底部输入"生成一个极简风格的 Landing Page" → Cove 画布实时渲染结果
-- 点击画布上的组件 → 右侧显示属性面板 → 修改文字/颜色 → 画布实时更新
-- 左侧选择不同风格 → 画布实时切换风格
-- 导出为完整 HTML 文件，可独立运行
+**不做什么**：不做 GUI 框架、不做多页面、不做流式输出
 
 ---
 
-### v0.8 — 风格引擎强化 + 社区生态
+### v0.7 — 独立 GUI + NightShift adapter（NightShift Phase C-D 期间）
 
-**目标**：强化 DesignSeed 的核心差异化能力——风格化。让风格库通过爬虫和社区不断增长。
+**目标**：DesignSeed 作为独立 GUI 应用可用，同时提供 NightShift adapter
 
-**预计时间**：2026-07 ~ 2026-08（4 周）
+与 NightShift Phase C-D 并行开发。DesignSeed 做自己的 GUI，NightShift 做自己的 adapter 接入。
 
-#### 功能矩阵
+**DesignSeed 侧交付（独立 GUI）**：
 
-| 功能 | 说明 | 优先级 | 预估工时 |
-|------|------|--------|---------|
-| **风格爬虫增强** | 从 awesome-design-md 批量学习，自动提取风格特征 | P0 | 4d |
-| **风格预览** | 每个风格生成预览缩略图，可视化选择 | P0 | 2d |
-| **风格混合 GUI** | 在 GUI 中拖拽两种风格 → 实时预览混合效果 | P1 | 3d |
-| **风格评分** | 用户对生成结果评分 → 好的风格权重上升 | P0 | 2d |
-| **社区风格包** | 打包/分享/下载风格（design.md + 预览图 + 评分） | P1 | 4d |
-| **风格推荐** | 根据用户历史偏好，自动推荐最适合的风格 | P1 | 3d |
-| **品牌适配** | 输入品牌色/Logo → 自动调整风格适配品牌 | P2 | 3d |
-| **响应式预览** | 一键切换 Desktop / Tablet / Mobile 预览 | P1 | 2d |
+| 交付物 | 说明 |
+|--------|------|
+| Tauri 桌面壳 | 独立应用，不依赖 NightShift |
+| 对话面板 | AI Chat Bar，底部输入 |
+| Cove Canvas Host | iframe 渲染 + postMessage 桥接 |
+| 点击选择 | 鼠标选中组件 → 高亮 |
+| 风格选择器 | 12 种风格切换 |
+| 实时预览 | AI 生成 → 画布渲染 |
+| 对话驱动修改 | 选中 + 输入 → 更新节点 |
 
-**预估总工时**：~23d（约 3.5 周）
+**NightShift 侧交付（adapter）**：
 
----
+| 交付物 | 说明 |
+|--------|------|
+| `packages/integrations/designseed` | adapter 定义 |
+| `generatePreview` 请求结构 | 对应 COVE-CANVAS-PROTOCOL |
+| `prototype-preview` workspace object | 工作区预览对象 |
+| Feature flag | `designseed.enabled = false`（默认关闭） |
 
-### v1.0 — 独立产品 + NightShift 集成
+**联调节点**：NightShift Phase D 第一步，验证"用户触发 → DesignSeed 生成 → Cove 画布预览"
 
-**目标**：从 Skill 演进为独立产品，可被 NightShift 等系统调用。
-
-**预计时间**：2026-08 ~ 2026-09（4 周）
-
-| 功能 | 说明 | 优先级 |
-|------|------|--------|
-| **独立 CLI** | 脱离 GUI 独立运行，支持脚本化 | P0 |
-| **MCP Server** | 标准 MCP 协议，支持 Claude/其他 Agent 调用 | P0 |
-| **NightShift 主题 API** | NightShift 调用 DesignSeed 设置主题 | P0 |
-| **Nexus 记忆联动** | 读取 Nexus 中的用户行为锚点，驱动设计推荐 | P0 |
-| **RuleForge 规则联动** | 读取 RuleForge 中的美学规则，约束生成 | P1 |
-| **设计知识包** | 打包 design.md + 风格预设 + 规则为可分享的知识包 | P0 |
-| **增量同步** | 本地数据与 Nexus 服务器增量同步 | P1 |
+**不做什么**：不做拖拽移动（v0.8）、不做属性面板（v0.8）、不做多页面（v0.7.1）、不做代码导出（v0.8）
 
 ---
 
-### v2.0 — 创作者经济 + 社区生态
+### v0.7.1 — 引擎增强（NightShift MVP 结项后）
 
-**目标**：风格包成为可交易的知识资产，形成创作者经济飞轮。
+**目标**：引擎层增强，为深度集成做准备
 
-**预计时间**：2026-10+
+| 交付物 | 说明 | 对应 NightShift |
+|--------|------|-----------------|
+| 多页面项目支持 | 首页→详情→设置，页面间导航 | 多页面 workspace object |
+| 流式输出 | JSONL 节点流，实时预览 | 响应式交互体验 |
+| Design.md 驱动 | 品牌一致性约束 | 规则注入位 |
+| 交互状态 | Tab 切换/导航跳转/表单交互 | 组件交互增强 |
+| 引擎 API 冻结 | 接口不再 breaking change | adapter 稳定 |
 
-#### 核心飞轮
+**关键约束**：v0.7.1 是引擎层更新，GUI 不变。从此时起 COVE-CANVAS-PROTOCOL 不再有 breaking change。
+
+---
+
+### v0.8 — 风格引擎深化 + 完整集成（NightShift v0.5 后）
+
+**目标**：风格引擎强化 + NightShift 深度集成
+
+| 交付物 | 说明 |
+|--------|------|
+| 风格爬虫增强 | awesome-design-md 批量学习 |
+| 风格评分 | 用户反馈 → 风格权重调整 |
+| 风格混合 GUI | 拖拽两种风格 → 实时预览 |
+| Nexus 记忆联动 | 读取用户行为锚点 → 风格推荐 |
+| RuleForge 规则联动 | 读取美学规则 → 约束生成 |
+| 响应式预览 | Desktop/Tablet/Mobile 一键切换 |
+| 拖拽编辑 | 组件拖拽移动 + 调整大小 |
+| 属性面板 | 右侧属性编辑 |
+| 代码导出 | DesignTree → HTML/React/Vue |
+
+---
+
+### 接口冻结时间线
 
 ```
-设计师做项目 → 自然产出风格包 → 发布到社区 → 其他用户下载使用
-     ↑                                              ↓
-     +------------- 获得反馈/收入 <------------------+
+v0.6 完成时        COVE-CANVAS-PROTOCOL v1.2 定稿
+                   ↓
+v0.7 开始时        adapter schema 定稿（generatePreview / updateNode / switchStyle）
+                   ↓
+v0.7.1 完成时      所有接口冻结，不再 breaking change
+                   ↓
+v0.8+              只增不改，新字段一律可选
 ```
 
-#### 商业模型
+---
 
-| 层级 | 价格 | 包含 |
+### 与 NightShift 各系统的接口边界
+
+| NightShift 系统 | DesignSeed 交互方式 | 边界 |
+|----------------|-------------------|------|
+| **System 5 Provider** | DesignSeed 引擎内部调用 LLM | NightShift 不管，DesignSeed 自己处理 |
+| **System 6 Synapse** | Synapse 可调度 DesignSeed 生成任务 | DesignSeed 是被调用方，不参与编排 |
+| **System 7 Nexus** | DesignSeed 读取用户偏好锚点 | 单向读取，DesignSeed 不写入 Nexus |
+| **System 8 DesignSeed** | adapter 调用 + 预览展示 | NightShift 只做"调用 + 预览 + 挂接" |
+| **System 9 RuleForge** | DesignSeed 读取美学规则 | 单向读取，feature flag 控制 |
+
+---
+
+### NightShift MVP 验收时 DesignSeed 需满足
+
+1. ✅ Engine 可通过 adapter 被调用（stdio / MCP）
+2. ✅ 返回 DesignTree + HTML 符合 COVE-CANVAS-PROTOCOL v1.2
+3. ✅ NightShift 可展示 `prototype-preview` 工作区对象
+4. ✅ 失败时不影响 NightShift 主链路
+5. ✅ 独立 GUI 应用可独立运行（不依赖 NightShift）
+
+---
+
+### 商业化路径
+
+| 阶段 | 时间 | 目标 |
 |------|------|------|
-| **免费版** | 0 | 12 种基础风格 + 本地记忆 + 3 个自定义风格 |
-| **创作者版** | 29/月 | 无限风格 + 社区发布 + 高级组件 + 风格混合 |
-| **专业版** | 99/月 | AI 原型生成 + 跨端同步 + 团队协作 + API |
-| **企业版** | 联系销售 | 私有化部署 + 品牌定制 + SLA |
-
----
+| **开源** | 现在 | Skill 版 + 引擎开源，建立社区 |
+| **专业版** | 99/月 | AI 原型生成 + 风格同步 + 团队协作 + API |
+| **企业版** | 按需定制 | 私有化部署 + 品牌定制 + SLA |
 
 ## 里程碑总览
 
