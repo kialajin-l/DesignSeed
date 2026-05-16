@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.5-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.6-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 <p align="center"><a href="README.en.md"><b>English</b></a> | <b>中文</b></p>
@@ -19,7 +19,7 @@
 ---
 
 <p align="center">
-  <img src="docs/assets/features.png" alt="Core Capabilities" width="100%">
+  <img src="docs/assets/architecture.png" alt="DesignSeed Engine Architecture" width="100%">
 </p>
 
 ## ✨ 核心功能
@@ -53,23 +53,38 @@
 
 | 功能 | 说明 |
 |------|------|
-| 📄 **design.md 格式** | YAML frontmatter + Markdown sections 的标准化设计系统描述格式，支持解析/生成/验证/导入导出 |
-| 🔗 **设计系统桥接器** | design.md → renderer 自动转换，17 个种子设计系统（Stripe/Vercel/Linear/Apple/Notion/Figma/Spotify/Airbnb/GitHub/Slack/Netflix/Tesla/Claude/Supabase/Raycast/Discord/Tailwind） |
-| 🕷️ **CSS 变量提取器** | 从 CSS/HTML/JSX 中提取自定义属性，解析 var() 引用链，映射到设计 token 语义 |
-| 🧩 **组件库识别器** | 自动检测 Tailwind/Bootstrap/MUI/Ant Design/Chakra/Shadcn/Radix 等 12 种 UI 框架 |
-| 🎯 **端到端 Demo** | node demo.js "需求" --style stripe 一句话生成完整 HTML 页面（1-6ms） |
+| 📄 **design.md 格式** | YAML frontmatter + Markdown sections 的标准化设计系统描述格式 |
+| 🔗 **设计系统桥接器** | design.md → renderer 自动转换，17 个种子设计系统 |
+| 🕷️ **CSS 变量提取器** | 从 CSS/HTML/JSX 中提取自定义属性，映射到设计 token 语义 |
+| 🧩 **组件库识别器** | 自动检测 Tailwind/Bootstrap/MUI/Ant Design 等 12 种 UI 框架 |
+| 🎯 **端到端 Demo** | node demo.js "需求" --style stripe 一句话生成完整 HTML 页面 |
 
 ### v0.5 新增能力
 
 | 功能 | 说明 |
 |------|------|
-| 🔄 **三通道反馈收集** | 用户评分（👍/👎）+ 行为推断（复制/修改=隐式反馈）+ A/B 对比选择 |
+| 🔄 **三通道反馈收集** | 用户评分 + 行为推断 + A/B 对比选择 |
 | 📊 **用户偏好档案** | 6 维度画像（色温/正式度/可读性/复杂度/创新度/布局密度），带置信度 |
 | 🧬 **规则自适应** | 接受率高→权重↑，被覆盖→权重↓，长期不用→衰减，自动进化 |
 | 🔀 **跨系统风格混合** | 内置风格 × 学习风格的混合，自动推荐最佳比例 |
 | 📦 **批量学习管道** | 增量学习 + 质量过滤 + 去重，支持批量抓取设计系统 |
 
+### 🆕 v0.6 新增能力
 
+<p align="center">
+  <img src="docs/assets/v06-showcase.png" alt="6 Built-in Styles" width="100%">
+</p>
+
+| 功能 | 说明 |
+|------|------|
+| 🌳 **DesignTree 数据结构** | 三层结构：DesignNode → DesignTree → DesignProject，标准化设计产出 |
+| 🧩 **20+ 组件模板库** | 导航栏、Hero、功能卡片、价格表、FAQ、时间线、画廊、订阅表单、团队成员、行动号召等 |
+| 📐 **响应式布局引擎** | 自动检测 Grid/Flex 布局，生成 768px/480px 两个断点的媒体查询 |
+| 🔌 **COVE 协议接口** | 10 个标准化接口：createProject / parseIntent / generateTree / renderHTML / renderPreview / listStyles / mixStyles / listComponents / getNode / updateNode |
+| 🧠 **意图解析器** | 自然语言 → 结构化设计意图（页面类型 + 组件列表 + 风格偏好），支持 10+ 页面类型 |
+| 🎨 **6 种风格引擎** | minimalism / cyberpunk / warmth / scandinavian / luxury / playful，每种含完整调性向量 |
+
+**v0.6 核心突破**：从"一次性生成 HTML"升级为"结构化 DesignTree → HTML 双输出"，为后续 GUI 画布编辑和 NightShift 集成奠定基础。
 
 ---
 
@@ -80,30 +95,27 @@ DesignSeed/
 ├── engine/              # 🎨 HTML 设计引擎
 │   ├── cli.js           #   命令行入口
 │   ├── renderer.js      #   Prompt → HTML 渲染器
+│   ├── tree-renderer.js #   🌳 DesignNode → HTML 渲染器（v0.6）
 │   ├── mixer.js         #   风格混合引擎（向量插值）
 │   ├── seed-design-systems.js  # 15 个种子设计系统数据
-│   ├── device-frames.js #   📱 设备框架（iOS/Android/Tablet）
-│   ├── layouts.js       #   🖥️ 复杂 UI 布局（6种模式）
-│   ├── interactions.js  #   ⚡ 交互状态（Tab/Modal/Accordion）
-│   ├── image-sourcing.js#   🖼️ 真实图片（Wikimedia/Unsplash）
+│   ├── device-frames.js #   📱 设备框架
+│   ├── layouts.js       #   🖥️ 复杂 UI 布局
+│   ├── interactions.js  #   ⚡ 交互状态
+│   ├── image-sourcing.js#   🖼️ 真实图片
 │   ├── brand-protocol.js#   🏷️ 品牌资产协议
-│   ├── design-philosophy.js # 💡 设计方向顾问（20+哲学）
+│   ├── design-philosophy.js # 💡 设计方向顾问
 │   ├── expert-review.js #   🔍 专家评审引擎
 │   ├── anti-ai-slop.js  #   🚫 反 AI Slop 检查
+│   ├── intent-parser.js #   🧠 意图解析器（v0.6）
+│   ├── component-library.js # 🧩 组件模板库（v0.6, 20+组件）
+│   ├── layout-engine.js #   📐 响应式布局引擎（v0.6）
+│   ├── style-engine.js  #   🎨 风格引擎（v0.6, 6种风格）
+│   ├── cove-protocol.js #   🔌 COVE 协议实现（v0.6, 10接口）
 │   ├── templates/       #   12 种风格定义
 │   └── components/      #   基础 UI 组件库
 ├── crawler/             # 🕷️ 设计爬虫
-│   ├── cli.js           #   爬虫命令行入口
-│   ├── pipeline.js      #   批量学习管道（增量+过滤+去重）
-│   ├── parser.js        #   设计特征解析器
-│   └── fetcher.js       #   多源抓取器
 ├── memory/              # 🧠 嵌入式记忆
-│   ├── store.js         #   SQLite 存储层
-│   ├── feedback.js      #   三通道反馈收集（评分/行为/对比）
-│   └── profiler.js      #   用户偏好档案（6维度画像）
 ├── rules/               # 🛡️ 美学规则引擎
-│   ├── engine.js        #   规则检查引擎
-│   └── adaptive.js      #   规则权重自适应调整
 ├── sync/                # 🔄 同步层
 └── SKILL.md             # Agent 技能说明
 ```
@@ -112,7 +124,7 @@ DesignSeed/
 
 ## 🚀 快速开始
 
-DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。你不需要输入任何命令，**用自然语言告诉 AI 你想要什么就行**。
+DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。**用自然语言告诉 AI 你想要什么就行**。
 
 ### 生成 App 原型
 
@@ -120,25 +132,11 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 
 > "生成一个数据分析仪表盘，要有侧边栏和统计卡片"
 
-> "做一个设置页面，左边是分类导航，右边是表单"
-
-### 设计方向探索
-
-> "我想做一个面向开发者的 SaaS 产品，帮我推荐一个设计方向"
-
-> "我想要一个既有科技感又温暖的设计风格，有什么建议？"
-
 ### 风格混合
 
 > "帮我做一个落地页，风格介于极简和玻璃拟态之间"
 
 > "用 Stripe 的风格做一个定价页面，但颜色换成绿色系"
-
-### 真实图片
-
-> "帮我做一个团队介绍页面，要真实的办公场景图片"
-
-> "生成一个产品展示页，用真实的手机照片而不是 placeholder"
 
 ### 设计评审
 
@@ -146,101 +144,22 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 
 > "这个页面有没有 AI 味太重的问题？"
 
-### 品牌展示
-
-> "帮我做一个 Apple 风格的产品对比页，要用真实的 Logo 和产品图"
-
 ---
 
 ## 📱 设备框架
 
-v0.3 提供精确像素级的设备外壳：
-
 | 平台 | 型号 | 尺寸 | 特性 |
 |------|------|------|------|
-| **iOS** | iPhone 16 Pro | 393×852 | Dynamic Island, Home Indicator |
-| **iOS** | iPhone 16 | 393×852 | Dynamic Island, Home Indicator |
-| **iOS** | iPhone SE | 375×667 | 经典边框, Home Button |
-| **iOS** | iPad Pro | 1024×768 | 窄边框, Home Indicator |
-| **Android** | Pixel 9 Pro | 412×915 | Pill 打孔, 导航栏 |
-| **Android** | Samsung S24 | 360×780 | 圆形打孔, 导航栏 |
-| **Android** | Xiaomi 15 | 400×880 | 圆形打孔, 导航栏 |
+| **iOS** | iPhone 16 Pro | 393×852 | Dynamic Island |
+| **iOS** | iPhone SE | 375×667 | 经典边框 |
+| **iOS** | iPad Pro | 1024×768 | 窄边框 |
+| **Android** | Pixel 9 Pro | 412×915 | Pill 打孔 |
+| **Android** | Samsung S24 | 360×780 | 圆形打孔 |
+| **Android** | Xiaomi 15 | 400×880 | 圆形打孔 |
 
 ---
-
-## 🖥️ 复杂 UI 布局
-
-| 布局 | 说明 | 适用场景 |
-|------|------|----------|
-| **Dashboard** | 侧边栏 + 统计卡片 + 最近项目 | 管理后台、数据分析 |
-| **Editor** | 文件树 + 编辑器 + 预览 | 代码编辑器、文档编辑 |
-| **Workshop** | 主工作区 + 右侧属性面板 | 设计工具、IDE |
-| **Settings** | 左侧分类 + 右侧表单 | 应用设置、偏好配置 |
-| **List** | 搜索栏 + 数据列表/网格 | 文件管理、数据浏览 |
-| **Detail** | 标题 + 元信息 + 内容 + 操作栏 | 文章详情、项目详情 |
-
----
-
-## 💡 设计方向顾问
-
-v0.3 内置 20+ 种设计哲学，覆盖 7 大流派：
-
-| 流派 | 设计哲学 | 代表 |
-|------|----------|------|
-| **信息建筑** | Pentagram / 瑞士国际主义 / 包豪斯 | Apple.com, 瑞士航空 |
-| **运动诗学** | Field.io / Google Material Motion | Stripe, Google |
-| **东方极简** | Kenya Hara / 侘寂美学 | 无印良品, 京都老铺 |
-| **实验先锋** | Sagmeister / 数字野兽主义 / 故障美学 | Sagmeister&Walsh, Craigslist |
-| **温暖人文** | 温暖人文主义 / 有机自然主义 | Notion, Patagonia |
-| **科技未来** | 赛博朋克 / 玻璃拟态 / 新拟态 | Cyberpunk 2077, macOS |
-| **极致排版** | 极致排版主义 / 编辑设计 | 纽约时报, Medium |
-| **数据驱动** | 数据可视化主义 | Grafana, Datadog |
-| **品牌叙事** | 品牌叙事主义 | Apple 发布会 |
-
----
-
-## 🔍 专家评审
-
-5 维度评分体系，自动评估设计质量：
-
-| 维度 | 权重 | 说明 |
-|------|------|------|
-| 哲学一致性 | 25% | 视觉风格是否贯彻设计哲学 |
-| 视觉层级 | 25% | 信息层级是否清晰，3秒能否理解页面 |
-| 细节执行 | 20% | 间距/对齐/圆角/颜色是否一致 |
-| 功能性 | 20% | 信息是否可获取，交互是否直觉 |
-| 创新性 | 10% | 是否有亮点，是否超出模板感 |
-
-评分等级：S（卓越）→ A（优秀）→ B+（良好）→ B（合格）→ C（一般）→ D（需改进）→ F（不合格）
-
----
-
-## 🚫 反 AI Slop
-
-10 项自动检查，防止生成"AI 味"过重的设计：
-
-| 检查项 | 严重度 | 说明 |
-|--------|--------|------|
-| 不必要的渐变 | ⚠️ 警告 | 纯色能解决的地方不用渐变 |
-| Emoji 过载 | ⚠️ 警告 | 标题和按钮里不堆砌 emoji |
-| 彩虹边框 | 💡 建议 | 不用 border-image 渐变 |
-| 过度圆角 | 💡 建议 | 不是所有东西都需要 24px+ 圆角 |
-| 到处毛玻璃 | ⚠️ 警告 | backdrop-filter 只在需要穿透的场景使用 |
-| 占位文字 | ❌ 错误 | 不用 Lorem ipsum 或 "点击这里" |
-| 阴影过重 | 💡 建议 | 使用轻量阴影 |
-| 一切居中 | 💡 建议 | 正文左对齐，居中只用于标题/CTA |
-| 霓虹色滥用 | ⚠️ 警告 | 降低饱和度，霓虹色小面积使用 |
-| 间距不一致 | ⚠️ 警告 | 使用 4/8px 倍数系统 |
-
----
-
-<p align="center">
-  <img src="docs/assets/styles.png" alt="12 Built-in Styles" width="100%">
-</p>
 
 ## 🏢 种子设计系统
-
-v0.2 预置了 15 个头部设计系统的特征数据：
 
 | 设计系统 | 主色调 | 调性标签 |
 |----------|--------|----------|
@@ -261,75 +180,8 @@ v0.2 预置了 15 个头部设计系统的特征数据：
 | **Raycast** | `#FF6363` | 效率 · 工具 · 极客 |
 
 ---
-## 🕷️ 设计爬虫
-
-DesignSeed 内置了一个设计爬虫，可以从外部学习优秀的设计风格，提取色彩、排版、布局、调性等特征，生成新的设计风格供后续使用。
-
-### 抓取设计风格
-
-**从 GitHub 仓库抓取：**
-
-> "帮我从 https://github.com/bradtraversy/design-resources-for-developers 这个仓库抓取设计风格"
-
-> "去 Atlassian 的设计系统网站学一下他们的设计特征"
-
-> "抓取 Shopify Polaris 的设计规范，提取色彩和排版信息"
-
-**从设计博客抓取：**
-
-> "从 Smashing Magazine 抓取最新的设计趋势文章，分析里面的配色方案"
-
-> "帮我看看 Medium 上 Design Bootcamp 的设计风格，提取调性特征"
-
-### 使用新风格
-
-抓取后，爬虫会自动提取以下特征并存入本地：
-
-| 特征 | 说明 |
-|------|------|
-| 🎨 **色彩** | 主色调、辅助色、背景色、色板、冷暖倾向 |
-| 📝 **排版** | 字体族、字号层级、行高、字重 |
-| 📐 **布局** | 栅格系统、间距比例、最大内容宽度 |
-| 🧩 **组件** | 按钮、卡片、导航等组件的样式特征 |
-| 🎭 **调性** | 正式度、温暖度、复杂度、创新度 |
-
-**使用抓取到的风格生成页面：**
-
-> "用刚才从 Atlassian 学到的风格，做一个项目管理页面"
-
-> "把 Stripe 和 Linear 的设计特征混合，生成一个 SaaS 落地页"
-
-> "用从 Smashing Magazine 抓取的配色方案，重新设计这个页面"
-
-### 抓取流程
-
-```
-1. 你说："帮我从 [URL] 学习设计风格"
-2. 爬虫抓取目标页面/仓库
-3. Parser 提取色彩、排版、布局、调性特征
-4. 特征存入本地 memory/design-profiles/
-5. 后续生成页面时自动参考这些特征
-```
-
-### 支持的数据源
-
-| 类型 | 示例 | 说明 |
-|------|------|------|
-| **GitHub 仓库** | `github.com/user/repo` | 自动遍历仓库，匹配 `DESIGN.md` 等设计文档 |
-| **公司设计系统** | Atlassian、Carbon、Polaris、Material、Ant Design | 直接抓取设计规范网站 |
-| **设计博客** | Smashing Magazine、Medium Design Bootcamp | 提取文章中的设计案例和配色方案 |
-| **本地文件** | 你自己的设计文档 | 直接读取本地 Markdown/HTML 文件 |
-
-### 批量学习
-
-> "帮我批量学习这 5 个设计系统：Stripe、Vercel、Linear、Notion、Figma"
-
-> "把 awesome-design-md 仓库里的设计文档全部抓取一遍"
-
----
 
 ## 🛡️ 美学规则引擎
-内置 7 条美学规则：
 
 | 规则 | 类型 | 说明 |
 |------|------|------|
@@ -338,92 +190,65 @@ DesignSeed 内置了一个设计爬虫，可以从外部学习优秀的设计风
 | `max_line_length` | soft_preference | 行宽 ≤ 80 字符 |
 | `color_harmony` | hard_limit | 主色调不超过 7 种 |
 | `ugly_combo_clash` | hard_limit | 高饱和冲突配色拦截 |
-| `spacing_consistency` | soft_preference | 间距值符合 4/8/12/16/24/32/48/64 比例尺 |
-| `border_radius_consistency` | soft_preference | 圆角值符合 0/2/4/8/12/16/24 比例尺 |
-
----
-
-## 📖 使用场景
-
-**场景 1：App 原型设计**
-
-> "帮我做一个任务管理 App 的 Dashboard" → 选择 iPhone 16 Pro 设备框架 → Dashboard 布局 → 真实图片 → 生成完整可交互 HTML
-
-**场景 2：设计方向探索**
-
-> "我想做一个面向开发者的 SaaS 产品" → 设计方向顾问推荐 3 个方向 → 选择 Pentagram 信息建筑 → 生成页面
-
-**场景 3：设计质量评审**
-
-> 生成页面后 → 专家评审 5 维度打分 → 获取修复清单 → 自动修复 → 重新评审
-
-**场景 4：风格混合**
-
-> "我想要一个介于极简和玻璃拟态之间的风格" → 按比例混合 → 生成全新风格
-
-**场景 5：团队共享**
-
-> 导出知识包 → 发给团队成员 → 导入 → 团队 AI Agent 共享同一套设计偏好
-
-**场景 6：反馈闭环进化**
-
-> 生成页面 → 用户修改 → 系统记录偏好 → 下次生成自动优化 → 越用越懂你
-
-**场景 7：跨系统风格混合**
-
-> 从 Atlassian 学习设计特征 → 与 Stripe 风格混合 → 自动生成 7:3 比例的新风格 → 生成独特页面
+| `spacing_consistency` | soft_preference | 间距值符合 4/8px 倍数系统 |
+| `border_radius_consistency` | soft_preference | 圆角值符合标准比例尺 |
 
 ---
 
 ## 🗺️ Roadmap
+
+<p align="center">
+  <img src="docs/assets/roadmap.png" alt="DesignSeed Roadmap" width="100%">
+</p>
 
 ### v0.1 ✅ — MVP 核心
 - [x] HTML 设计引擎：12 种风格，Prompt → HTML
 - [x] 设计爬虫：多源采集，特征提取
 - [x] 嵌入式记忆：SQLite 存储，EMA 偏好学习
 - [x] 美学规则引擎：7 条内置规则
-- [x] 同步层：知识包导出/导入
 
 ### v0.2 ✅ — 风格混合 + 知识积累
 - [x] 向量空间风格插值
 - [x] 15 个头部设计系统种子数据
-- [x] 自动修复 + 用户预设
 
 ### v0.3 ✅ — 设计功能提升
-- [x] 设备框架（iOS/Android/Tablet）
-- [x] 复杂 UI 布局（6种模式）
-- [x] 交互状态管理（Tab/Modal/Accordion/Toast/Dropdown）
-- [x] 真实图片 Sourcing（Wikimedia/Unsplash）
-- [x] 品牌资产协议（5步流程）
-- [x] 设计方向顾问（20+设计哲学）
-- [x] 专家评审引擎（5维度评分）
-- [x] 反 AI Slop（10项检查）
+- [x] 设备框架 / 复杂 UI 布局 / 交互状态管理
+- [x] 真实图片 Sourcing / 品牌资产协议
+- [x] 设计方向顾问 / 专家评审引擎 / 反 AI Slop
 
-### v0.4 — design.md 格式 + 创作者基础 ✅
-- [x] design.md 格式规范
-- [x] design.md 生成器 / 验证器 / 导入器
-- [x] 设计爬虫增强（CSS 变量提取 + 组件库识别）
-- [x] design.md → renderer 桥接器
-- [x] 端到端 Demo 脚本
+### v0.4 ✅ — design.md 格式 + 创作者基础
+- [x] design.md 格式规范 + 桥接器
+- [x] CSS 变量提取器 + 组件库识别器
 
 ### v0.5 ✅ — 反馈闭环 + 规则自适应
-- [x] 三通道反馈收集（评分/行为推断/对比选择）
-- [x] 用户偏好档案（6维度画像 + 置信度）
-- [x] 规则自适应调整（权重根据反馈自动进化）
-- [x] 跨系统风格混合（内置 × 学习风格）
-- [x] 批量学习管道（增量 + 过滤 + 去重）
+- [x] 三通道反馈收集 + 用户偏好档案
+- [x] 规则自适应 + 跨系统风格混合
 
-### v0.6 — 开放接口（规划中）
-- [ ] DesignSeed API 协议定义
-- [ ] CLI / HTTP / stdio 三种调用方式
-- [ ] 第三方 SDK 发布
-- [ ] 任何软件/Agent 都能接入设计能力
+### v0.6 ✅ — DesignTree 引擎 + COVE 协议
+- [x] DesignTree 数据结构（DesignNode + DesignTree + DesignProject）
+- [x] 意图解析器（自然语言 → 结构化设计意图）
+- [x] 20+ 组件模板库 + 响应式布局引擎
+- [x] COVE 协议 10 个接口全部实现
+- [x] 6 种风格引擎 + 7 个 demo 全部通过
 
-### v0.7 — 进化引擎（远期）
-- [ ] 设计爬虫实战（awesome-design-md 批量学习）
-- [ ] Nexus 锚点联动（设计记忆跨设备共享）
-- [ ] RuleForge 深度集成（美学检查 + 权重自适应）
-- [ ] 服务器端反馈聚合（多用户设计偏好汇总进化）
+### v0.7 📋 — GUI + Cove Canvas + NightShift Adapter
+- [ ] Tauri 桌面应用壳
+- [ ] Cove Canvas 前端（点击选中 + 高亮 + 属性面板）
+- [ ] AI Chat Bar（对话驱动修改）
+- [ ] 多页面管理 + 流式输出
+- [ ] API 冻结 + NightShift adapter（stdio/MCP）
+
+### v0.8 📋 — 进化引擎 + Nexus/RuleForge 联动
+- [ ] 风格深化 + 混合引擎升级
+- [ ] Nexus 记忆集成（设计偏好跨设备共享）
+- [ ] RuleForge 美学规则（约束生成 + 权重自适应）
+- [ ] 拖拽移动 + 多格式导出（HTML/React/Vue）
+
+### v1.0 🌟 — 独立产品
+- [ ] 独立服务化 + API 完全冻结 + 性能优化
+
+### v2.0 🌟 — 平台
+- [ ] 创作者经济 + 社区风格市场 + 飞轮效应
 
 ---
 
