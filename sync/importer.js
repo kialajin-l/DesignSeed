@@ -1,10 +1,17 @@
 'use strict';
 
+const fs = require('fs');
+const { DesignMemory } = require('../memory');
+
 class DataImporter {
   constructor(memory) {
     this.memory = memory;
   }
 
+  /**
+   * importFull — 导入 exporter.exportAll() 的完整数据
+   * 字段映射对齐 memory/store.js DesignMemory 的实际 API
+   */
   importFull(data) {
     const result = { imported: 0, skipped: 0, conflicts: [] };
 
@@ -24,62 +31,83 @@ class DataImporter {
       }
     } catch (e) {
       if (e.code === 'MODULE_NOT_FOUND') {
-        console.warn('ajv not installed, skipping schema validation');
+        // ajv not installed, skip validation
       } else {
         throw e;
       }
     }
 
-    // Import preferences (EMA merge)
-    if (data.preferences) {
-      const localPrefs = this.memory.getPreferences ? this.memory.getPreferences() : {};
-      const merged = this.mergePreferences(localPrefs, data.preferences);
-      if (this.memory.setPreferences) {
-        this.memory.setPreferences(merged);
-      }
-      result.imported++;
-    }
-
-    // Import anchors
-    if (Array.isArray(data.anchors)) {
-      for (const anchor of data.anchors) {
+    // Import user_preferences → setPreference(dimension, value, confidence)
+    const prefs = data.user_preferences || data.preferences;
+    if (Array.isArray(prefs)) {
+      for (const pref of prefs) {
         try {
-          if (this.memory.addAnchor) {
-            this.memory.addAnchor(anchor);
+          if (this.memory.setPreference) {
+            this.memory.setPreference(pref.dimension, pref.value, pref.confidence);
             result.imported++;
           }
         } catch (e) {
-          result.conflicts.push({ type: 'anchor', id: anchor.id, error: e.message });
+          result.conflicts.push({ type: 'preference', dimension: pref.dimension, error: e.message });
           result.skipped++;
         }
       }
     }
 
-    // Import rules
-    if (Array.isArray(data.rules)) {
-      for (const rule of data.rules) {
+    // Import design_anchors / anchors → saveAnchor(anchor)
+    const anchors = data.design_anchors || data.anchors;
+    if (Array.isArray(anchors)) {
+      for (const anchor of anchors) {
+        try {
+          if (this.memory.saveAnchor) {
+            // 去掉数据库自增 id 和时间戳，避免主键冲突
+            const clean = { ...anchor };
+            delete clean.id;
+            delete clean.created_at;
+            delete clean.updated_at;
+            this.memory.saveAnchor(clean);
+            result.imported++;
+          }
+        } catch (e) {
+          result.conflicts.push({ type: 'anchor', error: e.message });
+          result.skipped++;
+        }
+      }
+    }
+
+    // Import custom_rules / rules → addRule(rule)
+    const rules = data.custom_rules || data.rules;
+    if (Array.isArray(rules)) {
+      for (const rule of rules) {
         try {
           if (this.memory.addRule) {
-            this.memory.addRule(rule);
+            const clean = { ...rule };
+            delete clean.id;
+            delete clean.created_at;
+            delete clean.updated_at;
+            this.memory.addRule(clean);
             result.imported++;
           }
         } catch (e) {
-          result.conflicts.push({ type: 'rule', id: rule.id, error: e.message });
+          result.conflicts.push({ type: 'rule', error: e.message });
           result.skipped++;
         }
       }
     }
 
-    // Import learned designs
-    if (Array.isArray(data.learnedDesigns)) {
-      for (const design of data.learnedDesigns) {
+    // Import design_systems / learnedDesigns → saveDesignSystem(ds)
+    const designs = data.design_systems || data.learnedDesigns;
+    if (Array.isArray(designs)) {
+      for (const ds of designs) {
         try {
-          if (this.memory.addLearnedDesign) {
-            this.memory.addLearnedDesign(design);
+          if (this.memory.saveDesignSystem) {
+            const clean = { ...ds };
+            delete clean.id;
+            delete clean.learned_at;
+            this.memory.saveDesignSystem(clean);
             result.imported++;
           }
         } catch (e) {
-          result.conflicts.push({ type: 'learnedDesign', company: design.company, error: e.message });
+          result.conflicts.push({ type: 'design_system', company: ds.company, error: e.message });
           result.skipped++;
         }
       }
@@ -88,6 +116,9 @@ class DataImporter {
     return result;
   }
 
+  /**
+   * importKnowledgePack — 导入知识包（只含设计系统数据，不含用户偏好）
+   */
   importKnowledgePack(data) {
     const result = { imported: 0, skipped: 0, conflicts: [] };
 
@@ -95,12 +126,11 @@ class DataImporter {
       throw new Error('Invalid knowledge pack: missing type field or wrong type');
     }
 
-    // Only import design system data, skip user-specific data
     if (Array.isArray(data.anchors)) {
       for (const anchor of data.anchors) {
         try {
-          if (this.memory.addAnchor) {
-            this.memory.addAnchor(anchor);
+          if (this.memory.saveAnchor) {
+            this.memory.saveAnchor(anchor);
             result.imported++;
           }
         } catch (e) {
@@ -114,7 +144,14 @@ class DataImporter {
       for (const rule of data.rules) {
         try {
           if (this.memory.addRule) {
-            this.memory.addRule(rule);
+            this.memory.addRule({
+              rule_type: rule.rule_type || rule.ruleType,
+              dimension: rule.dimension,
+              condition: rule.condition,
+              threshold: rule.threshold,
+              action: rule.action,
+              source: rule.source,
+            });
             result.imported++;
           }
         } catch (e) {
@@ -127,12 +164,12 @@ class DataImporter {
     if (Array.isArray(data.learnedDesigns)) {
       for (const design of data.learnedDesigns) {
         try {
-          if (this.memory.addLearnedDesign) {
-            this.memory.addLearnedDesign(design);
+          if (this.memory.saveDesignSystem) {
+            this.memory.saveDesignSystem(design);
             result.imported++;
           }
         } catch (e) {
-          result.conflicts.push({ type: 'learnedDesign', error: e.message });
+          result.conflicts.push({ type: 'design_system', error: e.message });
           result.skipped++;
         }
       }
@@ -140,41 +177,36 @@ class DataImporter {
 
     return result;
   }
-
-  mergePreferences(local, remote) {
-    const merged = { ...local };
-
-    // EMA merge for style vector
-    if (remote.styleVector && local.styleVector) {
-      const alpha = 0.3;
-      merged.styleVector = {};
-      const allKeys = new Set([
-        ...Object.keys(local.styleVector),
-        ...Object.keys(remote.styleVector),
-      ]);
-      for (const key of allKeys) {
-        const localVal = local.styleVector[key] || 0;
-        const remoteVal = remote.styleVector[key] || 0;
-        merged.styleVector[key] = alpha * remoteVal + (1 - alpha) * localVal;
-      }
-    } else if (remote.styleVector) {
-      merged.styleVector = { ...remote.styleVector };
-    }
-
-    // Sum feedback counts
-    if (typeof remote.feedbackCount === 'number') {
-      merged.feedbackCount = (local.feedbackCount || 0) + remote.feedbackCount;
-    }
-
-    // Use more recent sync timestamp
-    if (remote.lastSync) {
-      if (!local.lastSync || new Date(remote.lastSync) > new Date(local.lastSync)) {
-        merged.lastSync = remote.lastSync;
-      }
-    }
-
-    return merged;
-  }
 }
 
 module.exports = { DataImporter };
+
+function getArg(argv, name) {
+  const index = argv.indexOf(name);
+  if (index === -1 || index + 1 >= argv.length) return null;
+  return argv[index + 1];
+}
+
+if (require.main === module) {
+  const inputPath = getArg(process.argv, '--input');
+  if (!inputPath) {
+    console.error('Usage: node sync/importer.js --input <path>');
+    process.exit(1);
+  }
+
+  const mem = new DesignMemory().init();
+  try {
+    const raw = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
+    const importer = new DataImporter(mem);
+    const result = raw.type === 'knowledge_pack'
+      ? importer.importKnowledgePack(raw)
+      : importer.importFull(raw);
+
+    console.log(`Imported ${result.imported} item(s), skipped ${result.skipped}, conflicts ${result.conflicts.length}`);
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  } finally {
+    mem.close();
+  }
+}

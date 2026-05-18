@@ -1,8 +1,8 @@
 {
   "name": "huashu-design-seed",
-  "version": "0.5.0",
-  "description": "DesignSeed v0.5 — 会生长的 AI 设计系统。通过反馈闭环、外界学习和规则自适应持续进化的设计 Skill。",
-  "main": "engine/renderer.js",
+  "version": "0.6.6",
+  "description": "DesignSeed v0.6.6 — 会生长的 AI 设计系统。通过反馈闭环、外界学习和规则自适应持续进化的设计 Skill。",
+  "main": "engine/cove-protocol.js",
   "scripts": {
     "generate": "node engine/cli.js generate",
     "crawl": "node crawler/cli.js crawl",
@@ -38,5 +38,33 @@
   },
   "devDependencies": {
     "playwright": "^1.60.0"
+  },
+  "bin": {
+    "designseed": "engine/cli.js"
+  },
+  "exports": {
+    ".": "./engine/cove-protocol.js",
+    "./crawler": "./crawler/cli.js",
+    "./rules": "./rules/cli.js",
+    "./sync/export": "./sync/exporter.js",
+    "./sync/import": "./sync/importer.js"
+  },
+  "files": [
+    "engine/",
+    "crawler/",
+    "rules/",
+    "sync/",
+    "memory/",
+    "SKILL.md",
+    "README.md",
+    "README.en.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kialajin-l/DesignSeed.git"
+  },
+  "homepage": "https://github.com/kialajin-l/DesignSeed#readme",
+  "bugs": {
+    "url": "https://github.com/kialajin-l/DesignSeed/issues"
   }
 }
