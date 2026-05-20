@@ -1,3 +1,9 @@
+let _renderer = null;
+function getRenderer() {
+  if (!_renderer) _renderer = require("./renderer");
+  return _renderer;
+}
+
 /**
  * DesignSeed — 风格混合引擎
  * 在向量空间中对两种风格进行插值，生成全新的混合风格
@@ -203,8 +209,8 @@ function blendTone(toneA, toneB, t) {
 function blend(styleA, styleB, options) {
   const opts = options || {};
   const t = Math.max(0, Math.min(1, opts.ratio !== undefined ? opts.ratio : 0.5));
-  const a = typeof styleA === 'string' ? styles[styleA] : styleA;
-  const b = typeof styleB === 'string' ? styles[styleB] : styleB;
+  const a = typeof styleA === 'string' ? getRenderer().getStyle(styleA) : styleA;
+  const b = typeof styleB === 'string' ? getRenderer().getStyle(styleB) : styleB;
   if (!a || !b) {
     const missing = !a ? (typeof styleA === 'string' ? styleA : '(object)') : (typeof styleB === 'string' ? styleB : '(object)');
     throw new Error('风格不存在: ' + missing);
@@ -254,14 +260,17 @@ function cosineSimilarity(toneA, toneB) {
 
 function findSimilar(targetStyleId, topN) {
   const n = topN || 3;
-  const target = typeof targetStyleId === 'string' ? styles[targetStyleId] : targetStyleId;
+  const R = getRenderer();
+  const target = typeof targetStyleId === 'string' ? R.getStyle(targetStyleId) : targetStyleId;
   if (!target || !target.tone) return [];
   const results = [];
-  for (const [id, s] of Object.entries(styles)) {
-    if (id === 'STYLE_INDEX' || id === targetStyleId) continue;
-    if (!s.tone) continue;
+  const allStyles = R.listStyles();
+  for (const entry of allStyles) {
+    if (entry.id === targetStyleId) continue;
+    const s = R.getStyle(entry.id);
+    if (!s || !s.tone) continue;
     const sim = cosineSimilarity(target.tone, s.tone);
-    results.push({ id, name: s.name, nameEn: s.nameEn, similarity: parseFloat(sim.toFixed(4)), tone: s.tone });
+    results.push({ id: entry.id, name: s.name || entry.id, nameEn: s.nameEn || '', similarity: parseFloat(sim.toFixed(4)), tone: s.tone });
   }
   return results.sort((a, b) => b.similarity - a.similarity).slice(0, n);
 }

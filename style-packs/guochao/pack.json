@@ -1,0 +1,67 @@
+{
+  "id": "guochao",
+  "name": "国潮",
+  "nameEn": "GuoChao",
+  "version": "0.1.0",
+  "description": "传统中国色+现代排版，朱红/墨绿/金/水墨，适用于文创、国风、非遗、茶道",
+  "tags": [
+    "国潮",
+    "中国风",
+    "文创",
+    "非遗",
+    "茶道",
+    "水墨",
+    "传统"
+  ],
+  "paletteDir": "palette",
+  "paletteCount": 3,
+  "fonts": [
+    {
+      "name": "Noto Serif SC",
+      "source": "google",
+      "weights": [
+        400,
+        500,
+        600,
+        700,
+        900
+      ]
+    },
+    {
+      "name": "Ma Shan Zheng",
+      "source": "google",
+      "weights": [
+        400
+      ]
+    }
+  ],
+  "components": [
+    "header",
+    "hero",
+    "card",
+    "grid",
+    "zigzag",
+    "feature-plus-grid",
+    "stats",
+    "footer",
+    "button",
+    "nav",
+    "divider",
+    "quote",
+    "image-caption"
+  ],
+  "bestFor": [
+    "文创产品",
+    "国风公众号",
+    "非遗传承",
+    "茶道花艺",
+    "汉服文化"
+  ],
+  "mood": "典雅、大气、东方、文化感、厚重",
+  "decorations": [
+    "divider-ornate",
+    "ring",
+    "dots-subtle",
+    "tag-square"
+  ]
+}

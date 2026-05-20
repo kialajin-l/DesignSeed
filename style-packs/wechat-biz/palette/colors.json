@@ -1,0 +1,50 @@
+{
+  "palettes": [
+    {
+      "id": "deep-blue",
+      "name": "深海蓝",
+      "background": "#0B1120",
+      "surface": "#131B2E",
+      "primary": "#3B82F6",
+      "secondary": "#06B6D4",
+      "text": "#F1F5F9",
+      "textSecondary": "#94A3B8",
+      "textOnBg": "#FFFFFF",
+      "border": "#1E293B",
+      "accent": "#38BDF8",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #0B1120 0%, #1E3A5F 50%, #0B1120 100%)",
+        "card": "linear-gradient(180deg, #131B2E 0%, #0B1120 100%)",
+        "accent": "linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%)"
+      },
+      "shadows": {
+        "card": "0 4px 24px rgba(59,130,246,0.08)",
+        "elevated": "0 8px 40px rgba(59,130,246,0.15)",
+        "glow": "0 0 30px rgba(59,130,246,0.2)"
+      }
+    },
+    {
+      "id": "midnight-purple",
+      "name": "午夜紫",
+      "background": "#0F0A1A",
+      "surface": "#1A1228",
+      "primary": "#8B5CF6",
+      "secondary": "#EC4899",
+      "text": "#F5F3FF",
+      "textSecondary": "#A78BFA",
+      "textOnBg": "#FFFFFF",
+      "border": "#2D1F4E",
+      "accent": "#A78BFA",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #0F0A1A 0%, #2D1B69 50%, #0F0A1A 100%)",
+        "card": "linear-gradient(180deg, #1A1228 0%, #0F0A1A 100%)",
+        "accent": "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)"
+      },
+      "shadows": {
+        "card": "0 4px 24px rgba(139,92,246,0.08)",
+        "elevated": "0 8px 40px rgba(139,92,246,0.15)",
+        "glow": "0 0 30px rgba(139,92,246,0.2)"
+      }
+    }
+  ]
+}

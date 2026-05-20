@@ -52,6 +52,23 @@ function generatePreview(params) {
   }
 
   try {
+    // Validate style if provided (check builtin + packs)
+    if (params.style) {
+      const styles = require('./templates/styles');
+      const stylePackLoader = require('./style-pack-loader');
+      const { parseMixString } = require('./mixer');
+      const mixCheck = parseMixString ? parseMixString(params.style) : null;
+      if (mixCheck) {
+        const aExists = styles[mixCheck.styleA] || stylePackLoader.getPack(mixCheck.styleA);
+        const bExists = styles[mixCheck.styleB] || stylePackLoader.getPack(mixCheck.styleB);
+        if (!aExists || !bExists) {
+          return fail('STYLE_NOT_FOUND: Mixed style "' + params.style + '" has unknown component');
+        }
+      } else if (!styles[params.style] && !stylePackLoader.getPack(params.style)) {
+        return fail('STYLE_NOT_FOUND: Unknown style "' + params.style + '"');
+      }
+    }
+
     const { tree, intent, style } = buildFromPrompt(params.prompt, {
       style: params.style,
     });
@@ -360,12 +377,29 @@ function generateFragment(params) {
   }
 }
 
+
+/**
+ * listStyles — 列出所有可用风格
+ *
+ * 输入：无
+ * 输出：{ styles: Array<{ id, name, nameEn, tone }> }
+ */
+function listStyles() {
+  try {
+    const styles = require('./templates/styles');
+    const index = styles.STYLE_INDEX || [];
+    return ok({ styles: index });
+  } catch (err) {
+    return fail('listStyles failed: ' + err.message);
+  }
+}
+
 // ============================================================
 // 协议元数据
 // ============================================================
 
 const PROTOCOL_VERSION = '1.2';
-const ENGINE_VERSION = '0.6.0';
+const ENGINE_VERSION = '0.6.6';
 
 function getProtocolInfo() {
   return {
@@ -384,6 +418,7 @@ function getProtocolInfo() {
       'exportTree',
       'importTree',
       'generateFragment',
+      'listStyles',
     ],
   };
 }
@@ -399,6 +434,7 @@ module.exports = {
   exportTree,
   importTree,
   generateFragment,
+  listStyles,
   getProtocolInfo,
   PROTOCOL_VERSION,
   ENGINE_VERSION,

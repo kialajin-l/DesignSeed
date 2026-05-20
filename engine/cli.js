@@ -1,174 +1,23 @@
-#!/usr/bin/env node
-/**
- * DesignSeed — CLI 入口
- *
- * Usage:
- *   node engine/cli.js generate --prompt "做一个金融App首页" --style "minimalism" --output ./output.html --screenshot
- *   node engine/cli.js screenshot --input ./output.html --output ./output.png
- *   node engine/cli.js screenshot-all --input ./demo/ --output ./demo/
- *   node engine/cli.js demo
- *   node engine/cli.js list
- */
-
-const fs = require('fs');
-const path = require('path');
-const renderer = require('./renderer');
-const styles = require('./templates/styles');
-const mixer = require('./mixer');
-const { DesignMemory } = require('../memory');
-
-function parseArgs(argv) {
-  const args = {};
-  const positional = [];
-  for (let i = 2; i < argv.length; i++) {
-    const arg = argv[i];
-    if (arg.startsWith('--')) {
-      const key = arg.slice(2);
-      const next = argv[i + 1];
-      if (next && !next.startsWith('--')) {
-        args[key] = next;
-        i++;
-      } else {
-        args[key] = true;
-      }
-    } else {
-      positional.push(arg);
-    }
-  }
-  return { command: positional[0], args, positional };
-}
-
-async function cmdGenerate(opts) {
-  const prompt = opts.prompt || opts.p;
-  const style = opts.style || opts.s || 'minimalism';
-  const output = opts.output || opts.o || './designseed-output.html';
-  const title = opts.title || opts.t;
-  const doScreenshot = opts.screenshot || opts.ss;
-
-  if (!prompt) {
-    console.error('Error: --prompt is required for generate command');
-    console.error('Usage: node engine/cli.js generate --prompt "Your prompt here" --style "minimalism"');
-    process.exit(1);
-  }
-
-  // Validate style (supports mix syntax)
-  const mixCheck = mixer.parseMixString(style);
-  if (mixCheck) {
-    if (!styles[mixCheck.styleA] || !styles[mixCheck.styleB]) {
-      console.error(`Error: Mixed style "${style}" has unknown component`);
-      process.exit(1);
-    }
-  } else if (!styles[style]) {
-    console.error(`Error: Unknown style "${style}"`);
-    console.error(`Available styles: ${Object.keys(styles).filter(k => !k.startsWith('_') && k !== 'STYLE_INDEX').join(', ')}`);
-    process.exit(1);
-  }
-
-  console.log(`Generating page with style: ${style}...`);
-  const html = renderer.render(prompt, { style, title: title || prompt });
-  const outPath = path.resolve(output);
-  fs.writeFileSync(outPath, html, 'utf8');
-  console.log(`Done! Output: ${outPath} (${html.length} bytes)`);
-
-  // Screenshot if requested
-  if (doScreenshot) {
-    const { Screenshotter } = require('./screenshot');
-    const ssPath = typeof doScreenshot === 'string'
-      ? path.resolve(doScreenshot)
-      : outPath.replace(/\.html$/i, '.png');
-    const s = new Screenshotter();
-    try {
-      console.log('Taking screenshot...');
-      const result = await s.screenshotFile(outPath, ssPath);
-      const sizeKB = (result.size / 1024).toFixed(1);
-      console.log(`Screenshot: ${result.width}x${result.height} (${sizeKB}KB) → ${result.path}`);
-    } catch (err) {
-      console.error('Screenshot failed:', err.message);
-    } finally {
-      await s.close();
-    }
-  }
-}
-
-async function cmdScreenshot(opts) {
-  const input = opts.input || opts.html;
-  const output = opts.output || opts.out;
-
-  if (!input || !output) {
-    console.error('Error: --input and --output are required');
-    console.error('Usage: node engine/cli.js screenshot --input page.html --output page.png');
-    process.exit(1);
-  }
-
-  const { Screenshotter } = require('./screenshot');
-  const s = new Screenshotter({
-    viewport: { width: parseInt(opts.width || '1440'), height: parseInt(opts.height || '900') },
-    deviceScaleFactor: parseFloat(opts.scale || '2'),
-    format: opts.format || 'png',
-    fullPage: opts.fullpage !== 'false',
-  });
-
-  try {
-    console.log('Taking screenshot...');
-    const result = await s.screenshotFile(input, output);
-    const sizeKB = (result.size / 1024).toFixed(1);
-    console.log(`Done! ${result.width}x${result.height} (${sizeKB}KB) → ${result.path}`);
-  } catch (err) {
-    console.error('Screenshot failed:', err.message);
-    process.exit(1);
-  } finally {
-    await s.close();
-  }
-}
-
-async function cmdScreenshotAll(opts) {
-  const inputDir = opts.input || './demo/';
-  const outputDir = opts.output || opts.out || inputDir;
-
-  const { Screenshotter } = require('./screenshot');
-  const s = new Screenshotter({
-    viewport: { width: parseInt(opts.width || '1440'), height: parseInt(opts.height || '900') },
-    deviceScaleFactor: parseFloat(opts.scale || '2'),
-  });
-
-  try {
-    const absDir = path.resolve(inputDir);
-    const htmlFiles = fs.readdirSync(absDir).filter(f => f.endsWith('.html'));
-    if (htmlFiles.length === 0) {
-      console.log('No HTML files found in', absDir);
-      return;
-    }
-
-    console.log(`Found ${htmlFiles.length} HTML files, taking screenshots...`);
-    const tasks = htmlFiles.map(f => ({
-      html: path.join(absDir, f),
-      output: path.join(path.resolve(outputDir), f.replace(/\.html$/i, '.png')),
-    }));
-
-    const results = await s.screenshotBatch(tasks);
-    for (const r of results) {
-      if (r.success) {
-        const sizeKB = (r.size / 1024).toFixed(1);
-        console.log(`  ✓ ${path.basename(r.output)} (${sizeKB}KB)`);
-      } else {
-        console.log(`  ✗ ${path.basename(r.html)}: ${r.error}`);
-      }
-    }
-    console.log(`Done! ${results.filter(r => r.success).length}/${results.length} screenshots saved.`);
-  } finally {
-    await s.close();
-  }
-}
-
-async function cmdDemo() {
-  console.log('Generating demo page with all 12 styles...');
-  const html = renderer.generateDemo();
-  const outPath = path.resolve('./designseed-demo.html');
-  fs.writeFileSync(outPath, html, 'utf8');
-  console.log(`Done! Output: ${outPath} (${html.length} bytes)`);
-}
-
 async function cmdList() {
+  const list = renderer.listStyles();
+  console.log('
+  Available Styles:
+');
+  console.log('  ID              Name                        Formality  Warmth  Complexity  Innovation');
+  console.log('  ─────────────── ─────────────────────────── ─────────  ──────  ──────────  ──────────');
+  for (const s of list) {
+    const id = s.id.padEnd(16);
+    const nameEn = s.nameEn ? ' (' + s.nameEn + ')' : ' [' + s.source + ']';
+    const name = (s.name + nameEn).padEnd(26);
+    const t = s.tone || {};
+    const fmt = String(t.formality != null ? t.formality : '-');
+    const wth = String(t.warmth != null ? t.warmth : '-');
+    const cpx = String(t.complexity != null ? t.complexity : '-');
+    const inn = String(t.innovation != null ? t.innovation : '-');
+    console.log('  ' + id + name + fmt.padEnd(9) + wth.padEnd(7) + cpx.padEnd(11) + inn);
+  }
+  console.log('');
+}async function cmdList() {
   const list = renderer.listStyles();
   console.log('\n  Available Styles:\n');
   console.log('  ID              Name              Formality  Warmth  Complexity  Innovation');
@@ -235,10 +84,10 @@ async function cmdSimilar(opts) {
     process.exit(1);
   }
 
-  const target = styles[styleId];
+  const target = renderer.getStyle(styleId);
   if (!target) {
     console.error('Error: Unknown style "' + styleId + '"');
-    console.error('Available: ' + Object.keys(styles).filter(k => !k.startsWith('_') && k !== 'STYLE_INDEX').join(', '));
+    console.error('Available: ' + renderer.listStyles().map(s => s.id).join(', '));
     process.exit(1);
   }
 
@@ -357,12 +206,68 @@ async function cmdPreset(opts) {
 async function cmdMixPairs() {
   const pairs = renderer.listMixPairs();
   console.log('');
-  console.log('  Style Mix Pairs (sorted by similarity, top 15 of ' + pairs.length + '):');
+  console.log('  Style Mix Pairs (top 15 of ' + pairs.length + '):');
   console.log('  ' + '-'.repeat(60));
   for (const p of pairs.slice(0, 15)) {
-    const pct = (p.similarity * 100).toFixed(1);
-    console.log('  ' + p.nameA + ' x ' + p.nameB + ': ' + pct + '% -> ' + p.syntax);
+    console.log('  ' + p.a + ' x ' + p.b + ' -> ratio=' + p.ratio);
   }
+  console.log('');
+}
+
+
+async function cmdCard(opts) {
+  const templateId = opts.template;
+  const title = opts.title || 'DesignSeed Card';
+  const output = opts.output || opts.o || './designseed-card.html';
+  const style = opts.style || opts.s || 'minimalism';
+
+  const cardRenderer = require('./card-templates/renderer');
+  const cardIndex = require('./card-templates');
+
+  if (!templateId) {
+    console.log('');
+    console.log('  Available card templates:');
+    const list = cardIndex.listTemplates();
+    list.forEach(function(t) {
+      const size = t.canvas ? t.canvas.width + 'x' + t.canvas.height : 'custom';
+      console.log('    ' + t.id + ' — ' + t.name + ' (' + size + ')');
+    });
+    console.log('');
+    console.log('  Usage: node engine/cli.js card --template xiaohongshu-note --title ... --output card.html');
+    console.log('');
+    return;
+  }
+
+  const resolved = cardIndex.matchTemplate(templateId);
+  if (!resolved) {
+    console.error('Error: Unknown template "' + templateId + '"');
+    process.exit(1);
+  }
+
+  const html = cardRenderer.renderCard(title, { template: templateId, style: style });
+
+  const fs = require('fs');
+  fs.writeFileSync(output, html, 'utf8');
+  console.log('Card generated: ' + output + ' (' + html.length + ' chars, template: ' + (resolved.name || templateId) + ')');
+}
+
+async function cmdPacks(opts) {
+  const renderer = require('./renderer');
+  const packs = renderer.listStylePacks();
+  console.log('');
+  console.log('  Available Style Packs (' + packs.length + '):');
+  console.log('  ' + '-'.repeat(60));
+  packs.forEach(function(p) {
+    if (p.error) {
+      console.log('  ' + p.id + ' \u2014 ERROR: ' + p.error);
+    } else {
+      console.log('  ' + p.id + ' \u2014 ' + p.name);
+      if (p.description) console.log('    ' + p.description);
+      if (p.tags) console.log('    Tags: ' + p.tags.join(', '));
+    }
+  });
+  console.log('');
+  console.log('  Usage: node engine/cli.js generate --prompt "..." --style guochao');
   console.log('');
 }
 
@@ -382,6 +287,8 @@ const commands = {
   similar: cmdSimilar,
   'mix-pairs': cmdMixPairs,
   preset: cmdPreset,
+  card: cmdCard,
+  packs: cmdPacks,
 };
 
 const fn = commands[command];
@@ -402,6 +309,8 @@ Usage:
   node engine/cli.js screenshot-all --input ./demo/ --output ./demo/
   node engine/cli.js demo
   node engine/cli.js list
+  node engine/cli.js card --template xiaohongshu-note --title "..." [--style guochao] [--output card.html]
+  node engine/cli.js packs
 
 Commands:
   generate, gen     Generate an HTML page from a prompt (supports mix syntax)
@@ -413,6 +322,8 @@ Commands:
   demo              Generate a demo page showcasing all 12 styles
   list, ls          List all available styles
   preset            Manage style presets (save/load/delete)
+  card              Generate a card from template (xiaohongshu-note, wechat-cover)
+  packs             List available style packs
 
 Options:
   --prompt, -p      The design prompt (required for generate)

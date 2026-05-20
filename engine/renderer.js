@@ -1,27 +1,59 @@
 /**
  * DesignSeed — 核心渲染器
- * 接收自然语言 prompt + 可选 style 参数，生成完整 HTML/CSS 页面
+ * v0.7: 支持风格包 ID、装饰素材自动注入、布局引擎集成
  */
 
 const styles = require('./templates/styles');
 const ui = require('./components/ui-components');
 const mixer = require('./mixer');
 const { RuleEngine } = require('../rules');
+const layoutEngine = require('./layout-engine');
+const stylePackLoader = require('./style-pack-loader');
+const decorations = require('./decorations');
+const decorationsExtra = require('./decorations-extra');
 
 const DEFAULT_STYLE = 'minimalism';
 
 function getStyle(styleId) {
-  // 尝试解析混合风格语法 "styleA:styleB:ratio"
+  // 1. 内置风格
+  if (styles[styleId]) {
+    // 如果同时存在同名风格包，合并其 decorations
+    try {
+      var pack = stylePackLoader.loadPack(styleId);
+      if (pack.decorations && pack.decorations.length > 0) {
+        styles[styleId].decorations = pack.decorations;
+      }
+    } catch(e) {}
+    return styles[styleId];
+  }
+
+  // 2. 混合风格语法 "styleA:styleB:ratio"
   const mix = mixer.parseMixString(styleId);
   if (mix) {
-    const a = styles[mix.styleA];
-    const b = styles[mix.styleB];
-    if (a && b) {
-      return mixer.blend(a, b, { ratio: mix.ratio });
-    }
+    const a = getStyle(mix.styleA);
+    const b = getStyle(mix.styleB);
+    if (a && b) return mixer.blend(a, b, { ratio: mix.ratio });
     console.warn("Warning: Mixed style \"" + styleId + "\" has unknown component, falling back.");
   }
-  return styles[styleId] || styles[DEFAULT_STYLE];
+
+  // 3. 风格包 ID（如 "guochao"、"cyberpunk"）
+  try {
+    const pack = stylePackLoader.loadPack(styleId);
+    const packIds = Object.keys(pack.palettes);
+    if (packIds.length > 0) {
+      const firstPalette = pack.palettes[packIds[0]];
+      const fonts = pack.fonts || {};
+      const s = stylePackLoader.paletteToRendererStyle(firstPalette, fonts, pack.meta);
+      if (pack.decorations && pack.decorations.length > 0) {
+        s.decorations = pack.decorations;
+      }
+      return s;
+    }
+  } catch (e) {
+    // 不是风格包，继续 fallback
+  }
+
+  return styles[DEFAULT_STYLE];
 }
 
 function escapeHtml(str) {
@@ -34,16 +66,30 @@ function parsePrompt(prompt) {
   return { original: prompt, keywords, sections: keywords.length > 4 ? 3 : 2 };
 }
 
-function buildHead(title, style) {
+function buildHead(title, style, opts) {
   const c = style.colors || {};
   const t = style.typography || {};
   const bg = (c.background || '#FFFFFF');
   const isGradient = bg.includes('gradient');
   const bgColor = isGradient ? '#0B0E17' : bg;
+
+  // 风格包字体加载
+  let fontLinks = '';
+  if (opts && opts.packFonts) {
+    const seen = new Set();
+    opts.packFonts.forEach(function(f) {
+      if (f.source === 'google' && !seen.has(f.name)) {
+        seen.add(f.name);
+        const weights = (f.weights || [400]).join(';');
+        fontLinks += `\n  <link href="https://fonts.googleapis.com/css2?family=${encodeURIComponent(f.name)}:wght@${weights}&display=swap" rel="stylesheet">`;
+      }
+    });
+  }
+
   return `<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)}</title>
+  <title>${escapeHtml(title)}</title>${fontLinks}
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: ${t.fontFamily || 'sans-serif'}; background: ${bgColor}; color: ${c.text || '#1A1A1A'}; line-height: ${t.lineHeight || 1.6}; -webkit-font-smoothing: antialiased; }
@@ -53,7 +99,7 @@ function buildHead(title, style) {
 </head>`;
 }
 
-function buildContent(prompt, style) {
+function buildDefaultContent(prompt, style) {
   const parsed = parsePrompt(prompt);
   const c = style.colors || {};
   const l = style.layout || {};
@@ -76,7 +122,6 @@ function buildContent(prompt, style) {
   );
 
   const featureCards = parsed.keywords.slice(0, 6).map((kw, i) => {
-    const variants = ['primary', 'secondary', 'accent'];
     const descriptions = [
       '精心设计的核心功能模块，提供卓越的用户体验和高效的交互流程。',
       '智能化的数据处理引擎，实时分析并呈现关键业务指标。',
@@ -105,7 +150,7 @@ function buildContent(prompt, style) {
   const aboutCards = parsed.keywords.slice(0, 3).map(kw =>
     ui.card(
       `关于 ${escapeHtml(kw)}`,
-      `<p>我们致力于打造行业领先的解决方案，通过持续创新和技术突破，为用户创造更大价值。每一个细节都经过精心打磨，确保最佳体验。</p>`,
+      `<p>我们致力于打造行业领先的解决方案，通过持续创新和技术突破，为用户创造更大价值。</p>`,
       style
     )
   );
@@ -138,100 +183,200 @@ ${statsHtml}
 ${footerHtml}`;
 }
 
-function render(prompt, options) {
-  const opts = options || {};
-  const styleId = opts.style || DEFAULT_STYLE;
-  const style = getStyle(styleId);
-  const title = opts.title || prompt || 'DesignSeed Page';
-  const head = buildHead(title, style);
-  const body = buildContent(prompt, style);
-  return `<!DOCTYPE html>
-<html lang="zh-CN">
-${head}
-<body>
-${body}
-</body>
-</html>`;
-}
-
-function generateDemo() {
-  const allStyles = Object.keys(styles).filter(k => !k.startsWith('_') && k !== 'STYLE_INDEX');
-  let sections = '';
-  for (const id of allStyles) {
-    const s = styles[id];
-    const c = s.colors || {};
-    const t = s.typography || {};
-    const l = s.layout || {};
-    const sh = s.shadows || {};
-    const bg = (c.background || '#FFFFFF');
-    const isGradient = bg.includes('gradient');
-    const sectionBg = isGradient ? bg : bg;
-    sections += `
-    <section style="background: ${sectionBg}; padding: 48px 24px; margin: 24px 0; border-radius: ${l.borderRadius || '8px'}; box-shadow: ${sh.medium || 'none'};">
-      <div style="max-width: ${l.maxWidth || '1200px'}; margin: 0 auto;">
-        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-          <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: ${c.primary || '#000'};"></span>
-          <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: ${c.secondary || '#666'};"></span>
-          <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: ${c.accent || '#0066CC'};"></span>
-          <h2 style="font-family: ${t.fontFamily || 'sans-serif'}; font-size: ${t.scale ? t.scale[3] + 'px' : '22px'}; font-weight: ${t.fontWeight ? t.fontWeight.bold : 700}; color: ${c.text || '#1A1A1A'}; margin: 0;">${s.name} (${s.nameEn})</h2>
-        </div>
-        <p style="font-family: ${t.fontFamily || 'sans-serif'}; font-size: ${t.scale ? t.scale[1] + 'px' : '14px'}; color: ${c.textSecondary || '#888'}; margin-bottom: 16px;">
-          正式度: ${s.tone.formality} · 温暖度: ${s.tone.warmth} · 复杂度: ${s.tone.complexity} · 创新度: ${s.tone.innovation}
-        </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          ${ui.button('主要按钮', 'primary', s)}
-          ${ui.button('次要按钮', 'secondary', s)}
-          ${ui.button('强调按钮', 'accent', s)}
-        </div>
-      </div>
-    </section>`;
+function renderSection(sec, style, opts) {
+  switch (sec.type) {
+    case 'header':
+      return ui.header(sec.title || '', sec.subtitle || '', style);
+    case 'hero':
+      return ui.hero(sec.title || '', sec.subtitle || '', '了解更多', style);
+    case 'card':
+      return ui.card(sec.title || '', sec.body || '', style, undefined, opts);
+    case 'button':
+      return ui.button(sec.text || '点击', sec.variant || 'primary', style);
+    case 'grid': {
+      var cards = (sec.items || []).map(function(item) {
+        return ui.card(item.title || '', item.body || '', style);
+      });
+      return ui.grid(cards, sec.columns || 2, style);
+    }
+    case 'stats':
+      return ui.stats(sec.items || [], style);
+    case 'nav':
+      return ui.nav(sec.links || [], style);
+    case 'footer':
+      return ui.footer(sec.text || '', style);
+    default:
+      return '';
   }
-  const demoHead = buildHead('DesignSeed 风格展示', styles.minimalism);
-  return `<!DOCTYPE html>
-<html lang="zh-CN">
-${demoHead}
-<body style="background: #F5F5F5;">
-  <header style="padding: 32px 24px; text-align: center; background: #000; color: #FFF;">
-    <h1 style="font-size: 36px; font-weight: 700; margin: 0 0 8px;">DesignSeed 风格展示</h1>
-    <p style="font-size: 16px; opacity: 0.7; margin: 0;">12 种内置风格流派一览</p>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 24px;">
-    ${sections}
-  </main>
-  <footer style="padding: 24px; text-align: center; color: #888; font-size: 12px;">
-    © 2026 DesignSeed Engine · Style Demo
-  </footer>
-</body>
-</html>`;
 }
 
+function buildContent(prompt, style, sections) {
+  if (!sections || sections.length === 0) {
+    return buildDefaultContent(prompt, style);
+  }
+  return layoutEngine.arrange(sections, style, function(sec, opts) {
+    return renderSection(sec, style, opts);
+  });
+}
+
+/**
+ * 为页面内容注入装饰元素
+ * @param {string} bodyHtml - 已渲染的页面 body
+ * @param {object} style - 风格对象
+ * @param {object} opts - { decorations: ['circle','divider-ornate',...], position: 'random'|'header'|'footer' }
+ * @returns {string} 带装饰的 body HTML
+ */
+function injectDecorations(bodyHtml, style, opts) {
+  if (!opts || !opts.decorations || opts.decorations.length === 0) return bodyHtml;
+
+  const c = style.colors || {};
+  const decoHtml = opts.decorations.map(function(name) {
+    // 先查基础装饰，再查扩展装饰
+    const fn = decorations.get(name) || getExtraDecoration(name);
+    if (!fn) return '';
+    return fn({ color: c.primary || '#000', secondary: c.secondary || '#666', accent: c.accent || '#0066CC' });
+  }).filter(Boolean).join('\n');
+
+  if (!decoHtml) return bodyHtml;
+
+  // 根据 position 决定插入位置
+  const position = opts.position || 'random';
+  if (position === 'header') {
+    return `<div style="position:relative;overflow:hidden;">${decoHtml}</div>\n${bodyHtml}`;
+  } else if (position === 'footer') {
+    return `${bodyHtml}\n<div style="position:relative;overflow:hidden;">${decoHtml}</div>`;
+  }
+  // random: 在 hero 之后插入
+  const heroEnd = bodyHtml.indexOf('</section>');
+  if (heroEnd > 0) {
+    const insertAt = bodyHtml.indexOf('\n', heroEnd) + 1;
+    return bodyHtml.slice(0, insertAt) + `<div style="position:relative;overflow:hidden;">${decoHtml}</div>\n` + bodyHtml.slice(insertAt);
+  }
+  return `<div style="position:relative;overflow:hidden;">${decoHtml}</div>
+${bodyHtml}`;
+}
+
+/**
+ * 从扩展装饰包中按名称查找装饰函数
+ */
+function getExtraDecoration(name) {
+  const extra = decorationsExtra;
+  if (!extra) return null;
+  const categories = ['cultural', 'stickers', 'frames', 'effects'];
+  for (var i = 0; i < categories.length; i++) {
+    if (extra[categories[i]] && extra[categories[i]][name]) {
+      return extra[categories[i]][name];
+    }
+  }
+  return null;
+}
+
+/**
+ * 列出所有可用风格（内置 + 风格包）
+ */
 function listStyles() {
-  const idx = styles.STYLE_INDEX || Object.entries(styles)
-    .filter(([k]) => !k.startsWith('_'))
-    .map(([id, s]) => ({ id, name: s.name, nameEn: s.nameEn, tone: s.tone }));
-  return idx;
+  var result = [];
+  Object.keys(styles).filter(function(id) { return id !== "STYLE_INDEX" && !id.startsWith("_"); }).forEach(function(id) {
+    result.push({ id: id, name: styles[id].name || id, nameEn: styles[id].nameEn || '', tone: styles[id].tone || {}, source: 'builtin' });
+  });
+  try {
+    var packIds = stylePackLoader.listPacks();
+    packIds.forEach(function(id) {
+      try {
+        var pack = stylePackLoader.loadPack(id);
+        var paletteIds = Object.keys(pack.palettes || {});
+        paletteIds.forEach(function(pid) {
+          var paletteStyle = stylePackLoader.paletteToRendererStyle(pack.palettes[pid], pack.fonts || {}, pack.meta);
+          result.push({ id: id + ':' + pid, name: pack.palettes[pid].name || pid, tone: paletteStyle.tone || {}, source: 'pack:' + id });
+        });
+      } catch (e) {
+        result.push({ id: id, name: id, source: 'pack', error: e.message });
+      }
+    });
+  } catch (e) {
+  }
+  return result;
 }
 
-/** 列出所有可混合的风格对（按相似度排序） */
+/**
+ * 列出所有可混合的风格对
+ */
 function listMixPairs() {
-  const allIds = Object.keys(styles).filter(k => !k.startsWith('_') && k !== 'STYLE_INDEX');
-  const pairs = [];
-  for (let i = 0; i < allIds.length; i++) {
-    for (let j = i + 1; j < allIds.length; j++) {
-      const a = styles[allIds[i]];
-      const b = styles[allIds[j]];
-      if (a.tone && b.tone) {
-        const sim = mixer.cosineSimilarity(a.tone, b.tone);
-        pairs.push({
-          styleA: allIds[i], styleB: allIds[j],
-          nameA: a.name, nameB: b.name,
-          similarity: parseFloat(sim.toFixed(4)),
-          syntax: allIds[i] + ':' + allIds[j] + ':0.5',
+  var pairs = [];
+  var styleIds = Object.keys(styles);
+  for (var i = 0; i < styleIds.length; i++) {
+    for (var j = i + 1; j < styleIds.length; j++) {
+      pairs.push({
+        a: styleIds[i],
+        b: styleIds[j],
+        ratio: 0.5,
+        id: styleIds[i] + ':' + styleIds[j]
+      });
+    }
+  }
+  return pairs;
+}
+
+/**
+ * 列出所有可用风格包
+ */
+function listStylePacks() {
+  return stylePackLoader.listPacks().map(function(id) {
+    try {
+      const pack = stylePackLoader.loadPack(id);
+      return { id: id, name: pack.meta.name, description: pack.meta.description, tags: pack.meta.tags };
+    } catch (e) {
+      return { id: id, error: e.message };
+    }
+  });
+}
+
+/**
+ * 核心渲染函数
+ */
+function render(prompt, opts) {
+  opts = opts || {};
+  var styleId = opts.style || DEFAULT_STYLE;
+  var style = getStyle(styleId);
+  var title = opts.title || prompt;
+  var packFonts = [];
+  try {
+    var packId = typeof styleId === 'string' ? styleId.split(':')[0] : null;
+    if (packId) {
+      var pack = stylePackLoader.loadPack(packId);
+      if (pack.fonts) {
+        Object.keys(pack.fonts).forEach(function(k) {
+          packFonts.push(pack.fonts[k]);
         });
       }
     }
+  } catch (e) {
   }
-  return pairs.sort((a, b) => b.similarity - a.similarity);
+  var headHtml = buildHead(title, style, { packFonts: packFonts });
+  var bodyHtml = buildContent(prompt, style, opts.sections);
+  var decoList = opts.decorations;
+  if ((!decoList || decoList.length === 0) && style.decorations && style.decorations.length > 0) {
+    decoList = style.decorations;
+  }
+  if (decoList && decoList.length > 0) {
+    bodyHtml = injectDecorations(bodyHtml, style, { decorations: decoList, position: opts.decoPosition || 'random' });
+  }
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+${headHtml}
+<body>
+${bodyHtml}
+</body>
+</html>`;
 }
 
-module.exports = { render, generateDemo, listStyles, listMixPairs, getStyle };
+/**
+ * 生成 demo 页面
+ */
+function generateDemo() {
+  var styleIds = Object.keys(styles);
+  var demoStyle = styleIds.length > 0 ? styleIds[0] : DEFAULT_STYLE;
+  return render('DesignSeed Demo — 风格预览', { style: demoStyle, title: 'DesignSeed Demo' });
+}
+
+module.exports = { render, generateDemo, listStyles, listMixPairs, listStylePacks, getStyle, injectDecorations };

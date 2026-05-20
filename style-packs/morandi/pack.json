@@ -1,0 +1,69 @@
+{
+  "id": "morandi",
+  "name": "莫兰迪",
+  "nameEn": "Morandi",
+  "version": "0.1.0",
+  "description": "低饱和灰调配色，柔和高级感，适用于生活方式、穿搭、家居、艺术",
+  "tags": [
+    "莫兰迪",
+    "低饱和",
+    "高级感",
+    "生活方式",
+    "穿搭",
+    "家居",
+    "艺术"
+  ],
+  "paletteDir": "palette",
+  "paletteCount": 3,
+  "fonts": [
+    {
+      "name": "Cormorant Garamond",
+      "source": "google",
+      "weights": [
+        300,
+        400,
+        500,
+        600
+      ]
+    },
+    {
+      "name": "Noto Serif SC",
+      "source": "google",
+      "weights": [
+        300,
+        400,
+        500,
+        600
+      ]
+    }
+  ],
+  "components": [
+    "header",
+    "hero",
+    "card",
+    "grid",
+    "zigzag",
+    "feature-plus-grid",
+    "stats",
+    "footer",
+    "button",
+    "nav",
+    "divider",
+    "quote",
+    "image-caption"
+  ],
+  "bestFor": [
+    "穿搭分享",
+    "家居设计",
+    "艺术展览",
+    "生活方式公众号",
+    "品牌故事"
+  ],
+  "mood": "柔和、高级、克制、优雅、安静",
+  "decorations": [
+    "dots-subtle",
+    "divider-dots",
+    "grid-subtle",
+    "tag-pill"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "xiaohongshu-cute",
+  "name": "小红书可爱风",
+  "version": "0.1.0",
+  "description": "粉色暖色调，适合教程、生活分享、可爱风格内容",
+  "author": "DesignSeed",
+  "license": "CC-BY-4.0",
+  "tags": [
+    "小红书",
+    "可爱",
+    "教程",
+    "粉色",
+    "手账"
+  ],
+  "platforms": [
+    "xiaohongshu",
+    "wechat"
+  ],
+  "canvasPresets": [
+    {
+      "name": "小红书竖版",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "name": "小红书横版",
+      "width": 1440,
+      "height": 810
+    },
+    {
+      "name": "公众号封面",
+      "width": 900,
+      "height": 1200
+    }
+  ],
+  "layouts": [
+    "step-flow",
+    "hero-grid"
+  ],
+  "palettes": [
+    "pink-warm",
+    "peach-soft"
+  ],
+  "mixable": true,
+  "priority": 0,
+  "bestFor": [
+    "小红书教程",
+    "生活分享",
+    "手账日记",
+    "可爱风内容"
+  ],
+  "mood": "可爱、温暖、少女、甜美、活泼",
+  "paletteDir": "palette",
+  "paletteCount": 2,
+  "fonts": [
+    {
+      "name": "Nunito",
+      "source": "google",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    {
+      "name": "Noto Sans SC",
+      "source": "google",
+      "weights": [
+        400,
+        500,
+        700
+      ]
+    }
+  ],
+  "decorations": [
+    "circle",
+    "triangle",
+    "divider-dots",
+    "tag-pill",
+    "badge-circle"
+  ]
+}

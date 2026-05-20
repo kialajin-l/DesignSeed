@@ -1,0 +1,3375 @@
+{
+  "version": "0.1.0",
+  "sources": [
+    {
+      "id": "flaticon",
+      "name": "Flaticon",
+      "url": "https://www.flaticon.com",
+      "license": "Freepik License"
+    },
+    {
+      "id": "iconify",
+      "name": "Iconify",
+      "url": "https://iconify.design",
+      "license": "Apache-2.0",
+      "api": "https://api.iconify.design"
+    }
+  ],
+  "assets": [
+    {
+      "id": "streamline:smiley-cute",
+      "file": "streamline_smiley-cute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "streamline:smiley-cute-remix",
+      "file": "streamline_smiley-cute-remix.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "streamline:smiley-cute-solid",
+      "file": "streamline_smiley-cute-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "streamline-color:smiley-cute",
+      "file": "streamline-color_smiley-cute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "streamline-color:smiley-cute-flat",
+      "file": "streamline-color_smiley-cute-flat.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "si:settings-cute-duotone",
+      "file": "si_settings-cute-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "si:settings-cute-fill",
+      "file": "si_settings-cute-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "si:settings-cute-line",
+      "file": "si_settings-cute-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "arcticons:cats-are-cute",
+      "file": "arcticons_cats-are-cute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols:acute",
+      "file": "material-symbols_acute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols:acute-outline",
+      "file": "material-symbols_acute-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols:acute-outline-rounded",
+      "file": "material-symbols_acute-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols:acute-rounded",
+      "file": "material-symbols_acute-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols-light:acute",
+      "file": "material-symbols-light_acute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols-light:acute-outline",
+      "file": "material-symbols-light_acute-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols-light:acute-outline-rounded",
+      "file": "material-symbols-light_acute-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "material-symbols-light:acute-rounded",
+      "file": "material-symbols-light_acute-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "hugeicons:acute",
+      "file": "hugeicons_acute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "mingcute:mingcute-fill",
+      "file": "mingcute_mingcute-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "mingcute:mingcute-line",
+      "file": "mingcute_mingcute-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "mdi:angle-acute",
+      "file": "mdi_angle-acute.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "cute"
+      ]
+    },
+    {
+      "id": "mdi:hand-heart",
+      "file": "mdi_hand-heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:book-heart",
+      "file": "mdi_book-heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:book-heart-outline",
+      "file": "mdi_book-heart-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:head-heart",
+      "file": "mdi_head-heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:head-heart-outline",
+      "file": "mdi_head-heart-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:heart-search",
+      "file": "mdi_heart-search.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:sofa-single",
+      "file": "mdi_sofa-single.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:sofa-single-outline",
+      "file": "mdi_sofa-single-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:robot-love",
+      "file": "mdi_robot-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mdi:robot-love-outline",
+      "file": "mdi_robot-love-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mingcute:love-fill",
+      "file": "mingcute_love-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "mingcute:love-line",
+      "file": "mingcute_love-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "dinkie-icons:love",
+      "file": "dinkie-icons_love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-kameleon-color:love",
+      "file": "streamline-kameleon-color_love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-kameleon-color:love-duo",
+      "file": "streamline-kameleon-color_love-duo.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-stickies-color:love",
+      "file": "streamline-stickies-color_love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-stickies-color:love-duo",
+      "file": "streamline-stickies-color_love-duo.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "hugeicons:in-love",
+      "file": "hugeicons_in-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "hugeicons:mask-love",
+      "file": "hugeicons_mask-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-cyber:in-love",
+      "file": "streamline-cyber_in-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-cyber-color:in-love",
+      "file": "streamline-cyber-color_in-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "iconoir:user-love",
+      "file": "iconoir_user-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "icon-park-outline:oval-love",
+      "file": "icon-park-outline_oval-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "streamline-pixel:hand-love",
+      "file": "streamline-pixel_hand-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "icon-park:oval-love",
+      "file": "icon-park_oval-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "game-icons:evil-love",
+      "file": "game-icons_evil-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "game-icons:love-howl",
+      "file": "game-icons_love-howl.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "game-icons:love-song",
+      "file": "game-icons_love-song.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "game-icons:self-love",
+      "file": "game-icons_self-love.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "openmoji:love-hotel",
+      "file": "openmoji_love-hotel.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "twemoji:love-hotel",
+      "file": "twemoji_love-hotel.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "noto:love-hotel",
+      "file": "noto_love-hotel.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "love"
+      ]
+    },
+    {
+      "id": "material-symbols:star",
+      "file": "material-symbols_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols:star-outline",
+      "file": "material-symbols_star-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols:star-outline-rounded",
+      "file": "material-symbols_star-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols:star-rounded",
+      "file": "material-symbols_star-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols-light:star",
+      "file": "material-symbols-light_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols-light:star-outline",
+      "file": "material-symbols-light_star-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols-light:star-outline-rounded",
+      "file": "material-symbols-light_star-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "material-symbols-light:star-rounded",
+      "file": "material-symbols-light_star-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ic:baseline-star",
+      "file": "ic_baseline-star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ic:outline-star",
+      "file": "ic_outline-star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ic:round-star",
+      "file": "ic_round-star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ic:sharp-star",
+      "file": "ic_sharp-star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ic:twotone-star",
+      "file": "ic_twotone-star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "mdi:star",
+      "file": "mdi_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "mdi:star-outline",
+      "file": "mdi_star-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "mdi-light:star",
+      "file": "mdi-light_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "line-md:star",
+      "file": "line-md_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "line-md:star-filled",
+      "file": "line-md_star-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "line-md:star-twotone",
+      "file": "line-md_star-twotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-bold",
+      "file": "solar_star-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-bold-duotone",
+      "file": "solar_star-bold-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-broken",
+      "file": "solar_star-broken.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-line-duotone",
+      "file": "solar_star-line-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-linear",
+      "file": "solar_star-linear.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "solar:star-outline",
+      "file": "solar_star-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "tabler:star",
+      "file": "tabler_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "tabler:star-filled",
+      "file": "tabler_star-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "boxicons:star",
+      "file": "boxicons_star.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "boxicons:star-filled",
+      "file": "boxicons_star-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "mingcute:star-fill",
+      "file": "mingcute_star-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "mingcute:star-line",
+      "file": "mingcute_star-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "ri:star-fill",
+      "file": "ri_star-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "star"
+      ]
+    },
+    {
+      "id": "zondicons:text-decoration",
+      "file": "zondicons_text-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "openmoji:pine-decoration",
+      "file": "openmoji_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "openmoji:heart-decoration",
+      "file": "openmoji_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "twemoji:pine-decoration",
+      "file": "twemoji_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "twemoji:heart-decoration",
+      "file": "twemoji_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "noto:pine-decoration",
+      "file": "noto_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "noto:heart-decoration",
+      "file": "noto_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fluent-emoji-flat:pine-decoration",
+      "file": "fluent-emoji-flat_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fluent-emoji-flat:heart-decoration",
+      "file": "fluent-emoji-flat_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fluent-emoji-high-contrast:pine-decoration",
+      "file": "fluent-emoji-high-contrast_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fluent-emoji-high-contrast:heart-decoration",
+      "file": "fluent-emoji-high-contrast_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "noto-v1:pine-decoration",
+      "file": "noto-v1_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "noto-v1:heart-decoration",
+      "file": "noto-v1_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione:pine-decoration",
+      "file": "emojione_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione:heart-decoration",
+      "file": "emojione_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione-monotone:pine-decoration",
+      "file": "emojione-monotone_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione-monotone:heart-decoration",
+      "file": "emojione-monotone_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione-v1:pine-decoration",
+      "file": "emojione-v1_pine-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "emojione-v1:heart-decoration",
+      "file": "emojione-v1_heart-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "streamline-ultimate:party-decoration",
+      "file": "streamline-ultimate_party-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "streamline-ultimate:party-decoration-bold",
+      "file": "streamline-ultimate_party-decoration-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "streamline-ultimate-color:party-decoration",
+      "file": "streamline-ultimate-color_party-decoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "streamline-freehand:party-decoration-banner-1",
+      "file": "streamline-freehand_party-decoration-banner-1.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "streamline-freehand-color:party-decoration-banner-1",
+      "file": "streamline-freehand-color_party-decoration-banner-1.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fxemoji:pinedecoration",
+      "file": "fxemoji_pinedecoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "fxemoji:heartdecoration",
+      "file": "fxemoji_heartdecoration.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "decoration"
+      ]
+    },
+    {
+      "id": "material-symbols:step",
+      "file": "material-symbols_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-rounded",
+      "file": "material-symbols_step-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-out",
+      "file": "material-symbols_step-out.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-out-rounded",
+      "file": "material-symbols_step-out-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-into",
+      "file": "material-symbols_step-into.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-into-rounded",
+      "file": "material-symbols_step-into-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-over",
+      "file": "material-symbols_step-over.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:step-over-rounded",
+      "file": "material-symbols_step-over-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step",
+      "file": "material-symbols-light_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step-rounded",
+      "file": "material-symbols-light_step-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step-out",
+      "file": "material-symbols-light_step-out.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step-out-rounded",
+      "file": "material-symbols-light_step-out-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step-into",
+      "file": "material-symbols-light_step-into.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols-light:step-into-rounded",
+      "file": "material-symbols-light_step-into-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-16-filled",
+      "file": "fluent_step-16-filled.svg",
+      "width": 16,
+      "height": 16,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-16-regular",
+      "file": "fluent_step-16-regular.svg",
+      "width": 16,
+      "height": 16,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-20-filled",
+      "file": "fluent_step-20-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-20-regular",
+      "file": "fluent_step-20-regular.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-24-filled",
+      "file": "fluent_step-24-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent:step-24-regular",
+      "file": "fluent_step-24-regular.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "arcticons:step",
+      "file": "arcticons_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "token:step",
+      "file": "token_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "token-branded:step",
+      "file": "token-branded_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "gis:step",
+      "file": "gis_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "gis:step-o",
+      "file": "gis_step-o.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "fluent-mdl2:step",
+      "file": "fluent-mdl2_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "subway:step",
+      "file": "subway_step.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "subway:step-1",
+      "file": "subway_step-1.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "subway:step-2",
+      "file": "subway_step-2.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "tabler:step-out",
+      "file": "tabler_step-out.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "hugeicons:step-out",
+      "file": "hugeicons_step-out.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "qlementine-icons:step-out-16",
+      "file": "qlementine-icons_step-out-16.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "step"
+      ]
+    },
+    {
+      "id": "material-symbols:check",
+      "file": "material-symbols_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "material-symbols:check-rounded",
+      "file": "material-symbols_check-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "material-symbols-light:check",
+      "file": "material-symbols-light_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "material-symbols-light:check-rounded",
+      "file": "material-symbols-light_check-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ic:baseline-check",
+      "file": "ic_baseline-check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ic:outline-check",
+      "file": "ic_outline-check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ic:round-check",
+      "file": "ic_round-check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ic:sharp-check",
+      "file": "ic_sharp-check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ic:twotone-check",
+      "file": "ic_twotone-check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mdi:check",
+      "file": "mdi_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mdi:check-bold",
+      "file": "mdi_check-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mdi:check-outline",
+      "file": "mdi_check-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mdi-light:check",
+      "file": "mdi-light_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "tabler:check",
+      "file": "tabler_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "tabler:check-filled",
+      "file": "tabler_check-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "boxicons:check",
+      "file": "boxicons_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "boxicons:check-filled",
+      "file": "boxicons_check-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mingcute:check-fill",
+      "file": "mingcute_check-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mingcute:check-line",
+      "file": "mingcute_check-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ri:check-fill",
+      "file": "ri_check-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "ri:check-line",
+      "file": "ri_check-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mynaui:check",
+      "file": "mynaui_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mynaui:check-solid",
+      "file": "mynaui_check-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check",
+      "file": "iconamoon_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check-bold",
+      "file": "iconamoon_check-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check-duotone",
+      "file": "iconamoon_check-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check-fill",
+      "file": "iconamoon_check-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check-light",
+      "file": "iconamoon_check-light.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconamoon:check-thin",
+      "file": "iconamoon_check-thin.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "iconoir:check",
+      "file": "iconoir_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "lucide:check",
+      "file": "lucide_check.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "lucide:check-line",
+      "file": "lucide_check-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "check"
+      ]
+    },
+    {
+      "id": "mdi:redo",
+      "file": "mdi_redo.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "mdi:arrow-up",
+      "file": "mdi_arrow-up.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "mdi:arrow-up-bold",
+      "file": "mdi_arrow-up-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "mdi:arrow-up-thin",
+      "file": "mdi_arrow-up-thin.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "uil:arrow",
+      "file": "uil_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "weui:arrow-filled",
+      "file": "weui_arrow-filled.svg",
+      "width": 12,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "weui:arrow-outlined",
+      "file": "weui_arrow-outlined.svg",
+      "width": 12,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow",
+      "file": "glyphs_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow-bold",
+      "file": "glyphs_arrow-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow-duo",
+      "file": "glyphs_arrow-duo.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow-outline",
+      "file": "glyphs_arrow-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow-round",
+      "file": "glyphs_arrow-round.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs:arrow-solid",
+      "file": "glyphs_arrow-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs-poly:arrow",
+      "file": "glyphs-poly_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs-poly:arrow-round",
+      "file": "glyphs-poly_arrow-round.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "glyphs-poly:arrow-solid",
+      "file": "glyphs-poly_arrow-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "teenyicons:arrow-outline",
+      "file": "teenyicons_arrow-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "teenyicons:arrow-solid",
+      "file": "teenyicons_arrow-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "clarity:arrow-line",
+      "file": "clarity_arrow-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "memory:arrow",
+      "file": "memory_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "maki:arrow",
+      "file": "maki_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "gis:arrow",
+      "file": "gis_arrow.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "gis:arrow-o",
+      "file": "gis_arrow-o.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "fontisto:arrow-h",
+      "file": "fontisto_arrow-h.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "fontisto:arrow-v",
+      "file": "fontisto_arrow-v.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-1",
+      "file": "subway_round-arrow-1.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-2",
+      "file": "subway_round-arrow-2.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-3",
+      "file": "subway_round-arrow-3.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-4",
+      "file": "subway_round-arrow-4.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-5",
+      "file": "subway_round-arrow-5.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "subway:round-arrow-6",
+      "file": "subway_round-arrow-6.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "mdi-light:arrow-up",
+      "file": "mdi-light_arrow-up.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "arrow"
+      ]
+    },
+    {
+      "id": "material-symbols:draft",
+      "file": "material-symbols_draft.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols:draft-outline",
+      "file": "material-symbols_draft-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols:draft-outline-rounded",
+      "file": "material-symbols_draft-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols:draft-outline-sharp",
+      "file": "material-symbols_draft-outline-sharp.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols:draft-rounded",
+      "file": "material-symbols_draft-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols:draft-sharp",
+      "file": "material-symbols_draft-sharp.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft",
+      "file": "material-symbols-light_draft.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft-outline",
+      "file": "material-symbols-light_draft-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft-outline-rounded",
+      "file": "material-symbols-light_draft-outline-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft-outline-sharp",
+      "file": "material-symbols-light_draft-outline-sharp.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft-rounded",
+      "file": "material-symbols-light_draft-rounded.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "material-symbols-light:draft-sharp",
+      "file": "material-symbols-light_draft-sharp.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ic:baseline-note",
+      "file": "ic_baseline-note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ic:outline-note",
+      "file": "ic_outline-note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ic:round-note",
+      "file": "ic_round-note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ic:sharp-note",
+      "file": "ic_sharp-note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ic:twotone-note",
+      "file": "ic_twotone-note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "mdi:note",
+      "file": "mdi_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "mdi:note-outline",
+      "file": "mdi_note-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "mdi-light:note",
+      "file": "mdi-light_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "tabler:note",
+      "file": "tabler_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "boxicons:note",
+      "file": "boxicons_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "boxicons:note-filled",
+      "file": "boxicons_note-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "pixelarticons:note",
+      "file": "pixelarticons_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "pixelarticons:note-sharp",
+      "file": "pixelarticons_note-sharp.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "ci:note",
+      "file": "ci_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "proicons:note",
+      "file": "proicons_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "humbleicons:note",
+      "file": "humbleicons_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "weui:note-filled",
+      "file": "weui_note-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "weui:note-outlined",
+      "file": "weui_note-outlined.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "hugeicons:note",
+      "file": "hugeicons_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "mage:note",
+      "file": "mage_note.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "note"
+      ]
+    },
+    {
+      "id": "mdi:heart",
+      "file": "mdi_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mdi:heart-outline",
+      "file": "mdi_heart-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mdi-light:heart",
+      "file": "mdi-light_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "line-md:heart",
+      "file": "line-md_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "line-md:heart-filled",
+      "file": "line-md_heart-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "line-md:heart-twotone",
+      "file": "line-md_heart-twotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-bold",
+      "file": "solar_heart-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-bold-duotone",
+      "file": "solar_heart-bold-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-broken",
+      "file": "solar_heart-broken.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-line-duotone",
+      "file": "solar_heart-line-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-linear",
+      "file": "solar_heart-linear.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "solar:heart-outline",
+      "file": "solar_heart-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "tabler:heart",
+      "file": "tabler_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "tabler:heart-filled",
+      "file": "tabler_heart-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "boxicons:heart",
+      "file": "boxicons_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "boxicons:heart-filled",
+      "file": "boxicons_heart-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mingcute:heart-fill",
+      "file": "mingcute_heart-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mingcute:heart-line",
+      "file": "mingcute_heart-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "ri:heart-fill",
+      "file": "ri_heart-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "ri:heart-line",
+      "file": "ri_heart-line.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mynaui:heart",
+      "file": "mynaui_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "mynaui:heart-solid",
+      "file": "mynaui_heart-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart",
+      "file": "iconamoon_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart-bold",
+      "file": "iconamoon_heart-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart-duotone",
+      "file": "iconamoon_heart-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart-fill",
+      "file": "iconamoon_heart-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart-light",
+      "file": "iconamoon_heart-light.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconamoon:heart-thin",
+      "file": "iconamoon_heart-thin.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconoir:heart",
+      "file": "iconoir_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "iconoir:heart-solid",
+      "file": "iconoir_heart-solid.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "lucide:heart",
+      "file": "lucide_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "uil:heart",
+      "file": "uil_heart.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "heart"
+      ]
+    },
+    {
+      "id": "tabler:sparkle",
+      "file": "tabler_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "boxicons:sparkle",
+      "file": "boxicons_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "boxicons:sparkle-filled",
+      "file": "boxicons_sparkle-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "lucide:sparkle",
+      "file": "lucide_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "pixelarticons:sparkle",
+      "file": "pixelarticons_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "proicons:sparkle",
+      "file": "proicons_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "meteor-icons:sparkle",
+      "file": "meteor-icons_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-16-filled",
+      "file": "fluent_sparkle-16-filled.svg",
+      "width": 16,
+      "height": 16,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-16-regular",
+      "file": "fluent_sparkle-16-regular.svg",
+      "width": 16,
+      "height": 16,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-20-filled",
+      "file": "fluent_sparkle-20-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-20-regular",
+      "file": "fluent_sparkle-20-regular.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-24-filled",
+      "file": "fluent_sparkle-24-filled.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-24-regular",
+      "file": "fluent_sparkle-24-regular.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-28-filled",
+      "file": "fluent_sparkle-28-filled.svg",
+      "width": 28,
+      "height": 28,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-28-regular",
+      "file": "fluent_sparkle-28-regular.svg",
+      "width": 28,
+      "height": 28,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-32-filled",
+      "file": "fluent_sparkle-32-filled.svg",
+      "width": 32,
+      "height": 32,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-32-regular",
+      "file": "fluent_sparkle-32-regular.svg",
+      "width": 32,
+      "height": 32,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-48-filled",
+      "file": "fluent_sparkle-48-filled.svg",
+      "width": 48,
+      "height": 48,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "fluent:sparkle-48-regular",
+      "file": "fluent_sparkle-48-regular.svg",
+      "width": 48,
+      "height": 48,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle",
+      "file": "ph_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle-bold",
+      "file": "ph_sparkle-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle-duotone",
+      "file": "ph_sparkle-duotone.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle-fill",
+      "file": "ph_sparkle-fill.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle-light",
+      "file": "ph_sparkle-light.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "ph:sparkle-thin",
+      "file": "ph_sparkle-thin.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "glyphs:sparkle",
+      "file": "glyphs_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "glyphs:sparkle-bold",
+      "file": "glyphs_sparkle-bold.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "glyphs:sparkle-duo",
+      "file": "glyphs_sparkle-duo.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "glyphs:sparkle-outline",
+      "file": "glyphs_sparkle-outline.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "glyphs-poly:sparkle",
+      "file": "glyphs-poly_sparkle.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "octicon:sparkle-16",
+      "file": "octicon_sparkle-16.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    },
+    {
+      "id": "octicon:sparkle-24",
+      "file": "octicon_sparkle-24.svg",
+      "width": 24,
+      "height": 24,
+      "source": "iconify",
+      "tags": [
+        "sparkle"
+      ]
+    }
+  ],
+  "tagIndex": {
+    "cute": [
+      "streamline:smiley-cute",
+      "streamline:smiley-cute-remix",
+      "streamline:smiley-cute-solid",
+      "streamline-color:smiley-cute",
+      "streamline-color:smiley-cute-flat",
+      "si:settings-cute-duotone",
+      "si:settings-cute-fill",
+      "si:settings-cute-line",
+      "arcticons:cats-are-cute",
+      "material-symbols:acute",
+      "material-symbols:acute-outline",
+      "material-symbols:acute-outline-rounded",
+      "material-symbols:acute-rounded",
+      "material-symbols-light:acute",
+      "material-symbols-light:acute-outline",
+      "material-symbols-light:acute-outline-rounded",
+      "material-symbols-light:acute-rounded",
+      "hugeicons:acute",
+      "mingcute:mingcute-fill",
+      "mingcute:mingcute-line",
+      "mdi:angle-acute"
+    ],
+    "love": [
+      "mdi:hand-heart",
+      "mdi:book-heart",
+      "mdi:book-heart-outline",
+      "mdi:head-heart",
+      "mdi:head-heart-outline",
+      "mdi:heart-search",
+      "mdi:sofa-single",
+      "mdi:sofa-single-outline",
+      "mdi:robot-love",
+      "mdi:robot-love-outline",
+      "mingcute:love-fill",
+      "mingcute:love-line",
+      "dinkie-icons:love",
+      "streamline-kameleon-color:love",
+      "streamline-kameleon-color:love-duo",
+      "streamline-stickies-color:love",
+      "streamline-stickies-color:love-duo",
+      "hugeicons:in-love",
+      "hugeicons:mask-love",
+      "streamline-cyber:in-love",
+      "streamline-cyber-color:in-love",
+      "iconoir:user-love",
+      "icon-park-outline:oval-love",
+      "streamline-pixel:hand-love",
+      "icon-park:oval-love",
+      "game-icons:evil-love",
+      "game-icons:love-howl",
+      "game-icons:love-song",
+      "game-icons:self-love",
+      "openmoji:love-hotel",
+      "twemoji:love-hotel",
+      "noto:love-hotel"
+    ],
+    "star": [
+      "material-symbols:star",
+      "material-symbols:star-outline",
+      "material-symbols:star-outline-rounded",
+      "material-symbols:star-rounded",
+      "material-symbols-light:star",
+      "material-symbols-light:star-outline",
+      "material-symbols-light:star-outline-rounded",
+      "material-symbols-light:star-rounded",
+      "ic:baseline-star",
+      "ic:outline-star",
+      "ic:round-star",
+      "ic:sharp-star",
+      "ic:twotone-star",
+      "mdi:star",
+      "mdi:star-outline",
+      "mdi-light:star",
+      "line-md:star",
+      "line-md:star-filled",
+      "line-md:star-twotone",
+      "solar:star-bold",
+      "solar:star-bold-duotone",
+      "solar:star-broken",
+      "solar:star-line-duotone",
+      "solar:star-linear",
+      "solar:star-outline",
+      "tabler:star",
+      "tabler:star-filled",
+      "boxicons:star",
+      "boxicons:star-filled",
+      "mingcute:star-fill",
+      "mingcute:star-line",
+      "ri:star-fill"
+    ],
+    "decoration": [
+      "zondicons:text-decoration",
+      "openmoji:pine-decoration",
+      "openmoji:heart-decoration",
+      "twemoji:pine-decoration",
+      "twemoji:heart-decoration",
+      "noto:pine-decoration",
+      "noto:heart-decoration",
+      "fluent-emoji-flat:pine-decoration",
+      "fluent-emoji-flat:heart-decoration",
+      "fluent-emoji-high-contrast:pine-decoration",
+      "fluent-emoji-high-contrast:heart-decoration",
+      "noto-v1:pine-decoration",
+      "noto-v1:heart-decoration",
+      "emojione:pine-decoration",
+      "emojione:heart-decoration",
+      "emojione-monotone:pine-decoration",
+      "emojione-monotone:heart-decoration",
+      "emojione-v1:pine-decoration",
+      "emojione-v1:heart-decoration",
+      "streamline-ultimate:party-decoration",
+      "streamline-ultimate:party-decoration-bold",
+      "streamline-ultimate-color:party-decoration",
+      "streamline-freehand:party-decoration-banner-1",
+      "streamline-freehand-color:party-decoration-banner-1",
+      "fxemoji:pinedecoration",
+      "fxemoji:heartdecoration"
+    ],
+    "step": [
+      "material-symbols:step",
+      "material-symbols:step-rounded",
+      "material-symbols:step-out",
+      "material-symbols:step-out-rounded",
+      "material-symbols:step-into",
+      "material-symbols:step-into-rounded",
+      "material-symbols:step-over",
+      "material-symbols:step-over-rounded",
+      "material-symbols-light:step",
+      "material-symbols-light:step-rounded",
+      "material-symbols-light:step-out",
+      "material-symbols-light:step-out-rounded",
+      "material-symbols-light:step-into",
+      "material-symbols-light:step-into-rounded",
+      "fluent:step-16-filled",
+      "fluent:step-16-regular",
+      "fluent:step-20-filled",
+      "fluent:step-20-regular",
+      "fluent:step-24-filled",
+      "fluent:step-24-regular",
+      "arcticons:step",
+      "token:step",
+      "token-branded:step",
+      "gis:step",
+      "gis:step-o",
+      "fluent-mdl2:step",
+      "subway:step",
+      "subway:step-1",
+      "subway:step-2",
+      "tabler:step-out",
+      "hugeicons:step-out",
+      "qlementine-icons:step-out-16"
+    ],
+    "check": [
+      "material-symbols:check",
+      "material-symbols:check-rounded",
+      "material-symbols-light:check",
+      "material-symbols-light:check-rounded",
+      "ic:baseline-check",
+      "ic:outline-check",
+      "ic:round-check",
+      "ic:sharp-check",
+      "ic:twotone-check",
+      "mdi:check",
+      "mdi:check-bold",
+      "mdi:check-outline",
+      "mdi-light:check",
+      "tabler:check",
+      "tabler:check-filled",
+      "boxicons:check",
+      "boxicons:check-filled",
+      "mingcute:check-fill",
+      "mingcute:check-line",
+      "ri:check-fill",
+      "ri:check-line",
+      "mynaui:check",
+      "mynaui:check-solid",
+      "iconamoon:check",
+      "iconamoon:check-bold",
+      "iconamoon:check-duotone",
+      "iconamoon:check-fill",
+      "iconamoon:check-light",
+      "iconamoon:check-thin",
+      "iconoir:check",
+      "lucide:check",
+      "lucide:check-line"
+    ],
+    "arrow": [
+      "mdi:redo",
+      "mdi:arrow-up",
+      "mdi:arrow-up-bold",
+      "mdi:arrow-up-thin",
+      "uil:arrow",
+      "weui:arrow-filled",
+      "weui:arrow-outlined",
+      "glyphs:arrow",
+      "glyphs:arrow-bold",
+      "glyphs:arrow-duo",
+      "glyphs:arrow-outline",
+      "glyphs:arrow-round",
+      "glyphs:arrow-solid",
+      "glyphs-poly:arrow",
+      "glyphs-poly:arrow-round",
+      "glyphs-poly:arrow-solid",
+      "teenyicons:arrow-outline",
+      "teenyicons:arrow-solid",
+      "clarity:arrow-line",
+      "memory:arrow",
+      "maki:arrow",
+      "gis:arrow",
+      "gis:arrow-o",
+      "fontisto:arrow-h",
+      "fontisto:arrow-v",
+      "subway:round-arrow-1",
+      "subway:round-arrow-2",
+      "subway:round-arrow-3",
+      "subway:round-arrow-4",
+      "subway:round-arrow-5",
+      "subway:round-arrow-6",
+      "mdi-light:arrow-up"
+    ],
+    "note": [
+      "material-symbols:draft",
+      "material-symbols:draft-outline",
+      "material-symbols:draft-outline-rounded",
+      "material-symbols:draft-outline-sharp",
+      "material-symbols:draft-rounded",
+      "material-symbols:draft-sharp",
+      "material-symbols-light:draft",
+      "material-symbols-light:draft-outline",
+      "material-symbols-light:draft-outline-rounded",
+      "material-symbols-light:draft-outline-sharp",
+      "material-symbols-light:draft-rounded",
+      "material-symbols-light:draft-sharp",
+      "ic:baseline-note",
+      "ic:outline-note",
+      "ic:round-note",
+      "ic:sharp-note",
+      "ic:twotone-note",
+      "mdi:note",
+      "mdi:note-outline",
+      "mdi-light:note",
+      "tabler:note",
+      "boxicons:note",
+      "boxicons:note-filled",
+      "pixelarticons:note",
+      "pixelarticons:note-sharp",
+      "ci:note",
+      "proicons:note",
+      "humbleicons:note",
+      "weui:note-filled",
+      "weui:note-outlined",
+      "hugeicons:note",
+      "mage:note"
+    ],
+    "heart": [
+      "mdi:heart",
+      "mdi:heart-outline",
+      "mdi-light:heart",
+      "line-md:heart",
+      "line-md:heart-filled",
+      "line-md:heart-twotone",
+      "solar:heart-bold",
+      "solar:heart-bold-duotone",
+      "solar:heart-broken",
+      "solar:heart-line-duotone",
+      "solar:heart-linear",
+      "solar:heart-outline",
+      "tabler:heart",
+      "tabler:heart-filled",
+      "boxicons:heart",
+      "boxicons:heart-filled",
+      "mingcute:heart-fill",
+      "mingcute:heart-line",
+      "ri:heart-fill",
+      "ri:heart-line",
+      "mynaui:heart",
+      "mynaui:heart-solid",
+      "iconamoon:heart",
+      "iconamoon:heart-bold",
+      "iconamoon:heart-duotone",
+      "iconamoon:heart-fill",
+      "iconamoon:heart-light",
+      "iconamoon:heart-thin",
+      "iconoir:heart",
+      "iconoir:heart-solid",
+      "lucide:heart",
+      "uil:heart"
+    ],
+    "sparkle": [
+      "tabler:sparkle",
+      "boxicons:sparkle",
+      "boxicons:sparkle-filled",
+      "lucide:sparkle",
+      "pixelarticons:sparkle",
+      "proicons:sparkle",
+      "meteor-icons:sparkle",
+      "fluent:sparkle-16-filled",
+      "fluent:sparkle-16-regular",
+      "fluent:sparkle-20-filled",
+      "fluent:sparkle-20-regular",
+      "fluent:sparkle-24-filled",
+      "fluent:sparkle-24-regular",
+      "fluent:sparkle-28-filled",
+      "fluent:sparkle-28-regular",
+      "fluent:sparkle-32-filled",
+      "fluent:sparkle-32-regular",
+      "fluent:sparkle-48-filled",
+      "fluent:sparkle-48-regular",
+      "ph:sparkle",
+      "ph:sparkle-bold",
+      "ph:sparkle-duotone",
+      "ph:sparkle-fill",
+      "ph:sparkle-light",
+      "ph:sparkle-thin",
+      "glyphs:sparkle",
+      "glyphs:sparkle-bold",
+      "glyphs:sparkle-duo",
+      "glyphs:sparkle-outline",
+      "glyphs-poly:sparkle",
+      "octicon:sparkle-16",
+      "octicon:sparkle-24"
+    ]
+  }
+}

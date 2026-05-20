@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.6-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.7-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 <p align="center"><a href="README.en.md"><b>English</b></a> | <b>中文</b></p>
@@ -57,9 +57,9 @@
 | 🔗 **设计系统桥接器** | design.md → renderer 自动转换，17 个种子设计系统 |
 | 🕷️ **CSS 变量提取器** | 从 CSS/HTML/JSX 中提取自定义属性，映射到设计 token 语义 |
 | 🧩 **组件库识别器** | 自动检测 Tailwind/Bootstrap/MUI/Ant Design 等 12 种 UI 框架 |
-| 🎯 **端到端 Demo** | node demo.js "需求" --style stripe 一句话生成完整 HTML 页面 |
+| 🎯 **端到端 Demo** | node engine/cli.js generate --prompt "需求" --style stripe 一句话生成完整 HTML 页面 |
 
-### v0.5 新增能力
+### v0.6 新增能力
 
 | 功能 | 说明 |
 |------|------|
@@ -68,23 +68,26 @@
 | 🧬 **规则自适应** | 接受率高→权重↑，被覆盖→权重↓，长期不用→衰减，自动进化 |
 | 🔀 **跨系统风格混合** | 内置风格 × 学习风格的混合，自动推荐最佳比例 |
 | 📦 **批量学习管道** | 增量学习 + 质量过滤 + 去重，支持批量抓取设计系统 |
-
-### 🆕 v0.6 新增能力
-
-<p align="center">
-  <img src="docs/assets/v06-showcase.png" alt="6 Built-in Styles" width="100%">
-</p>
-
-| 功能 | 说明 |
-|------|------|
 | 🌳 **DesignTree 数据结构** | 三层结构：DesignNode → DesignTree → DesignProject，标准化设计产出 |
 | 🧩 **20+ 组件模板库** | 导航栏、Hero、功能卡片、价格表、FAQ、时间线、画廊、订阅表单、团队成员、行动号召等 |
 | 📐 **响应式布局引擎** | 自动检测 Grid/Flex 布局，生成 768px/480px 两个断点的媒体查询 |
-| 🔌 **COVE 协议接口** | 10 个标准化接口：createProject / parseIntent / generateTree / renderHTML / renderPreview / listStyles / mixStyles / listComponents / getNode / updateNode |
+| 🔌 **COVE 协议接口** | 11 个标准化接口：generatePreview / generateTree / getNodeById / updateNode / insertNode / deleteNode / listNodes / exportTree / importTree / generateFragment / listStyles |
 | 🧠 **意图解析器** | 自然语言 → 结构化设计意图（页面类型 + 组件列表 + 风格偏好），支持 10+ 页面类型 |
 | 🎨 **6 种风格引擎** | minimalism / cyberpunk / warmth / scandinavian / luxury / playful，每种含完整调性向量 |
 
-**v0.6 核心突破**：从"一次性生成 HTML"升级为"结构化 DesignTree → HTML 双输出"，为后续 GUI 画布编辑和 NightShift 集成奠定基础。
+### 🆕 v0.7 新增能力
+
+| 功能 | 说明 |
+|------|------|
+| 🎨 **风格包系统** | 可扩展的风格包架构，每个风格包含多个调色板变体（如 cyberpunk:neon-cyan、cyberpunk:neon-magenta） |
+| 📦 **StylePackLoader** | 风格包加载器，支持从 `style-packs/` 目录动态加载风格包 |
+| 🎯 **调性向量自动推导** | 从风格包的色彩特征自动推导 4 维调性向量（formality/warmth/complexity/innovation） |
+| 🔀 **风格包混合** | 支持风格包 ID（如 `cyberpunk:neon-cyan`）参与混合和相似度计算 |
+| 📱 **卡片模板系统** | 6 种社交媒体卡片模板（小红书/Instagram/微博/Twitter/LinkedIn/通用），支持风格包渲染 |
+| 🔌 **COVE 协议扩展** | 新增 `getStyle`、`getPack`、`listPacks` 接口，支持风格包查询 |
+| 🧩 **CLI 风格包命令** | `list`、`mix-pairs`、`card` 命令全面支持风格包 ID |
+
+**v0.7 核心突破**：从"固定风格库"升级为"可扩展风格包系统"，为社区风格市场和用户自定义风格奠定基础。
 
 ---
 
@@ -97,6 +100,7 @@ DesignSeed/
 │   ├── renderer.js      #   Prompt → HTML 渲染器
 │   ├── tree-renderer.js #   🌳 DesignNode → HTML 渲染器（v0.6）
 │   ├── mixer.js         #   风格混合引擎（向量插值）
+│   ├── style-pack-loader.js # 🎨 风格包加载器（v0.7）
 │   ├── seed-design-systems.js  # 15 个种子设计系统数据
 │   ├── device-frames.js #   📱 设备框架
 │   ├── layouts.js       #   🖥️ 复杂 UI 布局
@@ -106,13 +110,17 @@ DesignSeed/
 │   ├── design-philosophy.js # 💡 设计方向顾问
 │   ├── expert-review.js #   🔍 专家评审引擎
 │   ├── anti-ai-slop.js  #   🚫 反 AI Slop 检查
-│   ├── intent-parser.js #   🧠 意图解析器（v0.6）
-│   ├── component-library.js # 🧩 组件模板库（v0.6, 20+组件）
-│   ├── layout-engine.js #   📐 响应式布局引擎（v0.6）
-│   ├── style-engine.js  #   🎨 风格引擎（v0.6, 6种风格）
-│   ├── cove-protocol.js #   🔌 COVE 协议实现（v0.6, 10接口）
+│   ├── cove-protocol.js #   🔌 COVE 协议实现
+│   ├── card-templates/  #   📱 卡片模板系统（v0.7）
+│   │   ├── index.js     #     模板注册与匹配
+│   │   ├── renderer.js  #     卡片渲染器
+│   │   └── data/        #     6 种社交媒体卡片模板
 │   ├── templates/       #   12 种风格定义
 │   └── components/      #   基础 UI 组件库
+├── style-packs/         # 🎨 风格包目录（v0.7）
+│   └── cyberpunk/       #   示例：赛博朋克风格包
+│       ├── pack.json    #     风格包元数据
+│       └── palettes/    #     调色板变体
 ├── crawler/             # 🕷️ 设计爬虫
 ├── memory/              # 🧠 嵌入式记忆
 ├── rules/               # 🛡️ 美学规则引擎
@@ -138,6 +146,12 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 
 > "用 Stripe 的风格做一个定价页面，但颜色换成绿色系"
 
+### 风格包使用
+
+> "用 cyberpunk:neon-cyan 风格生成一个登录页面"
+
+> "混合 cyberpunk:neon-cyan 和 minimalism，比例 7:3"
+
 ### 设计评审
 
 > "帮我检查一下这个页面的设计质量"
@@ -156,6 +170,38 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 | **Android** | Pixel 9 Pro | 412×915 | Pill 打孔 |
 | **Android** | Samsung S24 | 360×780 | 圆形打孔 |
 | **Android** | Xiaomi 15 | 400×880 | 圆形打孔 |
+
+---
+
+## 🎨 风格包系统
+
+### 内置风格（12 种）
+
+| 风格 | 调性 | 适用场景 |
+|------|------|----------|
+| **minimalism** | 极简 · 现代 · 专业 | 企业官网、SaaS 产品 |
+| **cyberpunk** | 科技 · 未来 · 暗色 | 游戏、科技产品、NFT |
+| **warmth** | 温暖 · 友好 · 自然 | 生活方式、电商、社交 |
+| **scandinavian** | 简约 · 自然 · 北欧 | 家居、设计、教育 |
+| **luxury** | 高端 · 奢华 · 精致 | 奢侈品、金融、VIP |
+| **playful** | 活泼 · 创意 · 趣味 | 儿童、娱乐、创意 |
+| **neumorphism** | 柔和 · 立体 · 现代 | 工具类 App、控制面板 |
+| **glassmorphism** | 透明 · 模糊 · 时尚 | 登录页、展示页 |
+| **brutalism** | 原始 · 大胆 · 反叛 | 艺术、创意机构 |
+| **retro** | 复古 · 怀旧 · 温暖 | 咖啡馆、书店、博物馆 |
+| **organic** | 自然 · 有机 · 柔和 | 健康、环保、农业 |
+| **art-deco** | 装饰 · 复古 · 奢华 | 酒店、剧院、高端品牌 |
+
+### 风格包变体示例
+
+| 风格包 ID | 调色板 | 主色调 |
+|-----------|--------|--------|
+| `cyberpunk:neon-cyan` | 霓虹青 | `#00FFFF` |
+| `cyberpunk:neon-magenta` | 霓虹品红 | `#FF00FF` |
+| `cyberpunk:neon-green` | 霓虹绿 | `#39FF14` |
+| `cyberpunk:neon-orange` | 霓虹橙 | `#FF6700` |
+| `cyberpunk:neon-purple` | 霓虹紫 | `#BF00FF` |
+| `cyberpunk:neon-red` | 霓虹红 | `#FF0033` |
 
 ---
 
@@ -207,75 +253,4 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 - [x] 嵌入式记忆：SQLite 存储，EMA 偏好学习
 - [x] 美学规则引擎：7 条内置规则
 
-### v0.2 ✅ — 风格混合 + 知识积累
-- [x] 向量空间风格插值
-- [x] 15 个头部设计系统种子数据
-
-### v0.3 ✅ — 设计功能提升
-- [x] 设备框架 / 复杂 UI 布局 / 交互状态管理
-- [x] 真实图片 Sourcing / 品牌资产协议
-- [x] 设计方向顾问 / 专家评审引擎 / 反 AI Slop
-
-### v0.4 ✅ — design.md 格式 + 创作者基础
-- [x] design.md 格式规范 + 桥接器
-- [x] CSS 变量提取器 + 组件库识别器
-
-### v0.5 ✅ — 反馈闭环 + 规则自适应
-- [x] 三通道反馈收集 + 用户偏好档案
-- [x] 规则自适应 + 跨系统风格混合
-
-### v0.6 ✅ — DesignTree 引擎 + COVE 协议
-- [x] DesignTree 数据结构（DesignNode + DesignTree + DesignProject）
-- [x] 意图解析器（自然语言 → 结构化设计意图）
-- [x] 20+ 组件模板库 + 响应式布局引擎
-- [x] COVE 协议 10 个接口全部实现
-- [x] 6 种风格引擎 + 7 个 demo 全部通过
-
-### v0.7 📋 — GUI + Cove Canvas + NightShift Adapter
-- [ ] Tauri 桌面应用壳
-- [ ] Cove Canvas 前端（点击选中 + 高亮 + 属性面板）
-- [ ] AI Chat Bar（对话驱动修改）
-- [ ] 多页面管理 + 流式输出
-- [ ] API 冻结 + NightShift adapter（stdio/MCP）
-
-### v0.8 📋 — 进化引擎 + Nexus/RuleForge 联动
-- [ ] 风格深化 + 混合引擎升级
-- [ ] Nexus 记忆集成（设计偏好跨设备共享）
-- [ ] RuleForge 美学规则（约束生成 + 权重自适应）
-- [ ] 拖拽移动 + 多格式导出（HTML/React/Vue）
-
-### v1.0 🌟 — 独立产品
-- [ ] 独立服务化 + API 完全冻结 + 性能优化
-
-### v2.0 🌟 — 平台
-- [ ] 创作者经济 + 社区风格市场 + 飞轮效应
-
----
-
-## 🤝 贡献
-
-```bash
-git clone https://github.com/kialajin-l/DesignSeed.git
-cd DesignSeed
-npm install
-```
-
----
-
-## 📄 许可证
-
-MIT License
-
-## 🙏 致谢
-
-- [Claude Design](https://claude.ai) — 极简美学的灵感来源
-- [Xiaomi miclaw](https://github.com/XiaomiMiClaw) — AI 助手平台
-- [Model Context Protocol](https://modelcontextprotocol.io/) — AI Agent 标准化工具协议
-- [Ant Design](https://ant.design) — 企业级设计系统参考
-- [Material Design](https://m3.material.io) — Google 设计语言参考
-
----
-
-## 🌟 Star 历史
-
-[![Star History Chart](https://api.star-history.com/svg?repos=kialajin-l/DesignSeed&type=Date)](https://star-history.com/#kialajin-l/DesignSeed&Date)
+### v0

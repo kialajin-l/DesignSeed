@@ -1,6 +1,6 @@
 /**
  * DesignSeed — 统一导出
- * v0.3: 新增设备框架、复杂布局、交互状态、图片sourcing、品牌协议、设计哲学、专家评审、反AI slop
+ * v0.7: 新增风格包系统、装饰扩展、布局引擎、卡片模板、资源解析
  */
 
 const renderer = require('./renderer');
@@ -35,6 +35,25 @@ const expertReview = require('./expert-review');
 // v0.3 — 反 AI slop
 const antiAiSlop = require('./anti-ai-slop');
 
+// v0.7 — 装饰素材系统（基础 + 扩展）
+const decorations = require('./decorations');
+const decorationsExtra = require('./decorations-extra');
+
+// v0.7 — 布局引擎
+const layoutEngine = require('./layout-engine');
+
+// v0.7 — 网格布局
+const gridLayout = require('./grid-layout');
+
+// v0.7 — 风格包系统
+const stylePackLoader = require('./style-pack-loader');
+
+// v0.7 — 资源解析
+const assetResolver = require('./asset-resolver');
+
+// v0.7 — 卡片模板
+const cardTemplates = require('./card-templates');
+
 module.exports = {
   // 核心
   renderer,
@@ -54,4 +73,13 @@ module.exports = {
   designPhilosophy,
   expertReview,
   antiAiSlop,
+
+  // v0.7
+  decorations,
+  decorationsExtra,
+  layoutEngine,
+  gridLayout,
+  stylePackLoader,
+  assetResolver,
+  cardTemplates,
 };

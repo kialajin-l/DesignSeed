@@ -1,7 +1,7 @@
 ---
 name: DesignSeed
 description: "会生长的 AI 设计系统 — Agent-first HTML 设计引擎，12种内置风格 + 设计爬虫 + 嵌入式记忆 + 美学规则引擎 + DesignTree + COVE 协议"
-version: "0.6.0"
+version: "0.6.6"
 author: "kialajin"
 tags: ["design", "html", "css", "style", "crawler", "mcp", "cove", "designtree"]
 ---
@@ -12,7 +12,7 @@ tags: ["design", "html", "css", "style", "crawler", "mcp", "cove", "designtree"]
 
 1. **HTML 设计引擎** — 12 种内置风格 + 6 种风格引擎，Prompt → HTML
 2. **DesignTree 引擎** — 结构化设计产出（DesignNode → DesignTree → DesignProject）
-3. **COVE 协议** — 10 个标准化接口，支持 createProject / parseIntent / generateTree / renderHTML / renderPreview / listStyles / mixStyles / listComponents / getNode / updateNode
+3. **COVE 协议** — 11 个标准化接口：generatePreview / generateTree / getNodeById / updateNode / insertNode / deleteNode / listNodes / exportTree / importTree / generateFragment / listStyles
 4. **设计爬虫** — 从 GitHub/URL/本地文件学习设计系统
 5. **嵌入式记忆** — SQLite 存储生成记录和用户偏好
 6. **美学规则引擎** — WCAG 对比度、字号、色彩和谐等 7 条规则
@@ -61,38 +61,42 @@ const result = renderWithNodes(tree, { style: 'minimalism' });
 const html = applyResponsiveLayout(result.html, result.nodes);
 ```
 
-### COVE 协议接口（v0.6）
+### COVE 协议接口（v0.6.6）
 
 ```javascript
 const cove = require('./engine/cove-protocol');
 
-// 创建项目
-const project = cove.createProject({ name: 'My App', description: '...' });
+// 查看协议信息
+const info = cove.getProtocolInfo();
+// → { protocol: 'COVE-CANVAS-PROTOCOL', protocolVersion: '1.2', engineVersion: '0.6.6', capabilities: [...] }
 
-// 解析意图
-const intent = cove.parseIntent('做一个 Dashboard 页面');
+// 生成预览（prompt → HTML + DesignTree）
+const result = cove.generatePreview({ prompt: '做一个 Dashboard 页面', style: 'cyberpunk' });
+// result: { success: true, data: { html, tree, meta } }
 
-// 生成 DesignTree
-const tree = cove.generateTree(intent);
-
-// 渲染 HTML
-const html = cove.renderHTML(tree, { style: 'cyberpunk' });
-
-// 渲染预览
-const preview = cove.renderPreview(tree);
+// 生成 DesignTree（不含 HTML）
+const treeResult = cove.generateTree({ prompt: '做一个定价页面', style: 'minimalism' });
+// treeResult: { success: true, data: { tree, intent } }
 
 // 列出可用风格
 const styles = cove.listStyles();
+// styles: { success: true, data: { styles: [{ id, name, nameEn, tone }] } }
 
-// 混合风格
-const mixed = cove.mixStyles('minimalism', 'glassmorphism', { ratio: 0.7 });
+// 获取/更新/插入/删除节点
+const node = cove.getNodeById({ tree: treeResult.data.tree, nodeId: 'ds-xxx' });
+cove.updateNode({ tree, nodeId: 'ds-xxx', updates: { text: 'New Title' } });
+cove.insertNode({ tree, parentId: 'ds-xxx', node: { type: 'text', text: 'Hello' } });
+cove.deleteNode({ tree, nodeId: 'ds-xxx' });
 
-// 列出组件
-const components = cove.listComponents();
+// 列出所有节点
+const nodes = cove.listNodes({ tree });
 
-// 获取/更新节点
-const node = cove.getNode(tree, 'node-1');
-cove.updateNode(tree, 'node-1', { content: 'New Title' });
+// 导出/导入 DesignTree
+const exported = cove.exportTree({ tree });
+const imported = cove.importTree({ json: exported.data });
+
+// 生成 HTML 片段（不含全局样式）
+const fragment = cove.generateFragment({ tree, nodeId: 'ds-xxx' });
 ```
 
 ## 设计爬虫

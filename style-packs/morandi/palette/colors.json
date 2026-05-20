@@ -1,0 +1,73 @@
+{
+  "palettes": [
+    {
+      "id": "dusty-rose",
+      "name": "烟粉",
+      "background": "#F5F0EB",
+      "surface": "#EDE6DF",
+      "primary": "#8B7D72",
+      "secondary": "#C4A98A",
+      "text": "#4A4039",
+      "textSecondary": "#8B7D72",
+      "textOnBg": "#FFFFFF",
+      "border": "#DDD5CC",
+      "accent": "#C9907E",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #F5F0EB 0%, #EDE0D4 50%, #F5F0EB 100%)",
+        "card": "linear-gradient(180deg, #F5F0EB 0%, #EDE6DF 100%)",
+        "accent": "linear-gradient(135deg, #C9907E 0%, #C4A98A 100%)"
+      },
+      "shadows": {
+        "card": "0 2px 12px rgba(139,125,114,0.08)",
+        "elevated": "0 8px 32px rgba(139,125,114,0.12)",
+        "glow": "0 0 0 3px rgba(201,144,126,0.15)"
+      }
+    },
+    {
+      "id": "sage-green",
+      "name": "灰绿",
+      "background": "#EFF2ED",
+      "surface": "#E4E9E2",
+      "primary": "#5C6B5A",
+      "secondary": "#8FA08C",
+      "text": "#3A4239",
+      "textSecondary": "#6B7A69",
+      "textOnBg": "#FFFFFF",
+      "border": "#D0D8CE",
+      "accent": "#7A9B76",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #EFF2ED 0%, #DDE5DA 50%, #EFF2ED 100%)",
+        "card": "linear-gradient(180deg, #EFF2ED 0%, #E4E9E2 100%)",
+        "accent": "linear-gradient(135deg, #7A9B76 0%, #8FA08C 100%)"
+      },
+      "shadows": {
+        "card": "0 2px 12px rgba(92,107,90,0.08)",
+        "elevated": "0 8px 32px rgba(92,107,90,0.12)",
+        "glow": "0 0 0 3px rgba(122,155,118,0.15)"
+      }
+    },
+    {
+      "id": "slate-blue",
+      "name": "雾蓝",
+      "background": "#EEF0F4",
+      "surface": "#E3E6EC",
+      "primary": "#5A6478",
+      "secondary": "#8E99AD",
+      "text": "#3B4252",
+      "textSecondary": "#6B7590",
+      "textOnBg": "#FFFFFF",
+      "border": "#D0D5DE",
+      "accent": "#7B8FBF",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #EEF0F4 0%, #DDE2EB 50%, #EEF0F4 100%)",
+        "card": "linear-gradient(180deg, #EEF0F4 0%, #E3E6EC 100%)",
+        "accent": "linear-gradient(135deg, #7B8FBF 0%, #8E99AD 100%)"
+      },
+      "shadows": {
+        "card": "0 2px 12px rgba(90,100,120,0.08)",
+        "elevated": "0 8px 32px rgba(90,100,120,0.12)",
+        "glow": "0 0 0 3px rgba(123,143,191,0.15)"
+      }
+    }
+  ]
+}

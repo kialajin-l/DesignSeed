@@ -1,0 +1,83 @@
+{
+  "id": "wechat-biz",
+  "name": "公众号商务风",
+  "version": "0.1.0",
+  "description": "深色背景+科技感渐变，适合公众号封面、商务汇报、科技资讯",
+  "author": "DesignSeed",
+  "license": "CC-BY-4.0",
+  "tags": [
+    "公众号",
+    "商务",
+    "科技",
+    "深色",
+    "渐变"
+  ],
+  "platforms": [
+    "wechat",
+    "web"
+  ],
+  "canvasPresets": [
+    {
+      "name": "公众号封面",
+      "width": 900,
+      "height": 383
+    },
+    {
+      "name": "公众号长图",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "PPT宽屏",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "layouts": [
+    "hero-grid",
+    "zigzag",
+    "three-equal"
+  ],
+  "palettes": [
+    "deep-blue",
+    "midnight-purple"
+  ],
+  "mixable": true,
+  "priority": 0,
+  "bestFor": [
+    "公众号封面",
+    "商务汇报",
+    "科技资讯",
+    "产品发布"
+  ],
+  "mood": "科技、商务、深邃、渐变、高级",
+  "paletteDir": "palette",
+  "paletteCount": 2,
+  "fonts": [
+    {
+      "name": "Inter",
+      "source": "google",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ]
+    },
+    {
+      "name": "Noto Sans SC",
+      "source": "google",
+      "weights": [
+        400,
+        500,
+        700
+      ]
+    }
+  ],
+  "decorations": [
+    "corner-line",
+    "divider-gradient",
+    "tag-square",
+    "badge-circle"
+  ]
+}

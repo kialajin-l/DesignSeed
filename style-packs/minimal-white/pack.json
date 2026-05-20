@@ -1,0 +1,69 @@
+{
+  "id": "minimal-white",
+  "name": "极简白",
+  "nameEn": "Minimal White",
+  "version": "0.1.0",
+  "description": "纯白底+灰阶+单强调色，适用于个人博客、简历、产品展示、文档",
+  "tags": [
+    "极简",
+    "白色",
+    "博客",
+    "简历",
+    "产品页",
+    "文档"
+  ],
+  "paletteDir": "palette",
+  "paletteCount": 3,
+  "fonts": [
+    {
+      "name": "Inter",
+      "source": "google",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ]
+    },
+    {
+      "name": "Noto Sans SC",
+      "source": "google",
+      "weights": [
+        300,
+        400,
+        500,
+        700
+      ]
+    }
+  ],
+  "components": [
+    "header",
+    "hero",
+    "card",
+    "grid",
+    "zigzag",
+    "feature-plus-grid",
+    "stats",
+    "footer",
+    "button",
+    "nav",
+    "divider",
+    "quote",
+    "code-block",
+    "image-caption"
+  ],
+  "bestFor": [
+    "个人博客",
+    "产品着陆页",
+    "技术文档",
+    "简历",
+    "极简风公众号"
+  ],
+  "mood": "干净、克制、留白、专业",
+  "decorations": [
+    "divider-gradient",
+    "dot-grid",
+    "grid-subtle"
+  ]
+}

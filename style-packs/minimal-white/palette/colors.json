@@ -1,0 +1,73 @@
+{
+  "palettes": [
+    {
+      "id": "pure-white",
+      "name": "纯白",
+      "background": "#FFFFFF",
+      "surface": "#F8F9FA",
+      "primary": "#111827",
+      "secondary": "#6B7280",
+      "text": "#111827",
+      "textSecondary": "#6B7280",
+      "textOnBg": "#FFFFFF",
+      "border": "#E5E7EB",
+      "accent": "#2563EB",
+      "gradients": {
+        "hero": "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)",
+        "card": "linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%)",
+        "accent": "linear-gradient(135deg, #2563EB 0%, #3B82F6 100%)"
+      },
+      "shadows": {
+        "card": "0 1px 3px rgba(0,0,0,0.06)",
+        "elevated": "0 4px 16px rgba(0,0,0,0.08)",
+        "glow": "0 0 0 3px rgba(37,99,235,0.1)"
+      }
+    },
+    {
+      "id": "warm-gray",
+      "name": "暖灰",
+      "background": "#FAFAF8",
+      "surface": "#F3F2EF",
+      "primary": "#1C1917",
+      "secondary": "#78716C",
+      "text": "#1C1917",
+      "textSecondary": "#78716C",
+      "textOnBg": "#FFFFFF",
+      "border": "#E7E5E4",
+      "accent": "#D97706",
+      "gradients": {
+        "hero": "linear-gradient(180deg, #F5F5F0 0%, #FAFAF8 100%)",
+        "card": "linear-gradient(180deg, #FAFAF8 0%, #F5F5F0 100%)",
+        "accent": "linear-gradient(135deg, #D97706 0%, #F59E0B 100%)"
+      },
+      "shadows": {
+        "card": "0 1px 3px rgba(0,0,0,0.04)",
+        "elevated": "0 4px 16px rgba(0,0,0,0.06)",
+        "glow": "0 0 0 3px rgba(217,119,6,0.1)"
+      }
+    },
+    {
+      "id": "cool-slate",
+      "name": "冷灰",
+      "background": "#F8FAFC",
+      "surface": "#F1F5F9",
+      "primary": "#0F172A",
+      "secondary": "#64748B",
+      "text": "#0F172A",
+      "textSecondary": "#64748B",
+      "textOnBg": "#FFFFFF",
+      "border": "#E2E8F0",
+      "accent": "#0EA5E9",
+      "gradients": {
+        "hero": "linear-gradient(180deg, #F1F5F9 0%, #F8FAFC 100%)",
+        "card": "linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%)",
+        "accent": "linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%)"
+      },
+      "shadows": {
+        "card": "0 1px 3px rgba(0,0,0,0.05)",
+        "elevated": "0 4px 16px rgba(0,0,0,0.07)",
+        "glow": "0 0 0 3px rgba(14,165,233,0.1)"
+      }
+    }
+  ]
+}

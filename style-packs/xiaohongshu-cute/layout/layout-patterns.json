@@ -1,0 +1,80 @@
+{
+  "version": "0.2.0",
+  "description": "布局模式库 — 定义页面中内容区域的几何排列方式",
+  "patterns": [
+    {
+      "id": "single-full",
+      "name": "全宽单栏",
+      "css": "display:grid;grid-template-columns:1fr;gap:var(--gap,20px)",
+      "usage": ["hero", "大标题", "全宽banner", "总结引用"],
+      "weight": 0.9,
+      "minItems": 1,
+      "maxItems": 1
+    },
+    {
+      "id": "two-equal",
+      "name": "双栏等宽",
+      "css": "display:grid;grid-template-columns:1fr 1fr;gap:var(--gap,20px)",
+      "usage": ["并排卡片", "图文对照", "特性对比", "双步骤"],
+      "weight": 0.85,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    {
+      "id": "two-asymmetric-left",
+      "name": "双栏不等宽（左大）",
+      "css": "display:grid;grid-template-columns:2fr 1fr;gap:var(--gap,20px)",
+      "usage": ["主内容+侧边信息", "大图+小信息"],
+      "weight": 0.75,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    {
+      "id": "two-asymmetric-right",
+      "name": "双栏不等宽（右大）",
+      "css": "display:grid;grid-template-columns:1fr 2fr;gap:var(--gap,20px)",
+      "usage": ["侧边信息+主内容"],
+      "weight": 0.7,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    {
+      "id": "three-equal",
+      "name": "三栏等宽",
+      "css": "display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap,20px)",
+      "usage": ["三步骤", "特性展示", "价格表"],
+      "weight": 0.85,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    {
+      "id": "stats-row",
+      "name": "数据行",
+      "css": "display:grid;grid-template-columns:repeat(var(--cols,4),1fr);gap:var(--gap,16px)",
+      "usage": ["统计数据", "关键指标"],
+      "weight": 0.8,
+      "minItems": 2,
+      "maxItems": 5
+    },
+    {
+      "id": "comparison",
+      "name": "对比布局",
+      "css": "display:grid;grid-template-columns:1fr auto 1fr;gap:var(--gap,24px);align-items:start",
+      "usage": ["前后对比", "方案对比"],
+      "weight": 0.7,
+      "minItems": 2,
+      "maxItems": 2
+    }
+  ],
+  "autoGrid": {
+    "description": "auto-grid 根据子项数量自动决定列数",
+    "rules": [
+      { "items": 2, "columns": "1fr 1fr" },
+      { "items": 3, "columns": "repeat(3,1fr)" },
+      { "items": 4, "columns": "repeat(2,1fr)" },
+      { "items": 5, "columns": "repeat(3,1fr)" },
+      { "items": 6, "columns": "repeat(3,1fr)" }
+    ],
+    "default": "repeat(3,1fr)"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "palettes": [
+    {
+      "id": "pink-warm",
+      "name": "粉色暖调",
+      "background": "#FFF5F5",
+      "surface": "#ffffff",
+      "primary": "#FF6B6B",
+      "secondary": "#FFB347",
+      "text": "#333333",
+      "textSecondary": "#888888",
+      "textOnBg": "#ffffff",
+      "border": "#FFE0E0",
+      "accent": "#FF6B6B",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #FF6B6B 0%, #FFB347 100%)"
+      },
+      "shadows": {
+        "card": "0 4px 20px rgba(255,107,107,0.1)",
+        "elevated": "0 8px 30px rgba(255,107,107,0.15)"
+      }
+    },
+    {
+      "id": "peach-soft",
+      "name": "蜜桃柔光",
+      "background": "#FFF8F0",
+      "surface": "#ffffff",
+      "primary": "#FF9A76",
+      "secondary": "#FFEAA7",
+      "text": "#2D3436",
+      "textSecondary": "#636E72",
+      "textOnBg": "#ffffff",
+      "border": "#FFE0CC",
+      "accent": "#FF7675",
+      "gradients": {
+        "hero": "linear-gradient(135deg, #FF9A76 0%, #FFEAA7 100%)"
+      },
+      "shadows": {
+        "card": "0 4px 20px rgba(255,154,118,0.1)",
+        "elevated": "0 8px 30px rgba(255,154,118,0.15)"
+      }
+    }
+  ]
+}

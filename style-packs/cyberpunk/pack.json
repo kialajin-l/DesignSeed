@@ -1,0 +1,70 @@
+{
+  "id": "cyberpunk",
+  "name": "赛博朋克",
+  "nameEn": "Cyberpunk",
+  "version": "0.1.0",
+  "description": "霓虹色+深色底，高对比高饱和，适用于游戏、科技评测、潮玩、未来感内容",
+  "tags": [
+    "赛博朋克",
+    "霓虹",
+    "科技",
+    "游戏",
+    "潮玩",
+    "未来感",
+    "暗色"
+  ],
+  "paletteDir": "palette",
+  "paletteCount": 3,
+  "fonts": [
+    {
+      "name": "Orbitron",
+      "source": "google",
+      "weights": [
+        400,
+        500,
+        700,
+        900
+      ]
+    },
+    {
+      "name": "Rajdhani",
+      "source": "google",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ]
+    }
+  ],
+  "components": [
+    "header",
+    "hero",
+    "card",
+    "grid",
+    "zigzag",
+    "feature-plus-grid",
+    "stats",
+    "footer",
+    "button",
+    "nav",
+    "divider",
+    "quote",
+    "code-block"
+  ],
+  "bestFor": [
+    "游戏评测",
+    "科技数码",
+    "潮玩开箱",
+    "未来感公众号",
+    "赛博风海报"
+  ],
+  "mood": "霓虹、未来、高能、暗黑、科技感",
+  "decorations": [
+    "dot-grid",
+    "corner-line",
+    "diagonal-lines",
+    "tag-pill"
+  ]
+}

@@ -57,7 +57,7 @@ Its core value: **making AI-generated pages no longer monotonous black-on-white,
 | 🔗 **Design System Bridge** | design.md → renderer auto-conversion, 17 seed design systems |
 | 🕷️ **CSS Variable Extractor** | Extract custom properties from CSS/HTML/JSX, map to design token semantics |
 | 🧩 **Component Library Detector** | Auto-detect 12 UI frameworks (Tailwind/Bootstrap/MUI/Ant Design, etc.) |
-| 🎯 **End-to-End Demo** | `node demo.js "requirement" --style stripe` — one command generates complete HTML |
+| 🎯 **End-to-End Demo** | `node engine/cli.js generate --prompt "requirement" --style stripe` — one command generates complete HTML |
 
 ### v0.5
 
@@ -80,7 +80,7 @@ Its core value: **making AI-generated pages no longer monotonous black-on-white,
 | 🌳 **DesignTree Data Structure** | DesignNode → DesignTree → DesignProject — standardized design output |
 | 🧩 **20+ Component Templates** | Navbar, Hero, Features, Pricing, FAQ, Timeline, Gallery, Subscribe, Team, CTA, etc. |
 | 📐 **Responsive Layout Engine** | Auto-detect Grid/Flex, generate 768px/480px breakpoints |
-| 🔌 **COVE Protocol** | 10 standardized interfaces: createProject / parseIntent / generateTree / renderHTML / renderPreview / listStyles / mixStyles / listComponents / getNode / updateNode |
+| 🔌 **COVE Protocol** | 11 standardized interfaces: generatePreview / generateTree / getNodeById / updateNode / insertNode / deleteNode / listNodes / exportTree / importTree / generateFragment / listStyles |
 | 🧠 **Intent Parser** | Natural language → structured design intent (page type + components + style), 10+ page types |
 | 🎨 **6 Style Engines** | minimalism / cyberpunk / warmth / scandinavian / luxury / playful with full tone vectors |
 
@@ -106,11 +106,7 @@ DesignSeed/
 │   ├── design-philosophy.js # 💡 Design Direction Advisor
 │   ├── expert-review.js #   🔍 Expert Review Engine
 │   ├── anti-ai-slop.js  #   🚫 Anti AI Slop
-│   ├── intent-parser.js #   🧠 Intent Parser (v0.6)
-│   ├── component-library.js # 🧩 Component Templates (v0.6)
-│   ├── layout-engine.js #   📐 Responsive Layout Engine (v0.6)
-│   ├── style-engine.js  #   🎨 Style Engine (v0.6)
-│   ├── cove-protocol.js #   🔌 COVE Protocol (v0.6)
+│   ├── cove-protocol.js #   🔌 COVE Protocol (v0.6, 11 interfaces)
 │   ├── templates/       #   12 Style Definitions
 │   └── components/      #   Base UI Component Library
 ├── crawler/             # 🕷️ Design Crawler
@@ -220,7 +216,7 @@ DesignSeed is an AI skill. Just tell the AI what you want in natural language.
 - [x] design.md format + Bridge
 - [x] CSS Variable Extractor + Component Library Detector
 
-### v0.5 ✅ — Feedback Loop + Rule Adaptation
+### v0.6 ✅ — Feedback Loop + Rule Adaptation
 - [x] 3-Channel Feedback + User Preference Profile
 - [x] Rule Self-Adaptation + Cross-System Style Mixing
 
@@ -228,7 +224,7 @@ DesignSeed is an AI skill. Just tell the AI what you want in natural language.
 - [x] DesignTree data structure (DesignNode + DesignTree + DesignProject)
 - [x] Intent Parser (natural language → structured design intent)
 - [x] 20+ Component Templates + Responsive Layout Engine
-- [x] COVE Protocol: 10 interfaces fully implemented
+- [x] COVE Protocol: 11 interfaces fully implemented
 - [x] 6 Style Engines + 7 demos all passing
 
 ### v0.7 📋 — GUI + Cove Canvas + NightShift Adapter
