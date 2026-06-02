@@ -275,3 +275,77 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 - [x] 美学规则引擎：7 条内置规则
 
 ### v0
+
+### v0.2 ✅ — 风格混合 + 知识积累
+- [x] 向量空间风格插值
+- [x] 15 个头部设计系统种子数据
+
+### v0.3 ✅ — 设计功能提升
+- [x] 设备框架 / 复杂 UI 布局 / 交互状态管理
+- [x] 真实图片 Sourcing / 品牌资产协议
+- [x] 设计方向顾问 / 专家评审引擎 / 反 AI Slop
+
+### v0.4 ✅ — design.md 格式 + 创作者基础
+- [x] design.md 格式规范 + 桥接器
+- [x] CSS 变量提取器 + 组件库识别器
+
+### v0.5 ✅ — 反馈闭环 + 规则自适应
+- [x] 三通道反馈收集 + 用户偏好档案
+- [x] 规则自适应 + 跨系统风格混合
+
+### v0.6 ✅ — DesignTree 引擎 + COVE 协议
+- [x] DesignTree 数据结构（DesignNode + DesignTree + DesignProject）
+- [x] 意图解析器（自然语言 → 结构化设计意图）
+- [x] 20+ 组件模板库 + 响应式布局引擎
+- [x] COVE 协议 10 个接口全部实现
+- [x] 6 种风格引擎 + 7 个 demo 全部通过
+
+### v0.7 📋 — CLI 增强 + 审计引擎
+- [x] 完整 CLI 工具链：10 个命令，支持脚本化使用
+- [x] HTML 截图：Puppeteer/Playwright 双引擎
+- [x] 设计审计引擎：5 维度评分 + 修复建议
+- [x] 混合风格语法：一句话混合两种风格
+- [x] CLI Smoke Test：5 个自动化测试用例
+
+### v0.8 📋 — GUI + Cove Canvas + NightShift Adapter
+- [ ] Tauri 桌面应用壳
+- [ ] Cove Canvas 前端（点击选中 + 高亮 + 属性面板）
+- [ ] AI Chat Bar（对话驱动修改）
+- [ ] 多页面管理 + 流式输出
+- [ ] API 冻结 + NightShift adapter（stdio/MCP）
+
+### v1.0 🌟 — 独立产品
+- [ ] 独立服务化 + API 完全冻结 + 性能优化
+
+### v2.0 🌟 — 平台
+- [ ] 创作者经济 + 社区风格市场 + 飞轮效应
+
+---
+
+## 🤝 贡献
+
+```bash
+git clone https://github.com/kialajin-l/DesignSeed.git
+cd DesignSeed
+npm install
+```
+
+---
+
+## 📄 许可证
+
+MIT License
+
+## 🙏 致谢
+
+- [Claude Design](https://claude.ai) — 极简美学的灵感来源
+- [Xiaomi miclaw](https://github.com/XiaomiMiClaw) — AI 助手平台
+- [Model Context Protocol](https://modelcontextprotocol.io/) — AI Agent 标准化工具协议
+- [Ant Design](https://ant.design) — 企业级设计系统参考
+- [Material Design](https://m3.material.io) — Google 设计语言参考
+
+---
+
+## 🌟 Star 历史
+
+[![Star History Chart](https://api.star-history.com/svg?repos=kialajin-l/DesignSeed&type=Date)](https://star-history.com/#kialajin-l/DesignSeed&Date)
