@@ -1,23 +1,190 @@
-async function cmdList() {
-  const list = renderer.listStyles();
-  console.log('
-  Available Styles:
-');
-  console.log('  ID              Name                        Formality  Warmth  Complexity  Innovation');
-  console.log('  ─────────────── ─────────────────────────── ─────────  ──────  ──────────  ──────────');
-  for (const s of list) {
-    const id = s.id.padEnd(16);
-    const nameEn = s.nameEn ? ' (' + s.nameEn + ')' : ' [' + s.source + ']';
-    const name = (s.name + nameEn).padEnd(26);
-    const t = s.tone || {};
-    const fmt = String(t.formality != null ? t.formality : '-');
-    const wth = String(t.warmth != null ? t.warmth : '-');
-    const cpx = String(t.complexity != null ? t.complexity : '-');
-    const inn = String(t.innovation != null ? t.innovation : '-');
-    console.log('  ' + id + name + fmt.padEnd(9) + wth.padEnd(7) + cpx.padEnd(11) + inn);
+const fs = require('fs');
+const path = require('path');
+const renderer = require('./renderer');
+const mixer = require('./mixer');
+const { DesignMemory } = require('../memory/index');
+
+function parseArgs(argv) {
+  const args = argv.slice(2);
+  const command = args[0] || null;
+  const positional = [command];
+  const flags = {};
+  for (let i = 1; i < args.length; i++) {
+    const arg = args[i];
+    if (arg.startsWith('--')) {
+      const key = arg.replace(/^--/, '');
+      const next = args[i + 1];
+      if (next && !next.startsWith('--')) {
+        flags[key] = next;
+        i++;
+      } else {
+        flags[key] = true;
+      }
+    } else if (arg.startsWith('-') && arg.length === 2) {
+      const key = arg[1];
+      const next = args[i + 1];
+      if (next && !next.startsWith('-')) {
+        flags[key] = next;
+        i++;
+      } else {
+        flags[key] = true;
+      }
+    } else {
+      positional.push(arg);
+    }
   }
-  console.log('');
-}async function cmdList() {
+  return { command, args: flags, positional };
+}
+
+// ─── Generate command ──────────────────────────────────────
+
+async function cmdGenerate(opts) {
+  const prompt = opts.prompt || opts.p;
+  const style = opts.style || opts.s || 'minimalism';
+  const output = opts.output || opts.o || 'output.html';
+  const title = opts.title || opts.t || prompt;
+  const doScreenshot = opts.screenshot || opts.ss;
+
+  if (!prompt) {
+    console.error('Error: --prompt is required');
+    console.error('Usage: node engine/cli.js generate --prompt "..." --style "..." [--output ./out.html]');
+    process.exit(1);
+  }
+
+  const renderer = require('./renderer');
+  const fs = require('fs');
+  const path = require('path');
+
+  const html = renderer.render(prompt, { style, title });
+  const outPath = path.resolve(output);
+  fs.writeFileSync(outPath, html, 'utf-8');
+  console.log('Generated: ' + outPath + ' (' + html.length + ' chars, style: ' + style + ')');
+
+  if (doScreenshot) {
+    const screenshotPath = typeof doScreenshot === 'string' ? doScreenshot : outPath.replace(/\.html$/, '.png');
+    try {
+      const { execSync } = require('child_process');
+      execSync('node engine/cli.js screenshot --input "' + outPath + '" --output "' + screenshotPath + '"', { stdio: 'inherit' });
+    } catch (e) {
+      console.error('Screenshot failed:', e.message);
+    }
+  }
+}
+
+// ─── Screenshot commands ──────────────────────────────────────
+
+async function cmdScreenshot(opts) {
+  const input = opts.input;
+  const output = opts.output || opts.o;
+  const width = parseInt(opts.width || '1440');
+  const height = parseInt(opts.height || '900');
+  const scale = parseInt(opts.scale || '2');
+  const format = opts.format || 'png';
+
+  if (!input) {
+    console.error('Error: --input is required');
+    console.error('Usage: node engine/cli.js screenshot --input page.html --output page.png');
+    process.exit(1);
+  }
+
+  const fs = require('fs');
+  const path = require('path');
+  const { execSync } = require('child_process');
+
+  const inputPath = path.resolve(input);
+  const outputPath = output ? path.resolve(output) : inputPath.replace(/\.html$/, '.' + format);
+
+  if (!fs.existsSync(inputPath)) {
+    console.error('Error: input file not found: ' + inputPath);
+    process.exit(1);
+  }
+
+  console.log('Screenshotting: ' + inputPath);
+  try {
+    const puppeteer = require('puppeteer');
+    const browser = await puppeteer.launch({ headless: 'new' });
+    const page = await browser.newPage();
+    await page.setViewport({ width, height, deviceScaleFactor: scale });
+    await page.goto('file://' + inputPath, { waitUntil: 'networkidle0' });
+    await page.screenshot({ path: outputPath, fullPage: true });
+    await browser.close();
+    console.log('Screenshot saved: ' + outputPath);
+  } catch (e) {
+    // Fallback: try using playwright or other tools
+    console.error('Puppeteer not available, trying alternative...');
+    try {
+      execSync('npx playwright screenshot --viewport-size="' + width + ',' + height + '" "' + inputPath + '" "' + outputPath + '"', { stdio: 'inherit' });
+    } catch (e2) {
+      console.error('Screenshot failed. Install puppeteer or playwright:');
+      console.error('  npm install puppeteer');
+      console.error('  or: npm install playwright');
+      process.exit(1);
+    }
+  }
+}
+
+async function cmdScreenshotAll(opts) {
+  const inputDir = opts.input;
+  const outputDir = opts.output || opts.o || './screenshots';
+
+  if (!inputDir) {
+    console.error('Error: --input directory is required');
+    console.error('Usage: node engine/cli.js screenshot-all --input ./demo/ --output ./screenshots/');
+    process.exit(1);
+  }
+
+  const fs = require('fs');
+  const path = require('path');
+
+  const dir = path.resolve(inputDir);
+  if (!fs.existsSync(dir)) {
+    console.error('Error: directory not found: ' + dir);
+    process.exit(1);
+  }
+
+  const outDir = path.resolve(outputDir);
+  if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir, { recursive: true });
+  }
+
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
+  console.log('Found ' + files.length + ' HTML files to screenshot');
+
+  for (const file of files) {
+    const inputPath = path.join(dir, file);
+    const outputPath = path.join(outDir, file.replace(/\.html$/, '.png'));
+    try {
+      await cmdScreenshot({ input: inputPath, output: outputPath, width: opts.width, height: opts.height, scale: opts.scale, format: opts.format });
+    } catch (e) {
+      console.error('Failed to screenshot ' + file + ': ' + e.message);
+    }
+  }
+  console.log('Done! Screenshots saved to: ' + outDir);
+}
+
+// ─── Demo command ──────────────────────────────────────
+
+async function cmdDemo(opts) {
+  const output = opts.output || opts.o || require('path').join(require('path').join(__dirname, '..'), 'designseed-demo.html');
+  const style = opts.style || opts.s;
+
+  const renderer = require('./renderer');
+  const fs = require('fs');
+  const path = require('path');
+
+  let html;
+  if (style) {
+    html = renderer.render('DesignSeed Demo — ' + style + ' 风格预览', { style, title: 'DesignSeed Demo' });
+  } else {
+    html = renderer.generateDemo();
+  }
+
+  const outPath = path.resolve(output);
+  fs.writeFileSync(outPath, html, 'utf-8');
+  console.log('Demo generated: ' + outPath + ' (' + html.length + ' chars)');
+}
+
+async function cmdList() {
   const list = renderer.listStyles();
   console.log('\n  Available Styles:\n');
   console.log('  ID              Name              Formality  Warmth  Complexity  Innovation');
@@ -271,6 +438,27 @@ async function cmdPacks(opts) {
   console.log('');
 }
 
+async function cmdAudit(opts) {
+  const { audit, formatReport } = require('./audit');
+  const input = opts.input || opts.i;
+  if (!input) {
+    console.error('Error: --input is required');
+    console.error('Usage: node engine/cli.js audit --input page.html [--output report.txt]');
+    process.exit(1);
+  }
+  const html = fs.readFileSync(input, 'utf8');
+  const result = await audit(html);
+  const report = formatReport(result);
+  console.log(report);
+  if (opts.output || opts.o) {
+    const outPath = opts.output || opts.o;
+    fs.writeFileSync(outPath, report, 'utf8');
+    console.log('Report saved: ' + outPath);
+  }
+}
+
+
+
 // Main
 const { command, args, positional } = parseArgs(process.argv);
 
@@ -289,6 +477,7 @@ const commands = {
   preset: cmdPreset,
   card: cmdCard,
   packs: cmdPacks,
+  audit: cmdAudit,
 };
 
 const fn = commands[command];
@@ -311,6 +500,7 @@ Usage:
   node engine/cli.js list
   node engine/cli.js card --template xiaohongshu-note --title "..." [--style guochao] [--output card.html]
   node engine/cli.js packs
+  node engine/cli.js audit --input ./page.html [--output report.txt]
 
 Commands:
   generate, gen     Generate an HTML page from a prompt (supports mix syntax)
@@ -324,6 +514,7 @@ Commands:
   preset            Manage style presets (save/load/delete)
   card              Generate a card from template (xiaohongshu-note, wechat-cover)
   packs             List available style packs
+  audit              Audit HTML design quality (5 dimensions + anti-patterns)
 
 Options:
   --prompt, -p      The design prompt (required for generate)

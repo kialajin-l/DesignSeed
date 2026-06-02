@@ -3,7 +3,7 @@
 > 🌱 This is a **Vibe Coding** project: Built with AI, for AI-augmented development.
 
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Version](https://img.shields.io/badge/Version-v0.7-blue.svg)
+![Version](https://img.shields.io/badge/Version-v0.7.1-blue.svg)
 ![Node](https://img.shields.io/badge/Node-%3E%3D18-green.svg)
 
 <p align="center"><a href="README.en.md"><b>English</b></a> | <b>中文</b></p>
@@ -88,6 +88,19 @@
 | 🧩 **CLI 风格包命令** | `list`、`mix-pairs`、`card` 命令全面支持风格包 ID |
 
 **v0.7 核心突破**：从"固定风格库"升级为"可扩展风格包系统"，为社区风格市场和用户自定义风格奠定基础。
+### 🆕 v0.7.1 CLI 增强
+
+| 功能 | 说明 |
+|------|------|
+| 🔧 **完整 CLI 工具链** | 10 个命令：generate / screenshot / screenshot-all / demo / list / preset / card / packs / audit / mix |
+| 📸 **HTML 截图** | Puppeteer/Playwright 双引擎，支持自定义视口、缩放、格式（PNG/JPEG） |
+| 🔍 **设计审计引擎** | 5 维度评分（无障碍/性能/主题一致性/响应式/反模式）+ 修复建议 |
+| 🎯 **混合风格语法** | `--style "minimalism:cyberpunk:0.3"` 一句话混合两种风格 |
+| ⚡ **快捷选项** | `-p`/`-s`/`-o`/`--ss` 等快捷参数，提升使用效率 |
+| 🧪 **CLI Smoke Test** | 5 个自动化测试用例，确保 CLI 稳定性 |
+
+**v0.7.1 核心突破**：从"对话式使用"升级为"CLI 工具链"，支持脚本化、自动化、CI/CD 集成。
+
 
 ---
 
@@ -110,6 +123,7 @@ DesignSeed/
 │   ├── design-philosophy.js # 💡 设计方向顾问
 │   ├── expert-review.js #   🔍 专家评审引擎
 │   ├── anti-ai-slop.js  #   🚫 反 AI Slop 检查
+│   ├── audit.js         #   🔍 设计审计引擎（v0.7.1）
 │   ├── cove-protocol.js #   🔌 COVE 协议实现
 │   ├── card-templates/  #   📱 卡片模板系统（v0.7）
 │   │   ├── index.js     #     模板注册与匹配
@@ -246,6 +260,13 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 <p align="center">
   <img src="docs/assets/roadmap.png" alt="DesignSeed Roadmap" width="100%">
 </p>
+
+### v0.7.1 ✅ — CLI 增强
+- [x] 完整 CLI 工具链：10 个命令，支持脚本化使用
+- [x] HTML 截图：Puppeteer/Playwright 双引擎
+- [x] 设计审计引擎：5 维度评分 + 修复建议
+- [x] 混合风格语法：一句话混合两种风格
+- [x] CLI Smoke Test：5 个自动化测试用例
 
 ### v0.1 ✅ — MVP 核心
 - [x] HTML 设计引擎：12 种风格，Prompt → HTML

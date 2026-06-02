@@ -58,4 +58,21 @@ describe('CLI smoke', () => {
     assert.ok(html.length > 1000, 'demo HTML should be substantial');
     try { fs.unlinkSync(demoFile); } catch {}
   });
+
+  it('audit — scores an HTML file on 5 dimensions', async () => {
+    // First generate a file to audit
+    const genOut = path.join(os.tmpdir(), 'ds-smoke-audit-input.html');
+    try { fs.unlinkSync(genOut); } catch {}
+    await run('generate', '--prompt', 'audit test page', '--style', 'minimalism', '--output', genOut);
+    assert.ok(fs.existsSync(genOut), 'precondition: generate should produce file');
+
+    const reportOut = path.join(os.tmpdir(), 'ds-smoke-audit-report.txt');
+    try { fs.unlinkSync(reportOut); } catch {}
+    const r = await run('audit', '--input', genOut, '--output', reportOut);
+    assert.strictEqual(r.code, 0);
+    // audit prints to stdout and optionally to file
+    assert.ok(r.stdout.length > 0, 'audit should produce output');
+    try { fs.unlinkSync(genOut); } catch {}
+    try { fs.unlinkSync(reportOut); } catch {}
+  });
 });
