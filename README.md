@@ -261,20 +261,11 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
   <img src="docs/assets/roadmap.png" alt="DesignSeed Roadmap" width="100%">
 </p>
 
-### v0.7.1 ✅ — CLI 增强
-- [x] 完整 CLI 工具链：10 个命令，支持脚本化使用
-- [x] HTML 截图：Puppeteer/Playwright 双引擎
-- [x] 设计审计引擎：5 维度评分 + 修复建议
-- [x] 混合风格语法：一句话混合两种风格
-- [x] CLI Smoke Test：5 个自动化测试用例
-
 ### v0.1 ✅ — MVP 核心
 - [x] HTML 设计引擎：12 种风格，Prompt → HTML
 - [x] 设计爬虫：多源采集，特征提取
 - [x] 嵌入式记忆：SQLite 存储，EMA 偏好学习
 - [x] 美学规则引擎：7 条内置规则
-
-### v0
 
 ### v0.2 ✅ — 风格混合 + 知识积累
 - [x] 向量空间风格插值
@@ -300,7 +291,14 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 - [x] COVE 协议 10 个接口全部实现
 - [x] 6 种风格引擎 + 7 个 demo 全部通过
 
-### v0.7 📋 — CLI 增强 + 审计引擎
+### v0.7 ✅ — CLI 增强 + 审计引擎
+- [x] 完整 CLI 工具链：10 个命令，支持脚本化使用
+- [x] HTML 截图：Puppeteer/Playwright 双引擎
+- [x] 设计审计引擎：5 维度评分 + 修复建议
+- [x] 混合风格语法：一句话混合两种风格
+- [x] CLI Smoke Test：5 个自动化测试用例
+
+### v0.7.1 ✅ — CLI 增强
 - [x] 完整 CLI 工具链：10 个命令，支持脚本化使用
 - [x] HTML 截图：Puppeteer/Playwright 双引擎
 - [x] 设计审计引擎：5 维度评分 + 修复建议
@@ -320,7 +318,6 @@ DesignSeed 是一个 AI 技能（Skill），安装后直接在对话中使用。
 ### v2.0 🌟 — 平台
 - [ ] 创作者经济 + 社区风格市场 + 飞轮效应
 
----
 
 ## 🤝 贡献
 
